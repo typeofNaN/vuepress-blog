@@ -1,15 +1,18 @@
-import { defineUserConfig } from "vuepress";
-import theme from "./theme.js";
+import { defineUserConfig } from 'vuepress'
+import theme from './theme.js'
 
 export default defineUserConfig({
-  base: "/vuepress-blog/",
+  base: '/vuepress-blog/',
 
-  lang: "zh-CN",
-  title: "博客演示",
-  description: "vuepress-theme-hope 的博客演示",
+  lang: 'zh-CN',
+  title: 'typeofNaN',
+  description: 'typeofNaN、六碗面、个人网站、前端技术开发、JavaScript 技术',
+  head: [
+    ['link', { rel: 'shortcut icon', type: 'image/x-icon', href: `./favicon.ico` }]
+  ],
 
-  theme,
+  theme
 
   // Enable it with pwa
   // shouldPrefetch: false,
-});
+})
