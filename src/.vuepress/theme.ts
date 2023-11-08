@@ -12,7 +12,7 @@ export default hopeTheme({
 
   iconAssets: 'fontawesome-with-brands',
 
-  logo: '/avatar.jpeg',
+  // logo: '/assets/images/avatar.png',
 
   repo: 'typeofNaN',
 
