@@ -3,7 +3,7 @@ home: true
 layout: BlogHome
 icon: home
 title: 博客主页
-heroImage: /logo.svg
+# heroImage: /avatar.jpeg
 heroText: typeofNaN
 heroFullScreen: true
 tagline: Not a Number
