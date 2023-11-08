@@ -28,8 +28,11 @@ export default hopeTheme({
 
   displayFooter: true,
 
-  // blog: {
-  //   description: '一个前端开发者',
+  blog: {
+    name: 'typeofNaN',
+    avatar: '/avatar.jpeg',
+    roundAvatar: true,
+    description: 'Not a Number',
   //   intro: '/intro.html',
   //   medias: {
   //     Baidu: 'https://example.com',
@@ -64,13 +67,9 @@ export default hopeTheme({
   //     Youtube: 'https://example.com',
   //     Zhihu: 'https://example.com'
   //   },
-  // },
-
-  encrypt: {
-    config: {
-      '/demo/encrypt.html': ['1234'],
-    },
   },
+
+  encrypt: {},
 
   // page meta
   metaLocales: {
@@ -89,6 +88,12 @@ export default hopeTheme({
       repoId: 'R_kgDOKqPF6w',
       category: 'Announcements',
       categoryId: 'DIC_kwDOKqPF684Cavub'
+    },
+
+    copyright: {
+      global: true,
+      author: 'typeofNaN',
+      license: 'MIT'
     },
 
     // all features are enabled for demo, only preserve features you need here
