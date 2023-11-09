@@ -6,7 +6,22 @@ export default sidebar({
       text: '文章',
       icon: 'book',
       prefix: 'article/',
-      children: 'structure'
+      children: [
+        'node-sass-version',
+        'jsx-in-vue',
+        'observer-api',
+        'vue-directives',
+        'ECMAScript',
+        'js-copy',
+        'array-unique',
+        'git-command',
+        'es6',
+        'css-vertical-center',
+        'prototype-pattern',
+        'jquery-study-note',
+        'css-style-ruler',
+        'build-hexo-blog'
+      ]
     }
   ]
 })
