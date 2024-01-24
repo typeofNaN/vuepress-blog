@@ -7,6 +7,7 @@ export default sidebar({
       icon: 'book',
       prefix: 'article/',
       children: [
+        'vite-deploy-github-page-problem',
         'node-sass-version',
         'jsx-in-vue',
         'observer-api',
