@@ -1,6 +1,6 @@
 ---
 title: ECMAScript
-date: 2020-03-03 19:05:10
+date: 2020-03-03
 category: 技术文章
 tag:
     - ES6

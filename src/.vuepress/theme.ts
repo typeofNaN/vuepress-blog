@@ -28,6 +28,8 @@ export default hopeTheme({
 
   displayFooter: true,
 
+  breadcrumb: false,
+
   blog: {
     name: 'typeofNaN',
     avatar: '/avatar.jpeg',

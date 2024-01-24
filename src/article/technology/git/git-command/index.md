@@ -1,6 +1,6 @@
 ---
 title: Git Command
-date: 2019-01-15 10:11:08
+date: 2019-01-15
 category: 技术文章
 tag:
     - Git

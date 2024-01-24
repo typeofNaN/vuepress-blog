@@ -1,6 +1,6 @@
 ---
 title: Observer API
-date: 2021-11-23 11:56:23
+date: 2021-11-23
 category: 技术文章
 tag:
     - Observer API

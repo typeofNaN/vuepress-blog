@@ -1,6 +1,6 @@
 ---
 title: jquery 学习笔记
-date: 2018-04-19 14:28:12
+date: 2018-04-19
 category: 技术文章
 tag:
     - jQuery

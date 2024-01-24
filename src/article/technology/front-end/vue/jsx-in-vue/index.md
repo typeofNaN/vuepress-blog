@@ -1,6 +1,6 @@
 ---
 title: 在 Vue 中使用 JSX
-date: 2022-10-23 11:09:49
+date: 2022-10-23
 category: 技术文章
 tag:
     - Vue

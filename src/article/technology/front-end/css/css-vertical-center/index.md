@@ -1,6 +1,6 @@
 ---
 title: CSS垂直居中
-date: 2018-09-06 10:19:48
+date: 2018-09-06
 category: 技术文章
 tag:
     - CSS

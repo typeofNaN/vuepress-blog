@@ -1,6 +1,6 @@
 ---
 title: ES6
-date: 2018-12-15 11:28:08
+date: 2018-12-15
 category: 技术文章
 tag:
     - ES6
