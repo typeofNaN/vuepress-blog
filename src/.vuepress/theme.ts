@@ -75,8 +75,12 @@ export default hopeTheme({
 
   // page meta
   metaLocales: {
-    editLink: '在 GitHub 上编辑此页',
+    // editLink: '在 GitHub 上编辑此页',
   },
+
+  lastUpdated: false,
+  contributors: false,
+  editLink: false,
 
   plugins: {
     blog: true,
