@@ -798,7 +798,7 @@ Calc是计算机英文单词calculator的缩写，这个由微软提出的css �
     margin: auto;
   }
 </style>
-<h2>23.writing-mode</h2>立马来看Amos实际完成的
+<h2>23.writing-mode</h2>
 <div class="box box23">
   <div class="content">
     <div class="txt">
