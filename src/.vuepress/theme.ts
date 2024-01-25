@@ -121,7 +121,7 @@ export default hopeTheme({
       // gfm requires mathjax-full to provide tex support
       // gfm: true,
 
-      imgLazyload: true,
+      imgLazyload: false,
       imgSize: true,
       include: true,
 

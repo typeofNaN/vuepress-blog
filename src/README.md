@@ -7,6 +7,7 @@ title: 博客主页
 heroText: typeofNaN
 heroFullScreen: true
 tagline: Not a Number
+bgImage: /assets/images/cover.jpg
 # projects:
 #   - icon: project
 #     name: 项目名称
