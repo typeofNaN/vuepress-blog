@@ -80,7 +80,7 @@ export default sidebar({
       prefix: 'article/life/',
       collapsible: true,
       children: [
-        'farewell-in-March'
+        'say-goodbye'
       ]
     }
   ]
