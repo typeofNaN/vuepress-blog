@@ -1,5 +1,5 @@
 ---
-title: jquery 学习笔记
+title: jQuery 学习笔记
 date: 2018-04-19
 category: 技术文章
 tag:
@@ -7,7 +7,7 @@ tag:
     - JavaScript
 ---
 
-本文为前端学习笔记之 jquery 篇。
+本文为前端学习笔记之 jQuery 篇。
 
 <!-- more -->
 

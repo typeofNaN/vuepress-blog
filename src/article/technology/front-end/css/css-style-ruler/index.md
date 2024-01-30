@@ -1,5 +1,5 @@
 ---
-title: CSS样式常用属性及书写顺序规范
+title: CSS常用属性及书写顺序规范
 date: 2018-04-11
 category: 技术文章
 tag:

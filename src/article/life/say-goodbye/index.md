@@ -14,39 +14,39 @@ tag:
 
 ::: tabs
 
-@tab 图 1
+@tab 黄腾峡
 
 ![](./images/1.jpeg)
 
-@tab 图 2
+@tab 年会
 
 ![](./images/2.jpeg)
 
-@tab 图 3
+@tab 大龙燚
 
 ![](./images/3.jpeg)
 
-@tab 图 4
+@tab 密室逃脱
 
 ![](./images/4.jpeg)
 
-@tab 图 5
+@tab 珠江琶醍
 
 ![](./images/5.jpeg)
 
-@tab 图 6
+@tab 麻辣英雄
 
 ![](./images/6.jpeg)
 
-@tab 图 7
+@tab 团建
 
 ![](./images/7.jpeg)
 
-@tab 图 8
+@tab 海心沙
 
 ![](./images/8.jpeg)
 
-@tab 图 9
+@tab 广州塔
 
 ![](./images/9.jpeg)
 

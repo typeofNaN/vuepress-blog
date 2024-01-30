@@ -80,8 +80,9 @@ export default sidebar({
       prefix: 'article/life/',
       collapsible: true,
       children: [
-        'say-goodbye',
-        'warm-and-free'
+        'warm-and-free',
+        'their-18-year-old',
+        'say-goodbye'
       ]
     }
   ]
