@@ -171,6 +171,12 @@ export default hopeTheme({
       // vuePlayground: true,
     },
 
+    components: {
+      components: [
+        'VidStack'
+      ]
+    }
+
     // uncomment these if you want a PWA
     // pwa: {
     //   favicon: '/favicon.ico',

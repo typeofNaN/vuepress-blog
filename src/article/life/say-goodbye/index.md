@@ -12,6 +12,8 @@ tag:
 
 <!-- more -->
 
+<VidStack src="https://typeofnan.oss-cn-guangzhou.aliyuncs.com/blog/music/%E5%87%A4%E5%87%B0%E8%8A%B1%E5%BC%80%E7%9A%84%E8%B7%AF%E5%8F%A3.mp3" title="凤凰花开的路口 - 林志炫" />
+
 ::: tabs
 
 @tab 黄腾峡
@@ -52,7 +54,7 @@ tag:
 
 :::
 
-<center>
+::: center
 
 <h3>那就到这吧，说声再见！</h3>
 
@@ -94,5 +96,4 @@ tag:
 
 有缘再见
 
-</center>
-
+:::
