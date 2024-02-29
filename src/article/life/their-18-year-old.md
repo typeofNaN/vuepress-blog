@@ -16,10 +16,10 @@ tag:
 
 @tab 桃李鼎
 
-![](./images/1.jpg)
+![](./their-18-year-old_assets/images/1.jpg)
 
 @tab 风雨球场
 
-![](./images/2.jpg)
+![](./their-18-year-old_assets/images/2.jpg)
 
 :::

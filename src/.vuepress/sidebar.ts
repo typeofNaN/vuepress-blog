@@ -35,8 +35,8 @@ export default sidebar({
               prefix: 'js/',
               collapsible: true,
               children: [
-                'vite-deploy-github-page-problem',
                 'node-sass-version',
+                'vite-deploy-github-page-problem',
                 'observer-api',
                 'ECMAScript',
                 'js-copy',

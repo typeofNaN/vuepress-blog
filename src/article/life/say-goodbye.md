@@ -18,39 +18,39 @@ tag:
 
 @tab 黄腾峡
 
-![](./images/1.jpeg)
+![](./say-goodbye_assets/images/1.jpeg)
 
 @tab 年会
 
-![](./images/2.jpeg)
+![](./say-goodbye_assets/images/2.jpeg)
 
 @tab 大龙燚
 
-![](./images/3.jpeg)
+![](./say-goodbye_assets/images/3.jpeg)
 
 @tab 密室逃脱
 
-![](./images/4.jpeg)
+![](./say-goodbye_assets/images/4.jpeg)
 
 @tab 珠江琶醍
 
-![](./images/5.jpeg)
+![](./say-goodbye_assets/images/5.jpeg)
 
 @tab 麻辣英雄
 
-![](./images/6.jpeg)
+![](./say-goodbye_assets/images/6.jpeg)
 
 @tab 团建
 
-![](./images/7.jpeg)
+![](./say-goodbye_assets/images/7.jpeg)
 
 @tab 海心沙
 
-![](./images/8.jpeg)
+![](./say-goodbye_assets/images/8.jpeg)
 
 @tab 广州塔
 
-![](./images/9.jpeg)
+![](./say-goodbye_assets/images/9.jpeg)
 
 :::
 

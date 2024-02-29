@@ -12,7 +12,7 @@ tag:
 
 ## 做快乐的人
 
-![](./images/1.jpg)
+![](./warm-and-free_assets/images/1.jpg)
 
 ::: center
 在不用考虑变现的年纪，我们都是最好的自己
@@ -24,11 +24,11 @@ tag:
 
 @tab 图 1
 
-![](./images/2.jpg)
+![](./warm-and-free_assets/images/2.jpg)
 
 @tab 图 2
 
-![](./images/3.jpg)
+![](./warm-and-free_assets/images/3.jpg)
 
 :::
 
