@@ -69,6 +69,7 @@ export default sidebar({
           prefix: 'other/',
           collapsible: true,
           children: [
+            'github-emojis',
             'build-hexo-blog'
           ]
         }
