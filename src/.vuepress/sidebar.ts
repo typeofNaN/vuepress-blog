@@ -26,7 +26,7 @@ export default sidebar({
               prefix: 'css/',
               collapsible: true,
               children: [
-                'unocss',
+                'UnoCSS',
                 'css-vertical-center',
                 'css-style-ruler'
               ]

@@ -116,7 +116,7 @@ createApp(App)
 常用值：
 
 * `rounded-none`: `border-radius: 0;`
-* `rounded-l`: `border-top-left-radius: 0.25rem;` `border-bottom-left-radius: 0.25rem;`
+* `rounded-l`: `border-top-left-radius: 0.25rem; border-bottom-left-radius: 0.25rem;`
 * `rounded-full`: `border-radius: 9999px;`
 * `border-0`: `border-width: 0;`
 * `b-0`: `border-width: 0;`
@@ -141,8 +141,8 @@ createApp(App)
 常用值：
 
 * `m-0`: `margin: 0;`
-* `mx-0`: `margin-left: 0;` `margin-right: 0;`
-* `py-10px`: `padding-top: 10px;` `padding-bottom: 10px;`
+* `mx-0`: `margin-left: 0; margin-right: 0;`
+* `py-10px`: `padding-top: 10px; padding-bottom: 10px;`
 * `p-10px`: `padding: 10px;`
 * `p--20px`: `padding: -20px;`
 
