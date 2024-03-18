@@ -11,7 +11,7 @@ tag:
 
 <!-- more -->
 
-# UnoCSS 特点
+## UnoCSS 特点
 
 1. 完全可定制：无核心工具，所有功能都通过预设提供
 2. 即时的：无解析、无抽象语法树、无扫描。它比 Windi CSS 或 Tailwind JIT 快5倍
@@ -26,7 +26,7 @@ tag:
 11. 检查器：交互式检查和调试
 12. CDN 运行时构建：只需一行 CDN 引入即可使用 UnoCSS
 
-# 安装
+## 安装
 
 1. 安装 UnoCSS
 
@@ -76,9 +76,9 @@ createApp(App)
   .mount('#app')
 ```
 
-# 使用
+## 使用
 
-## 1、width、height
+### 1、width、height
 
 常用值：
 
@@ -95,7 +95,7 @@ createApp(App)
 <div style="min-height: 100px; width: 50vw;"></div>
 ```
 
-## 2、background
+### 2、background
 
 ``` html
 <div class="bg-#f00"></div>
@@ -103,7 +103,7 @@ createApp(App)
 <div style="background-color: #f00"></div>
 ```
 
-## 3、font、text-align
+### 3、font、text-align
 
 ``` html
 <div class="text-center font-700 text-#f00 text-20px"></div>
@@ -111,7 +111,7 @@ createApp(App)
 <div style="text-align: center; font-weight: 700; color: #f00; font-size: 20px;"></div>
 ```
 
-# 4、border、border-radius
+### 4、border、border-radius
 
 常用值：
 
@@ -136,7 +136,7 @@ createApp(App)
 <div style="border: 1px solid #f00; border-radius: 6px;"></div>
 ```
 
-## 5、margin、padding
+### 5、margin、padding
 
 常用值：
 
@@ -152,7 +152,7 @@ createApp(App)
 <div style="margin: 10px; padding: 10px;"></div>
 ```
 
-## 6、flex
+### 6、flex
 
 常用值：
 
@@ -170,7 +170,7 @@ createApp(App)
 <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;"></div>
 ```
 
-## 7、overflow
+### 7、overflow
 
 常用值：
 
@@ -185,7 +185,7 @@ createApp(App)
 <div style="min-height: 100px; max-height: 60vh; width: 100%; overflow-y: scroll;"></div>
 ```
 
-## 8、position
+### 8、position
 
 常用值：
 
@@ -204,7 +204,7 @@ createApp(App)
 <div style="position: absolute; left: 0; top: 5px; z-index: 100;"></div>
 ```
 
-## 9、hover、focus、active、first、last
+### 9、hover、focus、active、first、last
 
 常用值：
 
@@ -222,7 +222,7 @@ createApp(App)
 </style>
 ```
 
-## 10、display
+### 10、display
 
 常用值：
 
@@ -237,7 +237,7 @@ createApp(App)
 <div style="display: flex;"></div>
 ```
 
-## 11、important
+### 11、important
 
 ``` html
 <div class="!-text-20px"></div>
@@ -245,7 +245,7 @@ createApp(App)
 <div style="font-size: 20px !important;"></div>
 ```
 
-# 总结
+## 总结
 
 **UnoCSS** 与 **TailwindCSS** 类似，但是它更加轻量级，使用体验更好，而且它的中文文档也很完善，可以说是 **TailwindCSS** 的一个很好的替代品。
 尤其是 **UnoCSS** 的自定义 class name 类名功能，不用 `[]` 包裹，更加直观，例如：

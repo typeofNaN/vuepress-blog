@@ -9,9 +9,9 @@ tag:
 
 本文整理一下前端开发三大工具之一------CSS的常用属性及书写顺序规范
 
-# 快速记忆
+## 快速记忆
 
-## 口诀
+### 口诀
 
 状定形边字背其，上右下左顺时针。
 
@@ -27,13 +27,13 @@ tag:
 
 属性越前则优先级越高。
 
-# 规范书写顺序原因
+## 规范书写顺序原因
 
-## 目的
+### 目的
 
 减少浏览器reflow（回流），提升浏览器渲染dom的性能。
 
-## 原理
+### 原理
 
 浏览器的渲染流程为——
 
@@ -60,9 +60,9 @@ div {
 
 所以规范的的css书写顺序对于文档渲染来说一定是事半功倍的！
 
-# 详细解析
+## 详细解析
 
-## 状态类
+### 状态类
 
 * display: block | none | inline | compact | marker | inline-table | list-item | run-in | table | table-caption | table-cell | table-column | table-column-group | table-footer-group | table-header-group | table-row | table-row-group
 * visibility: inherit | visible | collapse | hidden  
@@ -70,7 +70,7 @@ div {
 * clear: none | left | right | both
 * overflow: visible | auto | hidden | scroll
 
-## 定位类
+### 定位类
 
 * position: static | absolute | fixed | relative  
 * top：auto | length  
@@ -79,23 +79,23 @@ div {
 * left: auto | length  
 * z-index: auto | number
 
-## 形状类
+### 形状类
 
-### 宽
+#### 宽
 
 * width: visible | auto | hidden | scroll
 * min-width: visible | auto | hidden | scroll
 * max-width: visible | auto | hidden | scroll
 
-### 高
+#### 高
 
 * height: auto | length
 * min-height: auto | length
 * max-height: auto | length
 
-## 边框类
+### 边框类
 
-### margin
+#### margin
 
 * margin: auto | length
 * margin-top: auto | length
@@ -103,7 +103,7 @@ div {
 * margin-bottom: auto | length
 * margin-left: auto | length
 
-### padding
+#### padding
 
 * padding: auto | length
 * padding-top: auto | length
@@ -111,9 +111,9 @@ div {
 * padding-bottom: auto | length
 * padding-left: auto | length
 
-### border
+#### border
 
-#### 四边
+##### 四边
 
 * border: border-width || border-style || border-color
 * border-top: border-width || border-style || border-color
@@ -121,7 +121,7 @@ div {
 * border-bottom: border-width || border-style || border-color
 * border-left: border-width || border-style || border-color
 
-#### 边宽
+##### 边宽
 
 * border-width: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset
 * border-top-width: medium | thin | thick | length
@@ -129,7 +129,7 @@ div {
 * border-bottom-width: medium | thin | thick | length
 * border-left-width: medium | thin | thick | length
 
-#### 边样式
+##### 边样式
 
 * border-style: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset
 * border-top-style: border-width || border-style || border-color
@@ -137,7 +137,7 @@ div {
 * border-bottom-style: border-width || border-style || border-color
 * border-left-style: border-width || border-style || border-color
 
-#### 边颜色
+##### 边颜色
 
 * border-color: color
 * border-top-color: color
@@ -145,16 +145,16 @@ div {
 * border-bottom-color: color
 * border-left-color: color
 
-#### 边圆角
+##### 边圆角
 
 * border-radius: length
 
-#### 外边线
+##### 外边线
 
 * outline: outline-color || outline-style || outline-width
 * list-style: list-style-image || list-style-position || list-style-type
 
-#### 其他边
+##### 其他边
 
 * table-layout: auto | fixed
 * caption-side: top | right | bottom | left
@@ -162,7 +162,7 @@ div {
 * border-spacing: length
 * empty-cells: show | hide
 
-## 字体类
+### 字体类
 
 * font: caption | icon | menu | message-box | small-caption | status-bar
 * font-family: fantasy | serif | sans-serif
@@ -179,7 +179,7 @@ div {
 * vertical-align: auto | baseline | sub | super | top | text-top | middle | bottom | text-bottom | length
 * color: color
 
-## 背景类
+### 背景类
 
 * background: background-color || background-image || background-repeat || background-attachment || background-position
 * background-color: transparent | color
@@ -187,7 +187,7 @@ div {
 * background-repeat: repeat | no-repeat | repeat-x | repeat-y
 * background-position: length || length || position
 
-## 其他
+### 其他
 
 * opacity：0-1
 * cursor: auto | all-scroll | col-resize| crosshair | default | hand | move | help | no-drop | not-allowed | pointer | progress | row-resize | text | vertical-text | wait | *-resize | url ( url )

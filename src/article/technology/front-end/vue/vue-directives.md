@@ -59,13 +59,13 @@ Vue.use(Directives)
 * 实现页面水印 **v-waterMarker**
 * 拖拽指令 **v-draggable**
 
-# v-copy
+## v-copy
 
-## 需求
+### 需求
 
 实现一键复制文本内容，用于鼠标右键粘贴。
 
-## 思路
+### 思路
 
 动态创建 textarea 标签，并设置 readOnly 属性及移出可视区域
 
@@ -121,7 +121,7 @@ const copy = {
 export default copy
 ```
 
-## 使用
+### 使用
 
 给 Dom 加上 v-copy 及复制的文本即可
 
@@ -141,13 +141,13 @@ export default {
 </script>
 ```
 
-# v-longpress
+## v-longpress
 
-## 需求
+### 需求
 
 实现长按，用户需要按下并按住按钮几秒钟，触发相应的事件
 
-## 思路
+### 思路
 
 创建一个计时器， 2 秒后执行函数
 
@@ -211,7 +211,7 @@ const longpress = {
 export default longpress
 ```
 
-## 使用
+### 使用
 
 给 Dom 加上 v-longpress 及回调函数即可
 
@@ -231,17 +231,17 @@ export default {
 </script>
 ```
 
-# v-debounce
+## v-debounce
 
-## 背景
+### 背景
 
 在开发中，有些提交保存按钮有时候会在短时间内被点击多次，这样就会多次重复请求后端接口，造成数据的混乱，比如新增表单的提交按钮，多次点击就会新增多条重复的数据。
 
-## 需求
+### 需求
 
 防止按钮在短时间内被多次点击，使用防抖函数限制规定时间内只能点击一次。
 
-## 思路
+### 思路
 
 定义一个延迟执行的方法，如果在延迟时间内再调用该方法，则重新计算执行时间。
 
@@ -265,7 +265,7 @@ const debounce = {
 export default debounce
 ```
 
-## 使用
+### 使用
 
 给 Dom 加上 v-debounce 及回调函数即可
 
@@ -285,9 +285,9 @@ export default {
 </script>
 ```
 
-# v-emoji
+## v-emoji
 
-## 背景
+### 背景
 
 开发中遇到的表单输入，往往会有对输入内容的限制，比如不能输入表情和特殊字符，只能输入数字或字母等。
 
@@ -316,7 +316,7 @@ export default {
 
 这样代码量比较大而且不好维护，所以我们需要自定义一个指令来解决这问题。
 
-## 需求
+### 需求
 
 根据正则表达式，设计自定义处理表单输入规则的指令，下面以禁止输入表情和特殊字符为例。
 
@@ -353,7 +353,7 @@ const emoji = {
 export default emoji
 ```
 
-## 使用
+### 使用
 
 将需要校验的输入框加上 v-emoji 即可
 
@@ -367,17 +367,17 @@ export default emoji
 </template>
 ```
 
-# v-lazyload
+## v-lazyload
 
-## 背景
+### 背景
 
 在类电商类项目，往往存在大量的图片，如 banner 广告图，菜单导航图，美团等商家列表头图等。图片众多以及图片体积过大往往会影响页面加载速度，造成不良的用户体验，所以进行图片懒加载优化势在必行。
 
-## 需求
+### 需求
 
 实现一个图片懒加载指令，只加载浏览器可见区域的图片。
 
-## 思路
+### 思路
 
 图片懒加载的原理主要是判断当前图片是否到了可视区域这一核心逻辑实现的
 
@@ -475,7 +475,7 @@ const lazyload = {
 export default lazyload
 ```
 
-## 使用
+### 使用
 
 将组件内 标签的 src 换成 v-lazyload
 
@@ -483,17 +483,17 @@ export default lazyload
 <img v-lazyload="xxx.jpg" />
 ```
 
-# v-permission
+## v-permission
 
-## 背景
+### 背景
 
 在一些后台管理系统，我们可能需要根据用户角色进行一些操作权限的判断，很多时候我们都是粗暴地给一个元素添加 v-if / v-show 来进行显示隐藏，但如果判断条件繁琐且多个地方需要判断，这种方式的代码不仅不优雅而且冗余。针对这种情况，我们可以通过全局自定义指令来处理。
 
-## 需求
+### 需求
 
 自定义一个权限指令，对需要权限判断的 Dom 进行显示隐藏。
 
-## 思路
+### 思路
 
 自定义一个权限数组
 
@@ -528,7 +528,7 @@ const permission = {
 export default permission
 ```
 
-## 使用
+### 使用
 
 给 v-permission 赋值判断即可
 
@@ -541,13 +541,13 @@ export default permission
 </div>
 ```
 
-# v-waterMarker
+## v-waterMarker
 
-## 需求
+### 需求
 
 给整个页面添加背景水印
 
-## 思路
+### 思路
 
 使用 canvas 特性生成 base64 格式的图片文件，设置其字体大小，颜色等。
 
@@ -588,13 +588,13 @@ export default waterMarker
 </template>
 ```
 
-# v-draggable
+## v-draggable
 
-## 需求
+### 需求
 
 实现一个拖拽指令，可在页面可视区域任意拖拽元素。
 
-## 思路
+### 思路
 
 设置需要拖拽的元素为相对定位，其父元素为绝对定位。
 
@@ -640,7 +640,7 @@ const draggable = {
 export default draggable
 ```
 
-## 使用
+### 使用
 
 在 Dom 上加上 v-draggable 即可
 
