@@ -62,7 +62,8 @@ export default sidebar({
           prefix: 'git/',
           collapsible: true,
           children: [
-            'git-command'
+            'git-command',
+            'git-commit-ruler'
           ]
         },
         {

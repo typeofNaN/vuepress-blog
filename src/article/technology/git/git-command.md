@@ -1,5 +1,5 @@
 ---
-title: Git Command
+title: Git 常用命令
 date: 2019-01-15
 category: 技术文章
 tag:
