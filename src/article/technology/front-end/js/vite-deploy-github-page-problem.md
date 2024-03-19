@@ -20,6 +20,11 @@ tag:
 修改配置 vite.config.ts，重写打包的方案：
 
 ``` ts
+// vite.config.ts
+
+const INVALID_CHAR_REGEX = /[\u0000-\u001F"#$&*+,:;<=>?[\]^`{|}\u007F]/g
+const DRIVE_LETTER_REGEX = /^[a-z]:/i
+
 export default defineConfig({
   build: {
     reportCompressedSize: false,
