@@ -407,7 +407,7 @@ const colorize = (options) => {
     options = {}
   }
   const color = ('color' in options) ? options.color :'yellow'
-  ...
+  // ...
 }
 ```
 
@@ -415,7 +415,7 @@ const colorize = (options) => {
 
 ``` js
 const colorize = ({ color = 'yellow' }) => {
-  ...
+  // ...
 }
 ```
 
@@ -423,7 +423,7 @@ const colorize = ({ color = 'yellow' }) => {
 
 ``` js
 const spin = ({ color = 'yellow' } = {}) => {
-  ...
+  // ...
 }
 ```
 
@@ -546,7 +546,7 @@ const Button = styled.button`
 ``` js
 const query = gql`
   query {
-    ...
+    // ...
   }
 `
 ```
@@ -2216,18 +2216,18 @@ flat() 是一个新的数组实例方法，它可以将多维数组转化成一�
 
 ``` js
 ['Dog', ['Sheep', 'Wolf']].flat()
-//[ 'Dog', 'Sheep', 'Wolf' ]
+// ['Dog', 'Sheep', 'Wolf']
 ```
 
 默认情况下它只能将二维的数组转化成一维的数组，但你可以添加一个参数来确定要展开的级别，如果你将这个参数设置为 Infinity 那么它将展开无限的级别到一维数组：
 
 ``` js
 ['Dog', ['Sheep', ['Wolf']]].flat()
-//[ 'Dog', 'Sheep', [ 'Wolf' ] ]
+// ['Dog', 'Sheep', ['Wolf']]
 ['Dog', ['Sheep', ['Wolf']]].flat(2)
-//[ 'Dog', 'Sheep', 'Wolf' ]
+// ['Dog', 'Sheep', 'Wolf']
 ['Dog', ['Sheep', ['Wolf']]].flat(Infinity)
-//[ 'Dog', 'Sheep', 'Wolf' ]
+// ['Dog', 'Sheep', 'Wolf']
 ```
 
 如果你熟悉数组的 map 方法，那么你就知道使用它可以对数组的每个元素执行一个函数。
@@ -2236,9 +2236,9 @@ flatMap() 是一个新的数组实例方法，它将 flat() 和 map 结合了起
 
 ``` js
 ['My dog', 'is awesome'].map(words => words.split(' '))
-//[ [ 'My', 'dog' ], [ 'is', 'awesome' ] ]
+// [['My', 'dog'], ['is', 'awesome']]
 ['My dog', 'is awesome'].flatMap(words => words.split(' '))
-//[ 'My', 'dog', 'is', 'awesome' ]
+// ['My', 'dog', 'is', 'awesome']
 ```
 
 ## Optional catch binding
@@ -2249,9 +2249,9 @@ flatMap() 是一个新的数组实例方法，它将 flat() 和 map 结合了起
 
 ``` js
 try {
-  //...
+  // ...
 } catch (e) {
-  //handle error
+  // handle error
 }
 ```
 
@@ -2259,9 +2259,9 @@ try {
 
 ``` js
 try {
-  //...
+  // ...
 } catch {
-  //handle error
+  // handle error
 }
 Object.fromEntries()
 ```
@@ -2273,7 +2273,7 @@ Objects have an entries() method, since ES2017.
 
 ``` js
 const person = { name:'Fred', age:87 }
-Object.entries(person) // [['name', 'Fred'], ['age', 87]]
+Object.entries(person)  // [['name', 'Fred'], ['age', 87]]
 ```
 
 ES2019 引入了一个新的 Object.fromEntries() 方法，它可以从上述的属性数组中创建一个新的对象：
@@ -2283,7 +2283,7 @@ const person = { name:'Fred', age:87 }
 const entries = Object.entries(person)
 const newPerson = Object.fromEntries(entries)
 
-person !== newPerson //true
+person !== newPerson  // true
 String.prototype.{trimStart,trimEnd}
 ```
 
@@ -2294,20 +2294,20 @@ trimStart()
 删除字符串首部的空格并返回一个新的字符串：
 
 ``` js
-'Testing'.trimStart() //'Testing'
-' Testing'.trimStart() //'Testing'
-' Testing '.trimStart() //'Testing '
-'Testing'.trimStart() //'Testing'
+'Testing'.trimStart()  // 'Testing'
+' Testing'.trimStart()  // 'Testing'
+' Testing '.trimStart()  // 'Testing '
+'Testing'.trimStart()  // 'Testing'
 trimEnd()
 ```
 
 删除字符串尾部的空格并返回一个新的字符串：
 
 ``` js
-'Testing'.trimEnd() //'Testing'
-' Testing'.trimEnd() //' Testing'
-' Testing '.trimEnd() //' Testing'
-'Testing '.trimEnd() //'Testing'
+'Testing'.trimEnd()  // 'Testing'
+' Testing'.trimEnd()  // ' Testing'
+' Testing '.trimEnd()  // ' Testing'
+'Testing '.trimEnd()  // 'Testing'
 Symbol.prototype.description
 ```
 
@@ -2315,7 +2315,7 @@ Symbol.prototype.description
 
 ``` js
 const testSymbol = Symbol('Test')
-testSymbol.description // 'Test'
+testSymbol.description  // 'Test'
 ```
 
 ## JSON improvements
@@ -2357,9 +2357,3 @@ bar.toString() //'function bar() {}
 ``` js
 bar.toString(); // 'function /* this is bar */ bar () {}'
 ```
-
-总结一下，我希望这篇文章可以帮助你了解一些最新的 JavaScript 以及我们在 2019 年即将看见的内容。
-
-## 转载
-
-原文地址：[https://medium.freecodecamp.org/es5-to-esnext-heres-every-feature-added-to-javascript-since-2015-d0c255e13c6e](https://medium.freecodecamp.org/es5-to-esnext-heres-every-feature-added-to-javascript-since-2015-d0c255e13c6e)

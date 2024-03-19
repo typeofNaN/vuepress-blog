@@ -1,5 +1,5 @@
 ---
-title: vue常用自定义指令
+title: Vue常用自定义指令
 date: 2021-01-26
 category: 技术文章
 tag:

@@ -1,9 +1,9 @@
 ---
-title: 将 vite 项目部署到 Github Page 的资源404问题
+title: 将 Vite 项目部署到 Github Page 的资源404问题
 date: 2023-01-24
 category: 技术文章
 tag:
-    - vite
+    - Vite
     - Github Page
 ---
 

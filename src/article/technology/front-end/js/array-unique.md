@@ -42,6 +42,7 @@ function unique(arr) {
 
   return arr
 }
+
 const arr = [1, 1, 'true', 'true', true, true, 15, 15, false, false, undefined, undefined, null, null, NaN, NaN, 'NaN', 'NaN', 0, 0, 'a', 'a', {}, {}]
 
 console.log(unique(arr))
@@ -231,8 +232,11 @@ function unique(arr) {
 
   return array
 }
+
 const arr = [1, 1, 'true', 'true', true, true, 15, 15, false, false, undefined, undefined, null, null, NaN, NaN, 'NaN', 'NaN', 0, 0, 'a', 'a', {}, {}]
+
 console.log(unique(arr))
+
 // [1, 'a', 'true', true, 15, false, 1, {…}, null, NaN, NaN, 'NaN', 0, 'a', {…}, undefined]
 ```
 
@@ -254,6 +258,7 @@ function unique(arr) {
 
   return array
 }
+
 const arr = [1, 1, 'true', 'true', true, true, 15, 15, false, false, undefined, undefined, null, null, NaN, NaN, 'NaN', 'NaN', 0, 0, 'a', 'a', {}, {}]
 
 console.log(unique(arr))
@@ -281,7 +286,7 @@ console.log(unique(arr))
 ``` js
 [...new Set(arr)]
 
-//代码就是这么少----（其实，严格来说并不算是一种，相对于第一种方法来说只是简化了代码）
+// 代码就是这么少----（其实，严格来说并不算是一种，相对于第一种方法来说只是简化了代码）
 ```
 
 方法多种多样！

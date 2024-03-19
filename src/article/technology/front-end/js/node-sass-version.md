@@ -1,5 +1,5 @@
 ---
-title: node-sass 版本与 Node 版本对应关系
+title: node-sass 版本与 Node.js 版本对应关系
 date: 2023-03-07
 category: 技术文章
 tag:
