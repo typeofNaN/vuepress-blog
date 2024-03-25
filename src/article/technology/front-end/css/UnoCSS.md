@@ -55,7 +55,7 @@ yarn add -D unocss
 ```
 :::
 
-1. 在 `vite.config.js` 中配置
+2. 在 `vite.config.js` 中配置
 
 ``` ts
 // vite.config.ts
