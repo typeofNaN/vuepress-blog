@@ -11,6 +11,11 @@ tag:
 
 <!-- more -->
 
+## 开发者必备
+
+* [UnoCSS 在线查找工具](https://unocss.dev/interactive/)
+* VSCode 插件 **UnoCSS**
+
 ## UnoCSS 特点
 
 1. 完全可定制：无核心工具，所有功能都通过预设提供
@@ -30,11 +35,27 @@ tag:
 
 1. 安装 UnoCSS
 
+::: code-tabs
+
+@tab npm
+
+``` sh
+npm install unocss -dev
+```
+
+@tab:active pnpm
+
 ``` sh
 pnpm add -D unocss
 ```
 
-2. 在 `vite.config.js` 中配置
+@tab yarn
+``` sh
+yarn add -D unocss
+```
+:::
+
+1. 在 `vite.config.js` 中配置
 
 ``` ts
 // vite.config.ts

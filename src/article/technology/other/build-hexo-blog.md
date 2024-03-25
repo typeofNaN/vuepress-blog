@@ -48,13 +48,13 @@ Hexo是基于Node.js环境的静态博客，里面的npm工具很有用啊，所
 
 安装hexo命令：（在新建的文件夹里右键Git Bash Here）
 
-``` bash
+``` sh
 $ npm i -g hexo
 ```
 
-接着初始化命令：hexo init ：
+接着初始化命令：
 
-``` bash
+``` sh
 $ hexo init
 ```
 
@@ -91,17 +91,17 @@ $ hexo init
 
 回到git bash中，配置github账户信息（YourName和YourEmail都替换成你自己的）：
 
-``` bash
+``` sh
 $ git config global user.name "YourName"
 ```
 
-``` bash
+``` sh
 $ git config global user.email "YourEmail"
 ```
 
 配置ssh，Git bash中输入命令：
 
-``` bash
+``` sh
 $ ssh-keygen -t rsa -C "youremail@example.com"
 ```
 
@@ -117,7 +117,7 @@ $ ssh-keygen -t rsa -C "youremail@example.com"
 
 在Git bash中验证是否添加成功：
 
-``` bash
+``` sh
 $ ssh -T git@github.com
 ```
 
@@ -127,7 +127,7 @@ $ ssh -T git@github.com
 
 用编辑器打开你的blog项目，修改_config.yml文件的一些配置：
 
-``` bash
+``` sh
 deploy:
     type: git
     repo: https://github.com/yourgithubname/yourgithubname.github.io.git
@@ -136,21 +136,21 @@ deploy:
 
 在Git bash中，依次输入以下命令：
 
-``` bash
+``` sh
 $ hexo clean
 ```
 
-``` bash
+``` sh
 $ hexo g
 ```
 
-``` bash
+``` sh
 $ hexo s
 ```
 
 注：hexo 3.0把服务器独立成个别模块，需要单独安装：
 
-``` bash
+``` sh
 $ npm i hexo-server
 ```
 
@@ -162,21 +162,21 @@ $ npm i hexo-server
 
 先安装一波，这样才能将你写好的文章部署到github服务器上并让别人浏览到,输入命令：
 
-``` bash
+``` sh
 $ npm install hexo-deployer-git --save
 ```
 
 再依次执行以下命令：
 
-``` bash
+``` sh
 $ hexo clean
 ```
 
-``` bash
+``` sh
 $ hexo g
 ```
 
-``` bash
+``` sh
 $ hexo d
 ```
 
@@ -212,13 +212,13 @@ hexo初始化之后默认的主题是landscape , 然后你可以去[这个地址
 
 先安装rss相关插件，Git bash命令：
 
-``` bash
+``` sh
 $ npm i hexo-generator-feed
 ```
 
 在你的项目的_config.yml配置文件下找到Extensions添加如下内容：
 
-``` bash
+``` sh
 ## Extensions  #插件和主题
 ### Plugins: https://hexo.io/plugins/
 ### Themes: https://hexo.io/themes/
@@ -242,7 +242,7 @@ feed:
 
 新建文章，输入命令：
 
-``` bash
+``` sh
 $ hexo new '文章名'
 ```
 
@@ -264,21 +264,21 @@ $ hexo new '文章名'
 
 先将远程仓库关联到本地。进入站点文件夹，输入命令：
 
-``` bash
+``` sh
 $ git init
 ```
 
-``` bash
+``` sh
 $ git remote add origin git@github.com:username/username.github.io.git #使用站点仓库地址关联
 ```
 
-``` bash
+``` sh
 $ git pull
 ```
 
 #### 创建hexo分支
 
-``` bash
+``` sh
 $ git checkout -b hexo  #创建并切换到hexo分支
 
 ```
@@ -293,15 +293,15 @@ $ git checkout -b hexo  #创建并切换到hexo分支
 
 在hexo分支（使用git branch命令查看当前所在分支）下，输入命令：
 
-``` bash
+``` sh
 $ git add .
 ```
 
-``` bash
+``` sh
 $ git commit -m "提交记录"
 ```
 
-``` bash
+``` sh
 $ git push -u origin hexo  #初次push要加-u，此后可省
 ```
 
@@ -309,17 +309,17 @@ $ git push -u origin hexo  #初次push要加-u，此后可省
 
 1. 使用git clone命令克隆站点仓库（默认分支为hexo）：
 
-``` bash
+``` sh
 $ git clone git@github.com:username/username.github.io.git
 ```
 
 2. 在本地新拷贝的username.github.io文件夹下依次执行命令：
 
-``` bash
+``` sh
 $ npm install hexo-cli
 ```
 
-``` bash
+``` sh
 $ npm install
 ```
 

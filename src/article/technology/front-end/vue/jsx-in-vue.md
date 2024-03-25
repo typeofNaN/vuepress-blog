@@ -701,7 +701,7 @@ render() {
 
 既然使用函数式组件，那么同样可以在函数中传递参数了，参数是一个对象中，包含了以下属性：
 
-``` bash
+```
 children       # VNode数组，类似于React的children
 data           # 绑定的属性
 attrs          # Attribute
