@@ -108,7 +108,12 @@ $(function () {
 
 ``` js
 $(function () {
-    $('ul.first').find('.foo').css('background-color', 'red').end().find('.bar').css('background-color', 'green')
+  $('ul.first')
+    .find('.foo')
+    .css('background-color', 'red')
+    .end()
+    .find('.bar')
+    .css('background-color', 'green')
 });
 ```
 
@@ -148,13 +153,13 @@ $('body').get(0).tagName
 $('body').addClass('test')
 
 $('body').addClass(function (index, current) {
-    return current + 'new'
+  return current + 'new'
 })
 
 $('body').removeClass('test')
 
 $('body').removeClass(function (index, current) {
-    return current + ' ' + 'other'
+  return current + ' ' + 'other'
 })
 ```
 
@@ -367,10 +372,10 @@ $.merge([0, 1, 22, 3, 4])
 
 ``` js
 $.grep([0, 1, ], function (array, index) {
-    return n > 0
+  return n > 0
 }) // [1, 2]
 $.grep([0, 1, 2], function (array, index) {
-    return n > 0
+  return n > 0
 }, true) // [0]
 ```
 

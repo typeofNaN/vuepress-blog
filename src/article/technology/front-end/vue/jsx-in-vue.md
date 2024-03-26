@@ -47,11 +47,11 @@ export default Dashboard
 
 在JSX中使用单个括号来绑定文本插值：
 
-``` html
+``` jsx
 <span>Message: {this.message}</span>
-<!-- 类似于v-html -->
+// 类似于v-html
 <div domPropsInnerHTML={this.dangerHtml}/>
-<!-- v-model -->
+// v-model
 <el-input v-model={this.vm.name} />
 ```
 
@@ -61,10 +61,10 @@ export default Dashboard
 
 在 JSX 中可以直接使用 class="xx" 来指定样式类，内联样式可以直接写成 style="xxx"：
 
-``` html
+``` jsx
 <div class="btn btn-default" style="font-size: 12px;">Button</div>
 
-<!-- 动态指定 -->
+// 动态指定
 <div class={`btn btn-${this.isDefault ? 'default' : ''}`}></div>
 <div class={{'btn-default': this.isDefault, 'btn-primary': this.isPrimary}}></div>
 <div style={{color: 'red', fontSize: '14px'}}></div>
@@ -99,12 +99,12 @@ export default Dashboard
 
 事件绑定需要在事件名称前端加上 on 前缀，原生事件添加 nativeOn ：
 
-``` html
-<!-- 对应@click -->
+``` jsx
+// 对应@click
 <el-button onClick={this.handleClick}>Click me</el-button>
-<!-- 对应@click.native -->
+// 对应@click.native
 <el-button nativeOnClick={this.handleClick}>Native click</el-button>
-<!-- 传递参数 -->
+// 传递参数
 <el-button onClick={e => this.handleClick(this.id)}>Click and pass data</el-button>
 ```
 
@@ -180,7 +180,7 @@ export default {
 
 使用方式如下：
 
-``` html
+``` jsx
 <el-button {...{
  '!click': this.doThisInCapturingMode,
  '!keyup': this.doThisOnce,
@@ -256,7 +256,7 @@ const LiArray = () => this.options.map(option => (
 
 注意：在 Vue 2.6.x 版本后废弃了 slot 和 slot-scope，在模板中统一使用新的统一语法 v-slot 指令。v-slot 只能用于 Vue 组件和 template 标签。
 
-``` html
+``` jsx
 <div class="page-header__title">
   {this.$slots.title ? this.$slots.title : this.title}
 </div>
@@ -264,7 +264,7 @@ const LiArray = () => this.options.map(option => (
 
 等价于模板的
 
-``` html
+``` vue
 <div class="page-header__title">
   <slot name="title">{{ title }}</slot>
 </div>
@@ -272,7 +272,7 @@ const LiArray = () => this.options.map(option => (
 
 在 Vue 官方文档中提到：父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。因此像下面的示例是无法正常工作的
 
-``` html
+``` vue
 <current-user>
   {{ user.firstName }}
 </current-user>
@@ -280,7 +280,7 @@ const LiArray = () => this.options.map(option => (
 
 在 `<current-user>` 组件中可以访问到 user 属性，但是提供的内容却是在父组件渲染的。如果想要达到期望的效果，这个时候就需要使用作用域插槽了。下面是改写后的代码，更多知识点可以直接查看官方文档的作用域插槽。
 
-``` html
+``` vue
 <!-- current-user组件定义部分 -->
 <span>
   <slot v-bind:user="user">
@@ -298,7 +298,7 @@ const LiArray = () => this.options.map(option => (
 
 上面的示例其实就是官方的示例，这里需要说明的是，其实在Vue中所谓的作用域插槽功能类似于 React 中的 Render Props 的概念，只不过在 React 中我们更多时候不仅提供了属性，还提供了操作方法。但是在 Vue 中更多的是提供数据供父作用域渲染展示，当然我们也可以把方法提供出去，例如：
 
-``` html
+``` vue
 <template>
   <div>
     <slot v-bind:injectedProps="slotProps">
@@ -338,7 +338,7 @@ export default {
 
 在父组件中使用：
 
-``` html
+``` vue
 <current-user>
   <template v-slot:default="{ injectedProps }">
     <div>{{ injectedProps.user.firstName }}</div>
@@ -349,17 +349,17 @@ export default {
 
 在上面的代码中我们实际上使用解构的方式来取得 injectedProps，基于解构的特性还可以重命名属性名，在 prop 为 undefined 的时候指定初始值。
 
-``` html
+``` vue
 <current-user v-slot="{ user = { firstName: 'Guest' } }">
   {{ user.firstName }}
 </current-user>
 ```
 
-如果组件只有一个默认的插槽还可以使用缩写语法，将 v-slot:default="slotProps" 写成 v-slot="slotProps"，命名插槽写成 v-slot:user="slotProps"，如果想要动态插槽名还可以写成 v-slot:[dynamicSlotName]，此外具名插槽同样也有缩写语法，例如 v-slot:header 可以被重写为 #header
+如果组件只有一个默认的插槽还可以使用缩写语法，将 `v-slot:default="slotProps"` 写成 `v-slot="slotProps"`，命名插槽写成 `v-slot:user="slotProps"`，如果想要动态插槽名还可以写成 `v-slot:[dynamicSlotName]`，此外具名插槽同样也有缩写语法，例如 `v-slot:header` 可以被重写为 `#header`
 
 上面介绍了很多插槽相关的知识点足已说明其在开发过程中的重要性。说了很多在模板中如何定义和使用作用域插槽，现在进入正题如何在 jsx 中同样使用呢？
 
-``` js
+``` jsx
 export default {
   // current-user components
   data() {
@@ -402,7 +402,7 @@ export default {
 
 然后在父组件中以 jsx 使用：
 
-``` html
+``` jsx
 <current-user {...{
   scopedSlots: {
     subTitle: ({ injectedProps }) => (
@@ -423,13 +423,13 @@ export default {
 
 1. 直接使用对象传递所有指令属性
 
-``` html
+``` vue
 <input type="text" v-focus={{ value: true }} />
 ```
 
 2. 使用原始的vNode指令数据格式
 
-``` js
+``` jsx
 export default {
   directives：{
     focus: {
@@ -459,7 +459,7 @@ export default {
 
 在模板中的用法如下：
 
-``` html
+``` vue
 <!-- 在双花括号中 -->
 {{ message | capitalize }}
 
@@ -469,7 +469,7 @@ export default {
 
 在jsx中使用方法为：
 
-``` html
+``` jsx
 <div>{this.$options.filters('formatDate')('2019-07-01')}</div>
 ```
 
@@ -485,7 +485,7 @@ export default {
 
 然后在 Vue 的模板语法中是不区分 DOM 属性和 HTML 属性的，例如：
 
-``` html
+``` vue
 <template>
  <div>
   <div>输入的值：{{ title }}</div>
@@ -515,7 +515,7 @@ export default {
 
 运行示例可以看到 input 的初始值被设置为了“我是 DOM 属性值"，当我们在输入框中添加或者删除文字时，HTML 属性始终没有变化，而绑定的 DOM 值一值在变动。然后再看一下在 jsx 中的实现：
 
-``` html
+``` jsx
 <div>输入值：{ this.title }</div>
 <input type="text" value="我是DOM属性" v-model={this.title} onInput={this.logTitle} />
 ```
@@ -524,7 +524,7 @@ export default {
 
 此外在模板语法中是无法区分 HTML 属性和 DOM 属性命名一样的场景，但是在 jsx 中可以很好的区分：
 
-``` html
+``` jsx
 <Demo title="我是组件属性" domPropsTitle="我是DOM属性" />
 ```
 
@@ -532,7 +532,7 @@ export default {
 
 在 React 中 CSS 的样式写义在 jsx 中的语法是以 className="xx" 的形式，而在 Vue 的 jsx 中可以直接写成 class="xx"。实际上由于 class 是 js 的保留字，因此在 DOM 中其属性名为 className 而在 HTML 属性中为 class，我们可以在 Vue 中这样写，经过 Babel 转译后得到正确的样式类名：
 
-``` html
+``` jsx
 <div domPropsClassName="mt__xs"></div>
 ```
 
@@ -540,7 +540,7 @@ export default {
 
 有使用过 Bootstrap 经验的可能会注意到它里面包含了很多 ARIA 属性，这些属性并不属于 DOM，在 jsx 中可以通过 attrsXX 或者直接 aria-xx 的方式来添加：
 
-``` html
+``` jsx
 <label aria-label="title"></label>
 <label attrsAria-label="title"></label>
 ```
@@ -561,7 +561,7 @@ export default {
 
 1. 使用展开
 
-``` html
+``` jsx
 <el-upload {...{
   props: {
     onPreview: this.handlePreview
@@ -571,7 +571,7 @@ export default {
 
 2. 使用propsXx
 
-``` html
+``` jsx
 <el-upload propsOnPreview={this.handlePreview} />
 ```
 

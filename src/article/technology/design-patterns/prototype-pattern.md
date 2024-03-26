@@ -206,18 +206,18 @@ class Resume : ICloneable
 static void Main(string[] args)
 {
     Resume a = new Resume("大鸟")；
-    a.SetPersonalInfo("男", "29");  
-    a.SetWorkExperience("1998-2000", "XX公司")  
-  
-    Resume b = （Resume）a.Clone();  
-    b.setWorkExperience("1998-2006", "YY企业")  
-  
-    Resume c = （Resume）a.Clone();  
-    c.SetPersonalInfo("男", "24");  
-  
+    a.SetPersonalInfo("男", "29");
+    a.SetWorkExperience("1998-2000", "XX公司")
+
+    Resume b = （Resume）a.Clone();
+    b.setWorkExperience("1998-2006", "YY企业")
+
+    Resume c = （Resume）a.Clone();
+    c.SetPersonalInfo("男", "24");
+
     a.Display();
-    b.Display();  
-    c.Display();  
+    b.Display();
+    c.Display();
 
     Console.Read();
 }
@@ -245,7 +245,7 @@ static void Main(string[] args)
 注：string 是一种拥有值类型特点的特殊引用类型！（例：上面简历的原型实现代码）
 
 * string 不是基本数据类型，而是一个类（class）
-* class string 继承自对象 （object） ，而不是 System.ValueType ( Int32 这样的则是继承于 System.ValueType) 
+* class string 继承自对象 （object），而不是 System.ValueType ( Int32 这样的则是继承于 System.ValueType) 
 * string 本质上是个 char[]，而 Array 是引用类型，并且初始化时也是在托管堆分配内存的，但是这个特殊的类却表现出值类型的特点，微软设计这个类的时候为了方便操作，所以重写了 == 和 != 操作符以及 Equals 方法，它判断相等性时，是按照内容来判断的，而不是地址
 * string 在栈上保持引用，在堆上保持数据
 
@@ -261,20 +261,23 @@ static void Main(string[] args)
 工作经历类
 
 ``` cs
-Class WorkExperience  
-{  
-    private string workDate;  
-    public string WorkDate  
-    {  
-        get { return workDate; }  
-        set { workDate = value; }  
-    }  
-    private string company;  
-    public string Company  
-    {  
-        get { return company; }  
-        set { company = value; }  
-    }  
+class WorkExperience
+{
+    private string workDate;
+
+    public string WorkDate
+    {
+        get { return workDate; }
+        set { workDate = value; }
+    }
+
+    private string company;
+
+    public string Company
+    {
+        get { return company; }
+        set { company = value; }
+    }
 }
 ```
 
@@ -282,45 +285,44 @@ Class WorkExperience
 
 ``` cs
 // 简历
-class Resume:ICloneable  
-{  
-    private string name;  
-    private string sex;  
-    private string age;  
+class Resume:ICloneable
+{
+    private string name;
+    private string sex;
+    private string age;
 
-    private WorkExperience work;    // 引用"工作经历"对象  
-    public Resume(string name)  
-    {  
-        this.name = name;  
-        work = new WorkExperience();    // 在“简历”类实例化时同时实例化“工作经历”  
-    }  
-  
-    // 设置个人信息：  
-  
+    private WorkExperience work;    // 引用"工作经历"对象
+
+    public Resume(string name)
+    {
+        this.name = name;
+        work = new WorkExperience();    // 在“简历”类实例化时同时实例化“工作经历”
+    }
+
+    // 设置个人信息
     public void SetPersonalInfo(string sex,string age)
-    {  
-        this.sex = sex;  
-        this.age = age;  
-    }  
-    // 设置工作经历  
-  
-    public void SetWorkExperience（string workDate，string company)  
-    {  
-        work.WorkDate = workDate;  
+    {
+        this.sex = sex;
+        this.age = age;
+    }
+
+    // 设置工作经历
+    public void SetWorkExperience(string workDate，string company)
+    {
+        work.WorkDate = workDate;
         work.Company = company;    // 调用此方法时，给对象的两属性赋值
-    }  
-  
-    // 显示  
-  
-    public void Display()  
-    {  
-        Console.WriteLine("{0} {1} {2}", name, sex, age);  
-        Console.WriteLine("工作经历: {0} {1}", work.WorkDate, work.Company;  
-    }  
-  
-    public Object Clone()  
-    {  
-        return (Object)this.MemberwiseClone();  
+    }
+
+    // 显示
+    public void Display()
+    {
+        Console.WriteLine("{0} {1} {2}", name, sex, age);
+        Console.WriteLine("工作经历: {0} {1}", work.WorkDate, work.Company);
+    }
+
+    public Object Clone()
+    {
+        return (Object)this.MemberwiseClone();
     }
 }
 ```
@@ -328,24 +330,24 @@ class Resume:ICloneable
 客户端调用代码
 
 ``` cs
-static void Main（string[] args）  
-{  
-    Resume a = new Resume("大鸟");  
-    a.SetPersonalInfo("男", "29");  
-    a.SetWorkExperience("1998-2000", "XX公司")  
-  
-    Resume b = （Resume）a.Clone();  
-    b.setWorkExperience("1998-2006", "YY企业")  
-  
-    Resume c = （Resume）a.Clone();  
-    c.SetPersonalInfo("男","24");  
-    c.SetWorkExperience("1998-2003", "ZZ企业");  
-  
-    a.Display();
-    b.Display();  
-    c.Display();  
+static void Main(string[] args)
+{
+    Resume a = new Resume("大鸟");
+    a.SetPersonalInfo("男", "29");
+    a.SetWorkExperience("1998-2000", "XX公司")
 
-    Console.Read();  
+    Resume b = （Resume）a.Clone();
+    b.setWorkExperience("1998-2006", "YY企业")
+
+    Resume c = （Resume）a.Clone();
+    c.SetPersonalInfo("男","24");
+    c.SetWorkExperience("1998-2003", "ZZ企业");
+
+    a.Display();
+    b.Display();
+    c.Display();
+
+    Console.Read();
 }
 ```
 
@@ -462,33 +464,33 @@ JavaScript 的创始人 `Brendan Eich` 在开发 JavaScript 这个使得浏览�
 
 这时，他想到 C++ 和 Java 使用 new 命令时，都会调用"类"的构造函数（constructor）。他就做了一个简化的设计，在 Javascript 语言中，new 命令后面跟的不是类，而是构造函数。
 
-举例来说，现在有一个叫做 DOG 的构造函数，表示狗对象的原型。
+举例来说，现在有一个叫做 Dog 的构造函数，表示狗对象的原型。
 
 ``` js
-function DOG(name){
+function Dog(name) {
     this.name = name;
 }
 ```
 
-对这个构造函数使用 new，就会生成一个 DOG 对象的实例。
+对这个构造函数使用 new，就会生成一个 Dog 对象的实例。
 
 ``` js
-var dogA = new DOG('大毛');
+var dogA = new Dog('大毛');
 alert(dogA.name);   // 大毛
 ```
 
 注意构造函数中的 this 关键字，它就代表了新创建的实例对象。
 
-但是用构造函数生成实例对象，有一个缺点，那就是无法共享属性和方法。比如，在 DOG 对象的构造函数中，设置一个实例对象的共有属性 species。然后，生成两个实例对象：
+但是用构造函数生成实例对象，有一个缺点，那就是无法共享属性和方法。比如，在 Dog 对象的构造函数中，设置一个实例对象的共有属性 species。然后，生成两个实例对象：
 
 ``` js
-function DOG(name){
+function Dog(name) {
 　　this.name = name;
 　　this.species = '犬科';
 }
 
-var dogA = new DOG('大毛');
-var dogB = new DOG('二毛');
+var dogA = new Dog('大毛');
+var dogB = new Dog('二毛');
 ```
 
 这两个对象的 species 属性是独立的，修改其中一个，不会影响到另一个。
@@ -504,17 +506,17 @@ alert(dogB.species);   // 显示"犬科"，不受dogA的影响
 
 实例对象一旦创建，将自动引用 prototype 对象的属性和方法。也就是说，实例对象的属性和方法，分成两种，一种是本地的，另一种是引用的。
 
-还是以 DOG 构造函数为例，现在用 prototype 属性进行改写：
+还是以 Dog 构造函数为例，现在用 prototype 属性进行改写：
 
 ``` js
-function DOG(name){
+function Dog(name) {
 　　this.name = name;
 }
 
-DOG.prototype = { species : '犬科' };
+Dog.prototype = { species : '犬科' };
 
-var dogA = new DOG('大毛');
-var dogB = new DOG('二毛');
+var dogA = new Dog('大毛');
+var dogB = new Dog('二毛');
 
 alert(dogA.species);   // 犬科
 alert(dogB.species);   // 犬科
@@ -523,7 +525,7 @@ alert(dogB.species);   // 犬科
 现在，species 属性放在 prototype 对象里，是两个实例对象共享的。只要修改了 prototype 对象，就会同时影响到两个实例对象。
 
 ``` js
-DOG.prototype.species = '猫科';
+Dog.prototype.species = '猫科';
 
 alert(dogA.species);   // 猫科
 alert(dogB.species);   // 猫科
@@ -650,7 +652,7 @@ ID: #2001 Name: Illustrated C# 2012 Price: ￥89.00
 
 ### 缺点
 
-* 每一个类都需要一个Clone方法，而且必须通盘考虑。对于深拷贝来说，每个关联到的类型都不许实现IClonable接口，并且每增加或修改一个字段是都需要更新Clone方法。
+* 每一个类都需要一个Clone方法，而且必须通盘考虑。对于深拷贝来说，每个关联到的类型都不许实现ICloneable接口，并且每增加或修改一个字段是都需要更新Clone方法。
 
 ### 适用场景
 

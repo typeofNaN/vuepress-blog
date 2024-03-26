@@ -125,7 +125,7 @@ export default copy
 
 给 Dom 加上 v-copy 及复制的文本即可
 
-``` html
+``` vue
 <template>
   <button v-copy="copyText">复制</button>
 </template>
@@ -215,7 +215,7 @@ export default longpress
 
 给 Dom 加上 v-longpress 及回调函数即可
 
-``` html
+``` vue
 <template>
   <button v-longpress="longpress">长按</button>
 </template>
@@ -269,7 +269,7 @@ export default debounce
 
 给 Dom 加上 v-debounce 及回调函数即可
 
-``` html
+``` vue
 <template>
   <button v-debounce="debounceClick">防抖</button>
 </template>
@@ -293,7 +293,7 @@ export default {
 
 我们常规方法是在每一个表单的 on-change 事件上做处理。
 
-``` html
+``` vue
 <template>
   <input
     v-model="note"
@@ -357,7 +357,7 @@ export default emoji
 
 将需要校验的输入框加上 v-emoji 即可
 
-``` html
+``` vue
 <template>
   <input
     v-model="note"
@@ -387,7 +387,7 @@ export default emoji
 
 图片懒加载有两种方式可以实现，一是绑定 scroll 事件进行监听，二是使用 IntersectionObserver 判断图片是否到了可视区域，但是有浏览器兼容性问题。
 
-下面封装一个懒加载指令兼容两种方法，判断浏览器是否支持 IntersectionObserver API，如果支持就使用 IntersectionObserver 实现懒加载，否则则使用 srcoll 事件监听 + 节流的方法实现。
+下面封装一个懒加载指令兼容两种方法，判断浏览器是否支持 IntersectionObserver API，如果支持就使用 IntersectionObserver 实现懒加载，否则则使用 scroll 事件监听 + 节流的方法实现。
 
 ``` js
 const lazyload = {
@@ -479,7 +479,7 @@ export default lazyload
 
 将组件内 标签的 src 换成 v-lazyload
 
-``` html
+``` vue
 <img v-lazyload="xxx.jpg" />
 ```
 
@@ -532,7 +532,7 @@ export default permission
 
 给 v-permission 赋值判断即可
 
-``` html
+``` vue
 <div class="btn">
   <!-- 显示 -->
   <button v-permission="'1'">权限按钮1</button>
@@ -563,7 +563,7 @@ function addWaterMarker(str, parentNode, font, textColor) {
   can.style.display = 'none'
   var cans = can.getContext('2d')
   cans.rotate((-20 * Math.PI) / 180)
-  cans.font = font || '16px Microsoft JhengHei'
+  cans.font = font || '16px Microsoft YaHei'
   cans.fillStyle = textColor || 'rgba(180, 180, 180, 0.3)'
   cans.textAlign = 'left'
   cans.textBaseline = 'Middle'
@@ -582,7 +582,7 @@ export default waterMarker
 
 使用，设置水印文案，颜色，字体大小即可
 
-``` html
+``` vue
 <template>
   <div v-waterMarker="{text:'版权所有',textColor:'rgba(180, 180, 180, 0.4)'}"></div>
 </template>
@@ -644,7 +644,7 @@ export default draggable
 
 在 Dom 上加上 v-draggable 即可
 
-``` html
+``` vue
 <template>
   <div
     v-draggable

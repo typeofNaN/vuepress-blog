@@ -35,7 +35,7 @@ tag:
 
 ### 原理
 
-浏览器的渲染流程为——
+浏览器的渲染流程为：
 
 1. 解析html构建dom树，解析css构建css树：将html解析成树形的数据结构，将css解析成树形的数据结构；
 2. 构建render树：DOM树和CSS树合并之后形成的render树；
@@ -46,13 +46,10 @@ css样式解析到显示至浏览器屏幕上就发生在②③④步骤，可�
 
 ``` css
 div {
-    width: 100px;
-
-    height: 100px;
-
-    background-color: red;
-
-    position: absolute;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: red;
 }
 ```
 
@@ -65,18 +62,18 @@ div {
 ### 状态类
 
 * display: block | none | inline | compact | marker | inline-table | list-item | run-in | table | table-caption | table-cell | table-column | table-column-group | table-footer-group | table-header-group | table-row | table-row-group
-* visibility: inherit | visible | collapse | hidden  
-* float: none | left | right  
+* visibility: inherit | visible | collapse | hidden
+* float: none | left | right
 * clear: none | left | right | both
 * overflow: visible | auto | hidden | scroll
 
 ### 定位类
 
-* position: static | absolute | fixed | relative  
-* top：auto | length  
-* right: auto | length  
+* position: static | absolute | fixed | relative
+* top：auto | length
+* right: auto | length
 * bottom: auto | length
-* left: auto | length  
+* left: auto | length
 * z-index: auto | number
 
 ### 形状类
@@ -189,7 +186,7 @@ div {
 
 ### 其他
 
-* opacity：0-1
+* opacity: 0-1
 * cursor: auto | all-scroll | col-resize| crosshair | default | hand | move | help | no-drop | not-allowed | pointer | progress | row-resize | text | vertical-text | wait | *-resize | url ( url )
 * content: attr(alt) | counter(name) | counter(name , list-style-type) | counters(name , string) | counters(name , string , list-style-type) | no-close-quote | no-open-quote | close-quote | open-quote | string | url(url)
 * quotes: none | string

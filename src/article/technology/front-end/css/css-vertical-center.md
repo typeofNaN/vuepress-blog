@@ -23,10 +23,11 @@ tag:
   .content {
     width: 400px;
     background: #ccc;
-    line-height:100px;
+    line-height: 100px;
     margin: auto;
   }
 </style>
+
 <div class="content">CSS垂直居中</div>
 ```
 
@@ -51,7 +52,7 @@ tag:
   .box2 .content {
     display: inline-block;
     height: auto;
-    line-height:1;
+    line-height: 1;
     width: 400px;
     background: #ccc;
   }
@@ -67,7 +68,7 @@ tag:
 
 适用情景：多对象的CSS垂直居中技巧
 
-:before 伪类元素搭配 inline-block 属性的写法应该是很传统的垂直居中的技巧了，此方式的好处在于子元素居中可以不需要特别设定高度，我们将利用:before伪类元素设定为100%高的inline-block，再搭配上将需要居中的子元素同样设置成inline-block性质后，就能使用vertical-align:middle来达到垂直居中的目的了，此方式在以往其实是个非常棒的垂直居中解决方案，唯独需要特别处理掉inline-block元素之间的4-5px空间这个小缺陷，但也很实用了。
+:before 伪类元素搭配 inline-block 属性的写法应该是很传统的垂直居中的技巧了，此方式的好处在于子元素居中可以不需要特别设定高度，我们将利用:before伪类元素设定为100%高的inline-block，再搭配上将需要居中的子元素同样设置成inline-block性质后，就能使用vertical-align: middle来达到垂直居中的目的了，此方式在以往其实是个非常棒的垂直居中解决方案，唯独需要特别处理掉inline-block元素之间的4-5px空间这个小缺陷，但也很实用了。
 
 ``` html
 <style>
@@ -82,7 +83,7 @@ tag:
     text-align: center;
   }
   .box::before {
-    content:'';
+    content: '';
     display: inline-block;
     height: 100%;
     width: 0;
@@ -337,7 +338,7 @@ align-self 应该大家都不陌生，基本上就是对flex次轴cross axis 的
   .content {
     width: 400px;
     background: #ccc;
-    align-self: center
+    align-self: center;
   }
 </style>
 <h2>10.Flex + align-self</h2>
@@ -614,7 +615,7 @@ place-content这属性有多少人用过，此属性是align-content与justify-c
   .content {
     width: 400px;
     background: #ccc;
-    margin:auto;
+    margin: auto;
   }
 </style>
 <h2>18.Grid + margin</h2>
@@ -680,8 +681,8 @@ Calc是计算机英文单词calculator的缩写，这个由微软提出的css �
     width: 400px;
     background: #ccc;
     position: relative;
-    top:calc((100% - 70px) / 2);
-    margin:auto;
+    top: calc((100% - 70px) / 2);
+    margin: auto;
     height: 70px;
   }
 </style>
@@ -782,7 +783,7 @@ Calc是计算机英文单词calculator的缩写，这个由微软提出的css �
     writing-mode: tb-lr; /* for ie11 */
     writing-mode: vertical-lr;
     text-align: center;
-    margin:0 auto;
+    margin: 0 auto;
   }
   .content {
     width: 400px;

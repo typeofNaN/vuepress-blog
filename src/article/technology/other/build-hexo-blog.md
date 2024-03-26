@@ -83,10 +83,8 @@ $ hexo init
 
 创建一个repo，名称为YourName.github.io, 其中YourName是你的github名称，按照这个规则创建才有用，如下：
 
-<!-- {% asset_img b2.jpg 创建仓库 %} -->
 ![创建仓库](./build-hexo-blog_assets/images/b2.jpg)
 
-<!-- {% asset_img b3.jpg 为仓库取名 %} -->
 ![为仓库取名](./build-hexo-blog_assets/images/b3.jpg)
 
 回到git bash中，配置github账户信息（YourName和YourEmail都替换成你自己的）：
