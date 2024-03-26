@@ -23,7 +23,7 @@ tag:
 
 下面是一个通用的骨架：
 
-``` js
+``` jsx
 import styled from 'vue-styled-components'
 
 const Container = styled.div`
@@ -32,7 +32,7 @@ const Container = styled.div`
 
 const Dashboard = {
   name: 'Dashboard',
- 
+
   render() {
     return (
       <Container>内容</Container>
@@ -74,7 +74,7 @@ export default Dashboard
 
 在 JSX 中没有 v-for 和 v-if 等指令的存在，这些全部需要采用 js 的方式来实现：
 
-``` js
+``` jsx
 { /* 类似于v-if */ }
 {
   this.withTitle && <Title />
@@ -114,7 +114,7 @@ export default Dashboard
 
 在 Vue 中基于 jsx 也可以把组件拆分成一个个小的函数式组件，但是有一个限制是必需有一个外层的包裹元素，不能直接写类似：
 
-``` js
+``` jsx
 const Demo = () => (
   <li>One</li>
   <li>Two</li>
@@ -123,7 +123,7 @@ const Demo = () => (
 
 必需写成：
 
-``` js
+``` jsx
 const Demo = () => (
   <div>
     <li>One</li>
@@ -134,7 +134,7 @@ const Demo = () => (
 
 而在React中可以使用空标签 `<></>` 和 `<react.Fragment></react.Fragment>` 来实现包裹元素，这里的空标签其实只是 react.Fragment 的一个语法糖。同时在 React 16 中直接支持返回数组的形式：
 
-``` js
+``` jsx
 const Demo = () => [
   <li>One</li>
   <li>Two</li>
@@ -143,7 +143,7 @@ const Demo = () => [
 
 那么在 Vue 中就只能通过遍历来实现类似的功能，大体思路就是把数据先定义好数据然后直接一个 map 生成，当然如果说元素的标签是不同类型的那就需要额外添加标识来判断了。
 
-``` js
+``` jsx
 export default {
   data() {
     return {
@@ -201,7 +201,7 @@ export default {
 
 下面是在事件处理函数中使用修饰符的例子：
 
-``` js
+``` jsx
 export default {
   methods: {
     keyup(e) {
@@ -236,7 +236,7 @@ export default {
 
 假如在jsx中想要引用遍历元素或组件的时候，例如：
 
-``` js
+``` jsx
 const LiArray = () => this.options.map(option => (
   <li ref="li" key={option}>{option}</li>
 ))
@@ -244,7 +244,7 @@ const LiArray = () => this.options.map(option => (
 
 会发现从 this.$refs.li 中获取的并不是期望的数组值，这个时候就需要使用 refInFor 属性，并置为 true 来达到在模板中 v-for 中使用 ref 的效果：
 
-``` js
+``` jsx
 const LiArray = () => this.options.map(option => (
   <li ref="li" refInFor={true} key={option}>{option}</li>
 ))
@@ -581,19 +581,19 @@ export default {
 
 在模板语法中可以使用 v-if、v-else-if 和 v-else 来做条件判断。在 jsx 中可以通过 ?: 三元运算符(Ternary operator)运算符来做 if-else 判断：
 
-``` js
+``` jsx
 const Demo = () => isTrue ? <p>True!</p> : null
 ```
 
 然后可以利用 && 运算符的特性简写为：
 
-``` js
+``` jsx
 const Demo = () => isTrue && <p>True!</p>
 ```
 
 对于复杂的条件判断，例如：
 
-``` js
+``` jsx
 const Demo = () => (
   <div>
     {
@@ -617,7 +617,7 @@ const Demo = () => (
 
 下面是使用 IIFE 通过内部使用 if-else 返回值来优化上述问题：
 
-``` js
+``` jsx
 const Demo = () => (
   <div>
     {
@@ -641,7 +641,7 @@ const Demo = () => (
 
 还可以使用 do 表达式，但是需要插件 @babel/plugin-proposal-do-expressions 的转译来支持
 
-``` js
+``` jsx
 const Demo = () => (
   <div>
     {
@@ -665,7 +665,7 @@ const Demo = () => (
 
 再就是一种比较简单的可选办法，如下：
 
-``` js
+``` jsx
 const Demo = () => {
   const basicCondition = flag && flag1 && !flag3;
   if (!basicCondition) return <p>A</p>
@@ -679,7 +679,7 @@ const Demo = () => {
 
 在单个 jsx 文件中可以写很多函数式组件来切分更小的粒度，例如之前的文章 Vue 后台管理系统开发日常总结__组件PageHeader，组件的形态有两种，一种是普通标题，另一种是带有选项卡的标题，那么在写的时候就可以这样写：
 
-``` js
+``` jsx
 render() {
   // partial html
   const TabHeader = (
@@ -718,7 +718,7 @@ slots          # 函数，插槽
 
 虽然可以在函数式组件中传参数、事件、slot 但是个人觉得不建议这样做，反而搞复杂了。
 
-``` js
+``` jsx
 render() {
   const Demo = props => {
     return (

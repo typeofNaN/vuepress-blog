@@ -91,8 +91,8 @@ const targetNode = document.getElementById('element')
 
 const resizeObserver = new ResizeObserver((entries, observer) => {
   entries.forEach(entry => {
-    console.log(`Element size: ${entry.width}px x ${entry.height}px`)
-    console.log(`Element padding: ${entry.top}px ; ${entry.left}px`)
+    console.log(`Element size: ${entry.width}px ${entry.height}px`)
+    console.log(`Element padding: ${entry.top}px ${entry.left}px`)
 
     // 之后，你可以停止观察
     observer.unobserve(entry.target)

@@ -13,15 +13,14 @@ tag:
 
 ## 原因
 
-`Github Pages` 阻止了以下划线字符结尾的文件，所以会导致这个文件拜访返回404。
+`Github Pages` 阻止了以下划线字符结尾的文件，所以会导致这个文件请求返回404。
 
 ## 解决方案
 
-修改配置 vite.config.ts，重写打包的方案：
+修改配置 `vite.config.ts`，重写打包的方案：
 
 ``` ts
 // vite.config.ts
-
 const INVALID_CHAR_REGEX = /[\u0000-\u001F"#$&*+,:;<=>?[\]^`{|}\u007F]/g
 const DRIVE_LETTER_REGEX = /^[a-z]:/i
 
@@ -34,7 +33,7 @@ export default defineConfig({
     },
     outDir: 'dist',
     assetsDir: 'assets',
-    chunkSizeWarningLimit: 2000, // 解决包大小超过500kb的正告
+    chunkSizeWarningLimit: 2000, // 解决包大小超过500kb的警告
     rollupOptions: {
       output: {
         manualChunks: {},
