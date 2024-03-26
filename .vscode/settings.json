@@ -50,6 +50,7 @@
     "touchend",
     "touchstart",
     "trunc",
+    "typeof",
     "unobserve",
     "unocss",
     "waline",
