@@ -2132,7 +2132,6 @@ This new feature extends this concept to all Unicode characters introducing p{} 
 
 任何 unicode 字符都有一组属性，例如 script 确认语言，ASCII 是一个布尔值用于检查 ASCII 字符。你可以将此属性方在() 中，正则表达式将来检查是否为真。
 
-
 ``` js
 /^p{ASCII}+$/u.test('abc')   //✅
 /^p{ASCII}+$/u.test('ABC@')  //✅
