@@ -54,6 +54,14 @@ export default sidebar({
                 'jsx-in-vue',
                 'vue-directives'
               ]
+            },
+            {
+              text: '小程序',
+              prefix: 'miniProgram',
+              collapsible: true,
+              children: [
+                'connect-wifi'
+              ]
             }
           ]
         },
