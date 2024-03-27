@@ -24,7 +24,7 @@ npm install -g pm2
 
 ``` sh
 # 进入到app的目录去启动
-pm2 start index.js --name 'appName'
+pm2 start index.js --name <appName>
 ```
 
 pm2 其他常用命令
@@ -37,13 +37,13 @@ pm2 list
 pm2 status
 
 # 重启，restart后面跟--name后面指定的名字
-pm2 restart ghost
+pm2 restart <appName>
 
 # 查看进程的使用资源情况
 pm2 monit
 
 # 查看log
-pm2 logs ghost
+pm2 logs <appName>
 
 # 查看app的更多详细信息，后面跟id
 pm2 describe 1
@@ -59,7 +59,7 @@ pm2 updatePM2
 
 首先需要注册Keymetrics：[Keymetrics](https://app.keymetrics.io/#/register)
 
-登录后，通过new bucket新建，然后进入控制面板，可以看到分配的public key 和secret key。然后，在安装有pm2的服务器端输入以下命令:
+登录后，通过`new bucket`新建，然后进入控制面板，可以看到分配的`public key` 和`secret key`。然后，在安装有pm2的服务器端输入以下命令:
 
 ``` sh
 pm2 interact your-secret-key your-public-key
