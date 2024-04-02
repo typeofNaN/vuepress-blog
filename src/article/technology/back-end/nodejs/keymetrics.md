@@ -57,12 +57,15 @@ pm2 updatePM2
 
 ## 安装Keymetrics
 
-首先需要注册Keymetrics：[Keymetrics](https://app.keymetrics.io/#/register)
+<!-- 首先需要注册Keymetrics：[Keymetrics](https://app.keymetrics.io/#/register) -->
+首先需要注册Keymetrics：[Keymetrics](https://pm2.io/)
 
 登录后，通过`new bucket`新建，然后进入控制面板，可以看到分配的`public key` 和`secret key`。然后，在安装有pm2的服务器端输入以下命令:
 
+<!-- pm2 interact your-secret-key your-public-key -->
+
 ``` sh
-pm2 interact your-secret-key your-public-key
+pm2 link your-secret-key your-public-key
 ```
 
 监控成功后，会有类似下面的提示：
