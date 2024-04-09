@@ -51,6 +51,7 @@ export default sidebar({
               prefix: 'vue',
               collapsible: true,
               children: [
+                'h-function',
                 'jsx-in-vue',
                 'vue-directives'
               ]

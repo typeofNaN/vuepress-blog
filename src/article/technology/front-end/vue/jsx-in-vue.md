@@ -1,5 +1,5 @@
 ---
-title: 在 Vue 中使用 JSX
+title: 在Vue中使用JSX
 date: 2022-10-23
 category: 技术文章
 tag:
