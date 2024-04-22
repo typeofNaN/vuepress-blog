@@ -232,7 +232,7 @@ Flex！前端的毒品！后端的宝物！这东西自从面世之后就不断�
     margin: auto;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
   }
   .content {
     width: 400px;
@@ -408,7 +408,7 @@ CSS Grid最令人惊讶的就是这个template的功能了，简直就是把块�
     display: grid;
     grid-template-rows: 1fr auto 1fr;
     grid-template-columns: 1fr auto 1fr;
-    grid-template-areas: 
+    grid-template-areas:
       '. . .'
       '. amos .'
       '. . .';
@@ -445,7 +445,7 @@ align-items不仅是Flex可用，连CSS Grid也拥有此属性可使用，但在
     margin: auto;
     display: grid;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
   }
   .content {
     width: 400px;
@@ -478,7 +478,7 @@ CSS Grid的align-content跟Flex的align-content有点差异，CSS Grid对于空�
     margin: auto;
     display: grid;
     justify-content: center;
-    align-content: center; 
+    align-content: center;
   }
   .content {
     width: 400px;
@@ -791,7 +791,7 @@ Calc是计算机英文单词calculator的缩写，这个由微软提出的css �
     display: inline-block; /* for ie & edge */
     width: 100%;
     writing-mode: lr-tb;
-    margin: auto; 
+    margin: auto;
     text-align: left;
   }
   .box .txt {

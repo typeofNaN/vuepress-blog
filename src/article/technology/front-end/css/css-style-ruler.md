@@ -165,7 +165,7 @@ div {
 * font-family: fantasy | serif | sans-serif
 * font-size: xx-small | x-small | small | medium | large | x-large | xx-large | larger | smaller | length
 * line-height: normal | length
-* font-weight: normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900  
+* font-weight: normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900
 * text-align: left | right | center | justify
 * text-indent: length
 * text-transform: none | capitalize | uppercase | lowercase

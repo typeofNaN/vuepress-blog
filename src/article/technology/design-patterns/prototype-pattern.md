@@ -245,7 +245,7 @@ static void Main(string[] args)
 注：string 是一种拥有值类型特点的特殊引用类型！（例：上面简历的原型实现代码）
 
 * string 不是基本数据类型，而是一个类（class）
-* class string 继承自对象 （object），而不是 System.ValueType ( Int32 这样的则是继承于 System.ValueType) 
+* class string 继承自对象 （object），而不是 System.ValueType ( Int32 这样的则是继承于 System.ValueType)
 * string 本质上是个 char[]，而 Array 是引用类型，并且初始化时也是在托管堆分配内存的，但是这个特殊的类却表现出值类型的特点，微软设计这个类的时候为了方便操作，所以重写了 == 和 != 操作符以及 Equals 方法，它判断相等性时，是按照内容来判断的，而不是地址
 * string 在栈上保持引用，在堆上保持数据
 

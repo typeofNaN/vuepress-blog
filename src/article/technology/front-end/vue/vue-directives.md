@@ -220,14 +220,14 @@ export default longpress
   <button v-longpress="longpress">长按</button>
 </template>
 
-<script> 
+<script>
 export default {
   methods: {
     longpress() {
       alert('长按指令生效')
     }
   }
-} 
+}
 </script>
 ```
 
@@ -274,14 +274,14 @@ export default debounce
   <button v-debounce="debounceClick">防抖</button>
 </template>
 
-<script> 
+<script>
 export default {
   methods: {
     debounceClick() {
       console.log('只触发一次')
     }
   }
-} 
+}
 </script>
 ```
 

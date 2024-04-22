@@ -85,8 +85,8 @@ function oCopy(obj) {
 <script language="javascript">
 function CopyUrl(target) {
   target.value = myImg.value
-  target.select() 
-  js = myImg.createTextRange() 
+  target.select()
+  js = myImg.createTextRange()
   js.execCommand('Copy')
   alert('复制成功!')
 }
@@ -94,7 +94,7 @@ function CopyUrl(target) {
 function AddImg(target) {
   target.value = '[IMG]' + myImg.value + '[/ img]'
   target.select()
-  js = target.createTextRange() 
+  js = target.createTextRange()
   js.execCommand('Copy')
   alert('复制成功!')
 }

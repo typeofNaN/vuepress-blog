@@ -210,7 +210,7 @@ export default {
 
       // 对应 `.enter`, `.13`
       if (!e.shiftKey || e.keyCode !== 13) return
-      
+
       // 对应 `.stop`
       e.stopPropagation()
 

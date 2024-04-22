@@ -41,4 +41,3 @@ bgImage: /assets/images/cover.jpg
 
 footer: Not a Number
 ---
-

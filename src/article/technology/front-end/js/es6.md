@@ -465,7 +465,7 @@ first part second part
 ``` js
 const string =
   'first line
- 
+
 second line'
 ```
 

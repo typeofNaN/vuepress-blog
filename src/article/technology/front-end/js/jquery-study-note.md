@@ -743,7 +743,7 @@ done()做的事和使用 success()定义是一样的。
 
 当我们需要完成，像“请求A和请求B都完成时，执行函数”之类的需求时，使用 $.when()就可以了。
 
-``` js  
+``` js
 var defer_1 = $.ajax({
   url: 'json.html',
   dataType: 'json'
@@ -752,7 +752,7 @@ var defer_2 = $.ajax({
   url: 'jsonp.html',
   dataType: 'jsonp'
 })
-  
+
 var new_defer = $.when(defer_1, defer_2)
 new_defer.done(function () {
   console.log('hello')
