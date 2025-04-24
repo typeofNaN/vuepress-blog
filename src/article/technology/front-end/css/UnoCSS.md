@@ -111,6 +111,7 @@ createApp(App)
 * `h--10px`: `height: -10px;`
 * `h-full`: `height: 100%;`
 * `min-w-screen`: `min-width: 100vw;`
+* `w-[calc(100%-100px)]`: `width: calc(100% - 100px)`
 
 ``` html
 <div class="min-h-100px w-50vw"></div>
@@ -186,6 +187,7 @@ createApp(App)
 * `flex-justify-between`: `justify-content: space-between;`
 * `flex-justify-center`: `justify-content: center;`
 * `flex-items-center`: `align-items: center;`
+* `gap-24px`: `gap-24px`
 
 ``` html
 <div class="flex flex-row justify-between items-center"></div>
@@ -220,6 +222,7 @@ createApp(App)
 * `top-5px`: `top: 5px;`
 * `z-0`: `z-index: 0;`
 * `z-100`: `z-index: 100;`
+* `fixed-center`
 
 ``` html
 <div class="absolute left-0 top-5px z-100"></div>
@@ -267,6 +270,13 @@ createApp(App)
 <!--等价于-->
 <div style="font-size: 20px !important;"></div>
 ```
+
+### 12、animate
+
+常用值：
+
+* `animate-spin`: `animation: spin 1s linear infinite`
+* `animate-delay-500`: `animation-delay: 500ms`
 
 ## 总结
 
