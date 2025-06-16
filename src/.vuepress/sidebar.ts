@@ -36,6 +36,7 @@ export default sidebar({
               prefix: 'js/',
               collapsible: true,
               children: [
+                'timer',
                 'node-sass-version',
                 'vite-deploy-github-page-problem',
                 'observer-api',
