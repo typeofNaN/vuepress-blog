@@ -108,6 +108,7 @@ export default sidebar({
       prefix: 'article/life/',
       collapsible: true,
       children: [
+        'algorithm-life',
         'warm-and-free',
         'their-18-year-old',
         'say-goodbye'
