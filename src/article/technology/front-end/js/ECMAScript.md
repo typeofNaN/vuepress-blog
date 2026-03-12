@@ -3,9 +3,9 @@ title: ECMAScript
 date: 2020-03-03
 category: 技术文章
 tag:
-    - ES6
-    - ECMAScript
-    - JavaScript
+  - ES6
+  - ECMAScript
+  - JavaScript
 ---
 
 ECMAScript是一种由Ecma国际（前身为欧洲计算机制造商协会）在标准ECMA-262中定义的脚本语言规范。这种语言在万维网上应用广泛，它往往被称为JavaScript或JScript，但实际上后两者是ECMA-262标准的实现和扩展。
@@ -44,23 +44,23 @@ TC39成员制定着ECMAScript的未来。
 
 每一项新特性最终要进入到ECMAScript规范里，需要经历5个阶段，这5个阶段如下：
 
-* Stage 0: StrawPerson
+- Stage 0: StrawPerson
 
 只要是TC39成员或者贡献者，都可以提交想法
 
-* Stage 1: Proposal
+- Stage 1: Proposal
 
 这个阶段确定一个正式的提案
 
-* Stage 2: draft
+- Stage 2: draft
 
 规范的第一个版本，进入此阶段的提案大概率会成为标准
 
-* Stage 3: Candidate
+- Stage 3: Candidate
 
 进一步完善提案细则
 
-* Stage 4: Finished
+- Stage 4: Finished
 
 表示已准备好将其添加到正式的ECMAScript标准中
 
@@ -76,7 +76,7 @@ ES6是一次重大的革新，比起过去的版本，改动比较大，本文�
 
 区别如下：
 
-``` js
+```js
 {
   var a = 10
   let b = 20
@@ -95,21 +95,21 @@ d // 60
 e = 70 // VM231:1 Uncaught TypeError: Assignment to constant variable.
 ```
 
-|                |  var  |  let  | const |
-| :------------: | :---: | :---: | :---: |
-|    变量提升    |   √   |   ×   |   ×   |
-|    全局变量    |   √   |   ×   |   ×   |
-|    重复声明    |   √   |   ×   |   ×   |
-|    重新赋值    |   √   |   √   |   ×   |
-|    暂时死区    |   ×   |   √   |   √   |
-|    块作用域    |   ×   |   √   |   √   |
-| 只声明不初始化 |   √   |   √   |   ×   |
+|                | var | let | const |
+| :------------: | :-: | :-: | :---: |
+|    变量提升    |  √  |  ×  |   ×   |
+|    全局变量    |  √  |  ×  |   ×   |
+|    重复声明    |  √  |  ×  |   ×   |
+|    重新赋值    |  √  |  √  |   ×   |
+|    暂时死区    |  ×  |  √  |   √   |
+|    块作用域    |  ×  |  √  |   √   |
+| 只声明不初始化 |  √  |  √  |   ×   |
 
 ### 类（Class）
 
 在ES6之前，如果我们要生成一个实例对象，传统的方法就是写一个构造函数，例子如下：
 
-``` js
+```js
 function Person(name, age) {
   this.name = name
   this.age = age
@@ -121,7 +121,7 @@ Person.prototype.information = function () {
 
 但是在ES6之后，我们只需要写成以下形式：
 
-``` js
+```js
 class Person {
   constructor(name, age) {
     this.name = name
@@ -140,7 +140,7 @@ class Person {
 
 在ES6以前，我们写函数一般是：
 
-``` js
+```js
 var list = [1, 2, 3, 4, 5, 6, 7]
 var newList = list.map(function (item) {
   return item * item
@@ -149,24 +149,24 @@ var newList = list.map(function (item) {
 
 但是在ES6里，我们可以：
 
-``` js
+```js
 const list = [1, 2, 3, 4, 5, 6, 7]
-const newList = list.map(item => item * item)
+const newList = list.map((item) => item * item)
 ```
 
 ### 函数参数默认值（Function parameter defaults）
 
 在ES6之前，如果我们写函数需要定义初始值的时候，需要这么写：
 
-``` js
-function config (data) {
+```js
+function config(data) {
   var data = data || 'data is empty'
 }
 ```
 
 这样看起来也没有问题，但是如果参数的布尔值为falsy时就会出问题，例如我们这样调用config：
 
-``` js
+```js
 config(0)
 config('')
 ```
@@ -175,7 +175,7 @@ config('')
 
 如果我们用函数参数默认值就没有这个问题，写法如下：
 
-``` js
+```js
 const config = (data = 'data is empty') => {}
 ```
 
@@ -183,7 +183,7 @@ const config = (data = 'data is empty') => {}
 
 在ES6之前，如果我们要拼接字符串，则需要像这样：
 
-``` js
+```js
 var name = 'kris'
 var age = 24
 var info = 'My name is ' + this.name + ', I am ' + this.age
@@ -191,7 +191,7 @@ var info = 'My name is ' + this.name + ', I am ' + this.age
 
 但是在ES6之后，我们只需要写成以下形式：
 
-``` js
+```js
 const name = 'kris'
 const age = 24
 const info = `My name is ${name}, I am ${age}`
@@ -203,7 +203,7 @@ const info = `My name is ${name}, I am ${age}`
 
 比如我们需要交换两个变量的值，在ES6之前我们可能需要：
 
-``` js
+```js
 var a = 10
 var b = 20
 var temp = a
@@ -214,18 +214,16 @@ b = temp
 
 但是在ES6里，我们有：
 
-``` js
+```js
 let a = 10
-let b = 20
-
-[a, b] = [b, a]
+let b = ((20)[(a, b)] = [b, a])
 ```
 
 ### 模块化（Module）
 
 在ES6之前，JS并没有模块化的概念，有的也只是社区定制的类似CommonJS和AMD之类的规则。例如基于CommonJS的NodeJS：
 
-``` js
+```js
 // circle.js
 // 输出
 const { PI } = Math
@@ -242,7 +240,7 @@ console.log(`半径为 4 的圆的面积是 ${circle.area(4)}`)
 
 在ES6之后我们则可以写成以下形式：
 
-``` js
+```js
 // circle.js
 // 输出
 const { PI } = Math
@@ -263,9 +261,9 @@ console.log(`半径为 4 的圆的面积是: ${area(4)}`)
 
 比如在ES5的时候，我们要对一个数组的元素进行相加，在不使用reduce或者reduceRight的场合，我们需要：
 
-``` js
+```js
 function sum(x, y, z) {
-  return x + y + z;
+  return x + y + z
 }
 
 var list = [5, 6, 7]
@@ -274,7 +272,7 @@ var total = sum.apply(null, list)
 
 但是如果我们使用扩展操作符，只需要如下：
 
-``` js
+```js
 const sum = (x, y, z) => x + y + z
 
 const list = [5, 6, 7]
@@ -285,8 +283,8 @@ const total = sum(...list)
 
 如果是下面的情况，是会报错的：
 
-``` js
-var obj = {'key1': 'value1'}
+```js
+var obj = { key1: 'value1' }
 var array = [...obj] // TypeError: obj is not iterable
 ```
 
@@ -294,7 +292,7 @@ var array = [...obj] // TypeError: obj is not iterable
 
 在ES6之前，如果我们要将某个变量赋值为同样名称的对象元素，则需要：
 
-``` js
+```js
 var cat = 'Miaow'
 var dog = 'Woof'
 var bird = 'Pet pet'
@@ -302,13 +300,13 @@ var bird = 'Pet pet'
 var someObject = {
   cat: cat,
   dog: dog,
-  bird: bird
+  bird: bird,
 }
 ```
 
 但是在ES6里我们就方便很多：
 
-``` js
+```js
 let cat = 'Miaow'
 let dog = 'Woof'
 let bird = 'Pet pet'
@@ -316,7 +314,7 @@ let bird = 'Pet pet'
 let someObject = {
   cat,
   dog,
-  bird
+  bird,
 }
 
 console.log(someObject)
@@ -336,13 +334,11 @@ Promise 是ES6提供的一种异步解决方案，比回调函数更加清晰明
 
 Promise 翻译过来就是承诺的意思，这个承诺会在未来有一个确切的答复，并且该承诺有三种状态，分别是：
 
-1.等待中（pending）
-2.完成了 （resolved）
-3.拒绝了（rejected）
+1.等待中（pending）2.完成了 （resolved）3.拒绝了（rejected）
 
 这个承诺一旦从等待状态变成为其他状态就永远不能更改状态了，也就是说一旦状态变为 resolved 后，就不能再次改变
 
-``` js
+```js
 new Promise((resolve, reject) => {
   resolve('success')
   // 无效
@@ -352,7 +348,7 @@ new Promise((resolve, reject) => {
 
 当我们在构造 Promise 的时候，构造函数内部的代码是立即执行的
 
-``` js
+```js
 new Promise((resolve, reject) => {
   console.log('new Promise')
   resolve('success')
@@ -364,20 +360,20 @@ console.log('finish')
 
 Promise 实现了链式调用，也就是说每次调用 then 之后返回的都是一个 Promise，并且是一个全新的 Promise，原因也是因为状态不可变。如果你在 then 中 使用了 return，那么 return 的值会被 Promise.resolve() 包装
 
-``` js
+```js
 Promise.resolve(1)
-  .then(res => {
+  .then((res) => {
     console.log(res) // => 1
     return 2 // 包装成 Promise.resolve(2)
   })
-  .then(res => {
+  .then((res) => {
     console.log(res) // => 2
   })
 ```
 
 当然了，Promise 也很好地解决了回调地狱的问题，例如：
 
-``` js
+```js
 ajax(url, () => {
   // 处理逻辑
   ajax(url1, () => {
@@ -391,15 +387,17 @@ ajax(url, () => {
 
 可以改写成：
 
-``` js
+```js
 ajax(url)
-  .then(res => {
+  .then((res) => {
     console.log(res)
     return ajax(url1)
-  }).then(res => {
+  })
+  .then((res) => {
     console.log(res)
     return ajax(url2)
-  }).then(res => console.log(res))
+  })
+  .then((res) => console.log(res))
 ```
 
 ### for...of
@@ -408,8 +406,8 @@ for...of语句在可迭代对象（包括 Array，Map，Set，String，TypedArra
 
 例子如下：
 
-``` js
-const array1 = ['a', 'b', 'c'];
+```js
+const array1 = ['a', 'b', 'c']
 
 for (const element of array1) {
   console.log(element)
@@ -428,14 +426,14 @@ symbol 是一种基本数据类型，Symbol()函数会返回symbol类型的值�
 
 例子如下：
 
-``` js
-const symbol1 = Symbol();
-const symbol2 = Symbol(42);
-const symbol3 = Symbol('foo');
+```js
+const symbol1 = Symbol()
+const symbol2 = Symbol(42)
+const symbol3 = Symbol('foo')
 
-console.log(typeof symbol1); // 'symbol'
-console.log(symbol3.toString()); // 'Symbol(foo)'
-console.log(Symbol('foo') === Symbol('foo')); // false
+console.log(typeof symbol1) // 'symbol'
+console.log(symbol3.toString()) // 'Symbol(foo)'
+console.log(Symbol('foo') === Symbol('foo')) // false
 ```
 
 ### 迭代器（Iterator）/ 生成器（Generator）
@@ -444,16 +442,16 @@ console.log(Symbol('foo') === Symbol('foo')); // false
 
 一旦创建，迭代器对象可以通过重复调用next()显式地迭代，从而获取该对象每一级的值，直到迭代完，返回`{ value: undefined, done: true }`
 
-虽然自定义的迭代器是一个有用的工具，但由于需要显式地维护其内部状态，因此需要谨慎地创建。生成器函数提供了一个强大的选择：它允许你定义一个包含自有迭代算法的函数， 同时它可以自动维护自己的状态。生成器函数使用 function*[2]语法编写。最初调用时，生成器函数不执行任何代码，而是返回一种称为Generator的迭代器。通过调用生成器的下一个方法消耗值时，Generator函数将执行，直到遇到yield关键字。
+虽然自定义的迭代器是一个有用的工具，但由于需要显式地维护其内部状态，因此需要谨慎地创建。生成器函数提供了一个强大的选择：它允许你定义一个包含自有迭代算法的函数， 同时它可以自动维护自己的状态。生成器函数使用 function\*[2]语法编写。最初调用时，生成器函数不执行任何代码，而是返回一种称为Generator的迭代器。通过调用生成器的下一个方法消耗值时，Generator函数将执行，直到遇到yield关键字。
 
 可以根据需要多次调用该函数，并且每次都返回一个新的Generator，但每个Generator只能迭代一次。
 
 所以我们可以有以下例子：
 
-``` js
+```js
 function* makeRangeIterator(start = 0, end = Infinity, step = 1) {
   for (let i = start; i < end; i += step) {
-    yield i;
+    yield i
   }
 }
 
@@ -473,7 +471,7 @@ Set 对象允许你存储任何类型的唯一值，无论是原始值或者是�
 
 所以我们可以通过Set实现数组去重
 
-``` js
+```js
 const numbers = [2, 3, 4, 4, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5]
 
 console.log([...new Set(numbers)])
@@ -482,12 +480,12 @@ console.log([...new Set(numbers)])
 
 WeakSet 结构与 Set 类似，但区别有以下两点：
 
-* WeakSet 对象中只能存放对象引用, 不能存放值, 而 Set 对象都可以。
-* WeakSet 对象中存储的对象值都是被弱引用的, 如果没有其他的变量或属性引用这个对象值, 则这个对象值会被当成垃圾回收掉. 正因为这样, WeakSet 对象是无法被枚举的, 没有办法拿到它包含的所有元素。
+- WeakSet 对象中只能存放对象引用, 不能存放值, 而 Set 对象都可以。
+- WeakSet 对象中存储的对象值都是被弱引用的, 如果没有其他的变量或属性引用这个对象值, 则这个对象值会被当成垃圾回收掉. 正因为这样, WeakSet 对象是无法被枚举的, 没有办法拿到它包含的所有元素。
 
 所以代码如下：
 
-``` js
+```js
 var ws = new WeakSet()
 var obj = {}
 var foo = {}
@@ -496,10 +494,10 @@ ws.add(window)
 ws.add(obj)
 
 ws.has(window) // true
-ws.has(foo)    // false, 对象 foo 并没有被添加进 ws 中
+ws.has(foo) // false, 对象 foo 并没有被添加进 ws 中
 
 ws.delete(window) // 从集合中删除 window 对象
-ws.has(window)    // false, window 对象已经被删除了
+ws.has(window) // false, window 对象已经被删除了
 
 ws.clear() // 清空整个 WeakSet 对象
 ```
@@ -510,7 +508,7 @@ Map 对象保存键值对。任何值(对象或者原始值) 都可以作为一�
 
 例子如下，我们甚至可以使用NaN来作为键值：
 
-``` js
+```js
 var myMap = new Map()
 myMap.set(NaN, 'not a number')
 
@@ -524,7 +522,7 @@ WeakMap 对象是一组键/值对的集合，其中的键是弱引用的。其�
 
 跟Map的区别与Set跟WeakSet的区别相似，具体代码如下：
 
-``` js
+```js
 var wm1 = new WeakMap()
 var wm2 = new WeakMap()
 var wm3 = new WeakMap()
@@ -549,9 +547,9 @@ wm3.set(o1, 37)
 wm3.get(o1) // 37
 wm3.clear()
 wm3.get(o1) // undefined,wm3已被清空
-wm1.has(o1)   // true
+wm1.has(o1) // true
 wm1.delete(o1)
-wm1.has(o1)   // false
+wm1.has(o1) // false
 ```
 
 ### Proxy/Reflect
@@ -562,7 +560,7 @@ Reflect 是一个内置的对象，它提供拦截 JavaScript 操作的方法。
 
 Proxy跟Reflect是非常完美的配合，例子如下：
 
-``` js
+```js
 const observe = (data, callback) => {
   return new Proxy(data, {
     get(target, key) {
@@ -572,14 +570,14 @@ const observe = (data, callback) => {
       callback(key, value)
       target[key] = value
       return Reflect.set(target, key, value, proxy)
-    }
+    },
   })
 }
 
 const FooBar = { open: false }
 const FooBarObserver = observe(FooBar, (property, value) => {
-  property === 'open' && value ? console.log('FooBar is open!!!') : console.log('keep waiting');
-});
+  property === 'open' && value ? console.log('FooBar is open!!!') : console.log('keep waiting')
+})
 console.log(FooBarObserver.open) // false
 FooBarObserver.open = true // FooBar is open!!!
 ```
@@ -590,17 +588,18 @@ FooBarObserver.open = true // FooBar is open!!!
 
 #### 正则新增符号
 
-* i 修饰符
+- i 修饰符
 
-``` js
+```js
 // i 修饰符
-/[a-z]/i.test('\u212A') // false
-/[a-z]/iu.test('\u212A') // true
+;/[a-z]/i.test('\u212A') / // false
+  [a - z] /
+  iu.test('\u212A') // true
 ```
 
-* y修饰符
+- y修饰符
 
-``` js
+```js
 // y修饰符
 var s = 'aaa_aa_a'
 var r1 = /a+/g
@@ -613,33 +612,33 @@ r1.exec(s) // ['aa']
 r2.exec(s) // null
 ```
 
-* String.prototype.flags
+- String.prototype.flags
 
-``` js
+```js
 // 查看RegExp构造函数的修饰符
 var regex = new RegExp('xyz', 'i')
 regex.flags // 'i'
 ```
 
-* unicode模式
+- unicode模式
 
-``` js
+```js
 var s = '𠮷'
 /^.$/.test(s) // false
 /^.$/u.test(s) // true
 ```
 
-* u转义
+- u转义
 
-``` js
+```js
 // u转义
 /\,/ // /\,/
 /\,/u // 报错 没有u修饰符时，逗号前面的反斜杠是无效的，加了u修饰符就报错。
 ```
 
-* 引用
+- 引用
 
-``` js
+```js
 const RE_TWICE = /^(?<word>[a-z]+)!\k<word>$/
 RE_TWICE.test('abc!abc') // true
 RE_TWICE.test('abc!ab') // false
@@ -651,79 +650,79 @@ RE_TWICE.test('abc!ab') // false
 
 #### 字符串方法的实现改为调用RegExp方法
 
-* String.prototype.match 调用 RegExp.prototype[Symbol.match]
-* String.prototype.replace 调用 RegExp.prototype[Symbol.replace]
-* String.prototype.search 调用 RegExp.prototype[Symbol.search]
-* String.prototype.split 调用 RegExp.prototype[Symbol.split]
+- String.prototype.match 调用 RegExp.prototype[Symbol.match]
+- String.prototype.replace 调用 RegExp.prototype[Symbol.replace]
+- String.prototype.search 调用 RegExp.prototype[Symbol.search]
+- String.prototype.split 调用 RegExp.prototype[Symbol.split]
 
 #### 正则新增属性
 
-* RegExp.prototype.sticky 表示是否有y修饰符
+- RegExp.prototype.sticky 表示是否有y修饰符
 
-``` js
-/hello\d/y.sticky // true
+```js
+;/hello\d/y.sticky // true
 ```
 
-* RegExp.prototype.flags获取修饰符
+- RegExp.prototype.flags获取修饰符
 
-``` js
-/abc/ig.flags // 'gi'
+```js
+;/abc/gi.flags // 'gi'
 ```
 
 ### Math对象的扩展
 
-* 二进制表示法 : 0b或0B开头表示二进制(0bXX或0BXX)
-* 二进制表示法 : 0b或0B开头表示二进制(0bXX或0BXX)
-* 八进制表示法 : 0o或0O开头表示二进制(0oXX或0OXX)
-* Number.EPSILON : 数值最小精度
-* Number.MIN_SAFE_INTEGER : 最小安全数值(-2^53)
-* Number.MAX_SAFE_INTEGER : 最大安全数值(2^53)
-* Number.parseInt() : 返回转换值的整数部分
-* Number.parseFloat() : 返回转换值的浮点数部分
-* Number.isFinite() : 是否为有限数值
-* Number.isNaN() : 是否为NaN
-* Number.isInteger() : 是否为整数
-* Number.isSafeInteger() : 是否在数值安全范围内
-* Math.trunc() : 返回数值整数部分
-* Math.sign() : 返回数值类型(正数1、负数-1、零0)
-* Math.cbrt() : 返回数值立方根
-* Math.clz32() : 返回数值的32位无符号整数形式
-* Math.imul() : 返回两个数值相乘
-* Math.fround() : 返回数值的32位单精度浮点数形式
-* Math.hypot() : 返回所有数值平方和的平方根
-* Math.expm1() : 返回e^n - 1
-* Math.log1p() : 返回1 + n的自然对数(Math.log(1 + n))
-* Math.log10() : 返回以10为底的n的对数
-* Math.log2() : 返回以2为底的n的对数
-* Math.sinh() : 返回n的双曲正弦
-* Math.cosh() : 返回n的双曲余弦
-* Math.tanh() : 返回n的双曲正切
-* Math.asinh() : 返回n的反双曲正弦
-* Math.acosh() : 返回n的反双曲余弦
-* Math.atanh() : 返回n的反双曲正切
+- 二进制表示法 : 0b或0B开头表示二进制(0bXX或0BXX)
+- 二进制表示法 : 0b或0B开头表示二进制(0bXX或0BXX)
+- 八进制表示法 : 0o或0O开头表示二进制(0oXX或0OXX)
+- Number.EPSILON : 数值最小精度
+- Number.MIN_SAFE_INTEGER : 最小安全数值(-2^53)
+- Number.MAX_SAFE_INTEGER : 最大安全数值(2^53)
+- Number.parseInt() : 返回转换值的整数部分
+- Number.parseFloat() : 返回转换值的浮点数部分
+- Number.isFinite() : 是否为有限数值
+- Number.isNaN() : 是否为NaN
+- Number.isInteger() : 是否为整数
+- Number.isSafeInteger() : 是否在数值安全范围内
+- Math.trunc() : 返回数值整数部分
+- Math.sign() : 返回数值类型(正数1、负数-1、零0)
+- Math.cbrt() : 返回数值立方根
+- Math.clz32() : 返回数值的32位无符号整数形式
+- Math.imul() : 返回两个数值相乘
+- Math.fround() : 返回数值的32位单精度浮点数形式
+- Math.hypot() : 返回所有数值平方和的平方根
+- Math.expm1() : 返回e^n - 1
+- Math.log1p() : 返回1 + n的自然对数(Math.log(1 + n))
+- Math.log10() : 返回以10为底的n的对数
+- Math.log2() : 返回以2为底的n的对数
+- Math.sinh() : 返回n的双曲正弦
+- Math.cosh() : 返回n的双曲余弦
+- Math.tanh() : 返回n的双曲正切
+- Math.asinh() : 返回n的反双曲正弦
+- Math.acosh() : 返回n的反双曲余弦
+- Math.atanh() : 返回n的反双曲正切
 
 ### Array对象的扩展
 
-* Array.prototype.from：转换具有Iterator接口的数据结构为真正数组，返回新数组。
+- Array.prototype.from：转换具有Iterator接口的数据结构为真正数组，返回新数组。
 
-``` js
+```js
 console.log(Array.from('foo')) // ['f', 'o', 'o']
-console.log(Array.from([1, 2, 3], x => x + x)) // [2, 4, 6]
+console.log(Array.from([1, 2, 3], (x) => x + x)) // [2, 4, 6]
 ```
 
-* Array.prototype.of()：转换一组值为真正数组，返回新数组。
+- Array.prototype.of()：转换一组值为真正数组，返回新数组。
 
-``` js
-Array.of(7)       // [7]
+```js
+Array.of(7) // [7]
 Array.of(1, 2, 3) // [1, 2, 3]
 
-Array(7)          // [empty, empty, empty, empty, empty, empty]
-Array(1, 2, 3)    // [1, 2, 3]
+Array(7) // [empty, empty, empty, empty, empty, empty]
+Array(1, 2, 3) // [1, 2, 3]
 ```
 
-* Array.prototype.copyWithin()：把指定位置的成员复制到其他位置，返回原数组
+- Array.prototype.copyWithin()：把指定位置的成员复制到其他位置，返回原数组
 
-``` js
+```js
 const array1 = ['a', 'b', 'c', 'd', 'e']
 
 console.log(array1.copyWithin(0, 3, 4)) // ['d', 'b', 'c', 'd', 'e']
@@ -731,19 +730,19 @@ console.log(array1.copyWithin(0, 3, 4)) // ['d', 'b', 'c', 'd', 'e']
 console.log(array1.copyWithin(1, 3)) // ['d', 'd', 'e', 'd', 'e']
 ```
 
-* Array.prototype.find()：返回第一个符合条件的成员
+- Array.prototype.find()：返回第一个符合条件的成员
 
-``` js
+```js
 const array1 = [5, 12, 8, 130, 44]
 
-const found = array1.find(element => element > 10)
+const found = array1.find((element) => element > 10)
 
 console.log(found) // 12
 ```
 
-* Array.prototype.findIndex()：返回第一个符合条件的成员索引值
+- Array.prototype.findIndex()：返回第一个符合条件的成员索引值
 
-``` js
+```js
 const array1 = [5, 12, 8, 130, 44]
 
 const isLargeNumber = (element) => element > 13
@@ -751,9 +750,9 @@ const isLargeNumber = (element) => element > 13
 console.log(array1.findIndex(isLargeNumber)) // 3
 ```
 
-* Array.prototype.fill()：根据指定值填充整个数组，返回原数组
+- Array.prototype.fill()：根据指定值填充整个数组，返回原数组
 
-``` js
+```js
 const array1 = [1, 2, 3, 4]
 
 console.log(array1.fill(0, 2, 4)) // [1, 2, 0, 0]
@@ -763,9 +762,9 @@ console.log(array1.fill(5, 1)) // [1, 5, 5, 5]
 console.log(array1.fill(6)) // [6, 6, 6, 6]
 ```
 
-* Array.prototype.keys()：返回以索引值为遍历器的对象
+- Array.prototype.keys()：返回以索引值为遍历器的对象
 
-``` js
+```js
 const array1 = ['a', 'b', 'c']
 const iterator = array1.keys()
 
@@ -778,9 +777,9 @@ for (const key of iterator) {
 // 2
 ```
 
-* Array.prototype.values()：返回以属性值为遍历器的对象
+- Array.prototype.values()：返回以属性值为遍历器的对象
 
-``` js
+```js
 const array1 = ['a', 'b', 'c']
 const iterator = array1.values()
 
@@ -793,9 +792,9 @@ for (const key of iterator) {
 // c
 ```
 
-* Array.prototype.entries()：返回以索引值和属性值为遍历器的对象
+- Array.prototype.entries()：返回以索引值和属性值为遍历器的对象
 
-``` js
+```js
 const array1 = ['a', 'b', 'c']
 const iterator = array1.entries()
 
@@ -803,9 +802,9 @@ console.log(iterator.next().value) // [0, 'a']
 console.log(iterator.next().value) // [1, 'b']
 ```
 
-* 数组空位：ES6明确将数组空位转为undefined或者empty
+- 数组空位：ES6明确将数组空位转为undefined或者empty
 
-``` js
+```js
 Array.from(['a',,'b']) // [ 'a', undefined, 'b' ]
 [...['a',,'b']] // [ 'a', undefined, 'b' ]
 Array(3) //  [empty × 3]
@@ -820,7 +819,7 @@ includes() 方法用来判断一个数组是否包含一个指定的值，根据
 
 代码如下：
 
-``` js
+```js
 const array1 = [1, 2, 3]
 console.log(array1.includes(2)) // true
 
@@ -829,12 +828,12 @@ console.log(pets.includes('cat')) // true
 console.log(pets.includes('at')) // false
 ```
 
-### 幂运算符**
+### 幂运算符\*\*
 
-幂运算符**，具有与Math.pow()一样的功能，代码如下：
+幂运算符\*\*，具有与Math.pow()一样的功能，代码如下：
 
-``` js
-console.log(2**10) // 1024
+```js
+console.log(2 ** 10) // 1024
 console.log(Math.pow(2, 10)) // 1024
 ```
 
@@ -842,14 +841,14 @@ console.log(Math.pow(2, 10)) // 1024
 
 自ES7起，带标签的模版字面量遵守以下转义序列的规则：
 
-* Unicode字符以"\u"开头，例如`\u00A9`
-* Unicode码位用"\u{}"表示，例如`\u{2F804}`
-* 十六进制以"\x"开头，例如`\xA9`
-* 八进制以""和数字开头，例如`\251`
+- Unicode字符以"\u"开头，例如`\u00A9`
+- Unicode码位用"\u{}"表示，例如`\u{2F804}`
+- 十六进制以"\x"开头，例如`\xA9`
+- 八进制以""和数字开头，例如`\251`
 
 这表示类似下面这种带标签的模版是有问题的，因为对于每一个ECMAScript语法，解析器都会去查找有效的转义序列，但是只能得到这是一个形式错误的语法：
 
-``` js
+```js
 latex`\unicode`
 // 在较老的ECMAScript版本中报错（ES2016及更早）
 // SyntaxError: malformed Unicode character escape sequence
@@ -863,23 +862,23 @@ latex`\unicode`
 
 我们先看一下下面的Promise代码：
 
-``` js
+```js
 fetch('coffee.jpg')
-  .then(response => response.blob())
-  .then(myBlob => {
+  .then((response) => response.blob())
+  .then((myBlob) => {
     let objectURL = URL.createObjectURL(myBlob)
     let image = document.createElement('img')
     image.src = objectURL
     document.body.appendChild(image)
   })
-  .catch(e => {
+  .catch((e) => {
     console.log('There has been a problem with your fetch operation: ' + e.message)
   })
 ```
 
 然后再看看async/await版的，这样看起来是不是更清晰了。
 
-``` js
+```js
 async function myFetch() {
   let response = await fetch('coffee.jpg')
   let myBlob = await response.blob()
@@ -895,7 +894,7 @@ myFetch()
 
 当然，如果你喜欢，你甚至可以两者混用
 
-``` js
+```js
 async function myFetch() {
   let response = await fetch('coffee.jpg')
   return await response.blob()
@@ -915,11 +914,11 @@ Object.values()方法返回一个给定对象自身的所有可枚举属性值�
 
 代码如下：
 
-``` js
+```js
 const object1 = {
   a: 'str',
   b: 42,
-  c: false
+  c: false,
 }
 console.log(Object.values(object1)) // ['str', 42, false]
 ```
@@ -930,10 +929,10 @@ Object.entries()方法返回一个给定对象自身可枚举属性的键值对�
 
 代码如下：
 
-``` js
+```js
 const object1 = {
   a: 'str',
-  b: 42
+  b: 42,
 }
 
 for (let [key, value] of Object.entries(object1)) {
@@ -950,7 +949,7 @@ padStart() 方法用另一个字符串填充当前字符串(重复，如果需�
 
 代码如下：
 
-``` js
+```js
 const str1 = '5'
 console.log(str1.padStart(2, '0')) // '05'
 
@@ -964,7 +963,7 @@ console.log(maskedNumber) // '************5581'
 
 padEnd() 方法会用一个字符串填充当前字符串（如果需要的话则重复填充），返回填充后达到指定长度的字符串。从当前字符串的末尾（右侧）开始填充。
 
-``` js
+```js
 const str1 = 'Breaded Mushrooms'
 console.log(str1.padEnd(25, '.')) // 'Breaded Mushrooms........'
 
@@ -976,37 +975,37 @@ console.log(str2.padEnd(5)) // '200  '
 
 在ES5里就添加了对象的尾逗号，不过并不支持函数参数，但是在ES8之后，便开始支持这一特性，代码如下：
 
-``` js
+```js
 // 参数定义
 function f(p) {}
-function f(p,) {}
+function f(p) {}
 
-(p) => {}
-(p,) => {}
+;(p) => {}
+;(p) => {}
 
 class C {
-  one(a,) {}
-  two(a, b,) {}
+  one(a) {}
+  two(a, b) {}
 }
 
 var obj = {
-  one(a,) {},
-  two(a, b,) {}
+  one(a) {},
+  two(a, b) {},
 }
 
 // 函数调用
 f(p)
-f(p,)
+f(p)
 
 Math.max(10, 20)
-Math.max(10, 20,)
+Math.max(10, 20)
 ```
 
 但是以下的方式是不合法的：
 
 仅仅包含逗号的函数参数定义或者函数调用会抛出 SyntaxError。而且，当使用剩余参数的时候，并不支持尾后逗号，例子如下：
 
-``` js
+```js
 function f(,) {} // SyntaxError: missing formal parameter
 (,) => {}       // SyntaxError: expected expression, got ','
 f(,)             // SyntaxError: expected expression, got ','
@@ -1017,22 +1016,22 @@ function f(...p,) {} // SyntaxError: parameter after rest parameter
 
 在解构里也可以使用，代码如下：
 
-``` js
+```js
 // 带有尾后逗号的数组解构
-[a, b,] = [1, 2]
+;[a, b] = [1, 2]
 
 // 带有尾后逗号的对象解构
 var o = {
   p: 42,
   q: true,
 }
-var {p, q,} = o
+var { p, q } = o
 ```
 
 同样地，在使用剩余参数时，会抛出 SyntaxError，代码如下：
 
-``` js
-var [a, ...b,] = [1, 2, 3] // SyntaxError: rest element may not have a trailing comma
+```js
+var [a, ...b] = [1, 2, 3] // SyntaxError: rest element may not have a trailing comma
 ```
 
 ### ShareArrayBuffer（因安全问题，暂时在Chrome跟FireFox中被禁用）
@@ -1041,7 +1040,7 @@ SharedArrayBuffer 对象用来表示一个通用的，固定长度的原始二�
 
 代码如下：
 
-``` js
+```js
 let sab = new SharedArrayBuffer(1024) // 必须实例化
 worker.postMessage(sab)
 ```
@@ -1052,26 +1051,26 @@ Atomics对象 提供了一组静态方法用来对 SharedArrayBuffer[3] 对象�
 
 方法如下：
 
-* Atomics.add() ：将指定位置上的数组元素与给定的值相加，并返回相加前该元素的值。
-* Atomics.and()：将指定位置上的数组元素与给定的值相与，并返回与操作前该元素的值。
-* Atomics.compareExchange()：如果数组中指定的元素与给定的值相等，则将其更新为新的值，并返回该元素原先的值。
-* Atomics.exchange()：将数组中指定的元素更新为给定的值，并返回该元素更新前的值。
-* Atomics.load()：返回数组中指定元素的值。
-* Atomics.or()：将指定位置上的数组元素与给定的值相或，并返回或操作前该元素的值。
-* Atomics.store()：将数组中指定的元素设置为给定的值，并返回该值。
-* Atomics.sub()：将指定位置上的数组元素与给定的值相减，并返回相减前该元素的值。
-* Atomics.xor()：将指定位置上的数组元素与给定的值相异或，并返回异或操作前该元素的值。
-* Atomics.wait()：检测数组中某个指定位置上的值是否仍然是给定值，是则保持挂起直到被唤醒或超时。返回值为 "ok"、"not-equal" 或 "time-out"。调用时，如果当前线程不允许阻塞，则会抛出异常（大多数浏览器都不允许在主线程中调用 wait()）。
-* Atomics.wake()：唤醒等待队列中正在数组指定位置的元素上等待的线程。返回值为成功唤醒的线程数量。
-* Atomics.isLockFree(size)：可以用来检测当前系统是否支持硬件级的原子操作。对于指定大小的数组，如果当前系统支持硬件级的原子操作，则返回 true；否则就意味着对于该数组，Atomics 对象中的各原子操作都只能用锁来实现。此函数面向的是技术专家。
+- Atomics.add() ：将指定位置上的数组元素与给定的值相加，并返回相加前该元素的值。
+- Atomics.and()：将指定位置上的数组元素与给定的值相与，并返回与操作前该元素的值。
+- Atomics.compareExchange()：如果数组中指定的元素与给定的值相等，则将其更新为新的值，并返回该元素原先的值。
+- Atomics.exchange()：将数组中指定的元素更新为给定的值，并返回该元素更新前的值。
+- Atomics.load()：返回数组中指定元素的值。
+- Atomics.or()：将指定位置上的数组元素与给定的值相或，并返回或操作前该元素的值。
+- Atomics.store()：将数组中指定的元素设置为给定的值，并返回该值。
+- Atomics.sub()：将指定位置上的数组元素与给定的值相减，并返回相减前该元素的值。
+- Atomics.xor()：将指定位置上的数组元素与给定的值相异或，并返回异或操作前该元素的值。
+- Atomics.wait()：检测数组中某个指定位置上的值是否仍然是给定值，是则保持挂起直到被唤醒或超时。返回值为 "ok"、"not-equal" 或 "time-out"。调用时，如果当前线程不允许阻塞，则会抛出异常（大多数浏览器都不允许在主线程中调用 wait()）。
+- Atomics.wake()：唤醒等待队列中正在数组指定位置的元素上等待的线程。返回值为成功唤醒的线程数量。
+- Atomics.isLockFree(size)：可以用来检测当前系统是否支持硬件级的原子操作。对于指定大小的数组，如果当前系统支持硬件级的原子操作，则返回 true；否则就意味着对于该数组，Atomics 对象中的各原子操作都只能用锁来实现。此函数面向的是技术专家。
 
 ### Object.getOwnPropertyDescriptors()
 
 Object.getOwnPropertyDescriptors() 方法用来获取一个对象的所有自身属性的描述符。代码如下：
 
-``` js
+```js
 const object1 = {
-  property1: 42
+  property1: 42,
 }
 
 const descriptors1 = Object.getOwnPropertyDescriptors(object1)
@@ -1081,10 +1080,7 @@ console.log(descriptors1.property1.writable) // true
 console.log(descriptors1.property1.value) // 42
 
 // 浅拷贝一个对象
-Object.create(
-  Object.getPrototypeOf(obj),
-  Object.getOwnPropertyDescriptors(obj)
-)
+Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj))
 
 // 创建子类
 function superclass() {}
@@ -1092,9 +1088,12 @@ superclass.prototype = {
   // 在这里定义方法和属性
 }
 function subclass() {}
-subclass.prototype = Object.create(superclass.prototype, Object.getOwnPropertyDescriptors({
-  // 在这里定义方法和属性
-}))
+subclass.prototype = Object.create(
+  superclass.prototype,
+  Object.getOwnPropertyDescriptors({
+    // 在这里定义方法和属性
+  })
+)
 ```
 
 ## ES9(ES2018)
@@ -1105,7 +1104,7 @@ for await...of 语句会在异步或者同步可迭代对象上创建一个迭�
 
 配合迭代异步生成器，例子如下：
 
-``` js
+```js
 async function* asyncGenerator() {
   var i = 0
 
@@ -1114,7 +1113,7 @@ async function* asyncGenerator() {
   }
 }
 
-(async function () {
+;(async function () {
   for await (num of asyncGenerator()) {
     console.log(num)
   }
@@ -1130,9 +1129,9 @@ ES9开始，模板字符串允许嵌套支持常见转义序列，移除对ECMAS
 
 不过，非法转义序列在"cooked"当中仍然会体现出来。它们将以undefined元素的形式存在于"cooked"之中，代码如下：
 
-``` js
+```js
 function latex(str) {
- return { 'cooked': str[0], 'raw': str.raw[0] }
+  return { cooked: str[0], raw: str.raw[0] }
 }
 
 latex`\unicode` // { cooked: undefined, raw: '\\unicode' }
@@ -1146,20 +1145,20 @@ latex`\unicode` // { cooked: undefined, raw: '\\unicode' }
 
 正则表达式的断言一共有 4 种形式：
 
-* (?=pattern) 零宽正向肯定断言(zero-width positive lookahead assertion)
-* (?!pattern) 零宽正向否定断言(zero-width negative lookahead assertion)
-* (?<=pattern) 零宽反向肯定断言(zero-width positive lookbehind assertion)
-* (?<!pattern) 零宽反向否定断言(zero-width negative lookbehind assertion)
+- (?=pattern) 零宽正向肯定断言(zero-width positive lookahead assertion)
+- (?!pattern) 零宽正向否定断言(zero-width negative lookahead assertion)
+- (?<=pattern) 零宽反向肯定断言(zero-width positive lookbehind assertion)
+- (?<!pattern) 零宽反向否定断言(zero-width negative lookbehind assertion)
 
 在ES9之前，JavaScript 正则表达式，只支持正向断言。正向断言的意思是：当前位置后面的字符串应该满足断言，但是并不捕获。例子如下：
 
-``` js
+```js
 'fishHeadFishTail'.match(/fish(?=Head)/g) // ['fish']
 ```
 
 反向断言和正向断言的行为一样，只是方向相反。例子如下：
 
-``` js
+```js
 'abc123'.match(/(?<=(\d+)(\d+))$/) //  ['', '1', '23', index: 6, input: 'abc123', groups: undefined]
 ```
 
@@ -1169,7 +1168,7 @@ latex`\unicode` // { cooked: undefined, raw: '\\unicode' }
 
 部分例子代码如下：
 
-``` js
+```js
 // 匹配所有数字
 const regex = /^\p{Number}+$/u
 regex.test('²³¹¼½¾') // true
@@ -1199,7 +1198,7 @@ regexArrows.test('←↑→↓↔↕↖↗↘↙⇏⇐⇑⇒⇓⇔⇕⇖⇗⇘�
 
 在以往的版本里，JS的正则的.只能匹配emoji跟行终结符以外的所有文本，例如：
 
-``` js
+```js
 let regex = /./
 
 regex.test('\n')       // false
@@ -1220,31 +1219,31 @@ regex.test('\u{0085}') // true
 
 但是在ES9之后，JS正则增加了一个新的标志 s 用来表示 dotAll，这可以匹配任意字符。代码如下：
 
-``` js
-/foo.bar/s.test('foo\nbar')    // true
+```js
+;/foo.bar/s.test('foo\nbar') // true
 
-const re = /foo.bar/s  //  等价于 const re = new RegExp('foo.bar', 's')
-re.test('foo\nbar')    // true
-re.dotAll      // true
-re.flags       // 's'
+const re = /foo.bar/s //  等价于 const re = new RegExp('foo.bar', 's')
+re.test('foo\nbar') // true
+re.dotAll // true
+re.flags // 's'
 ```
 
 ### 正则表达式命名捕获组
 
 在以往的版本里，JS的正则分组是无法命名的，所以容易混淆。例如下面获取年月日的例子，很容易让人搞不清哪个是月份，哪个是年份:
 
-``` js
+```js
 const matched = /(\d{4})-(\d{2})-(\d{2})/.exec('2019-01-01')
 
-console.log(matched[0])    // 2019-01-01
-console.log(matched[1])    // 2019
-console.log(matched[2])    // 01
-console.log(matched[3])    // 01
+console.log(matched[0]) // 2019-01-01
+console.log(matched[1]) // 2019
+console.log(matched[2]) // 01
+console.log(matched[3]) // 01
 ```
 
 ES9引入了命名捕获组，允许为每一个组匹配指定一个名字，既便于阅读代码，又便于引用。代码如下：
 
-``` js
+```js
 const RE_DATE = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/
 
 const matchObj = RE_DATE.exec('1999-12-31')
@@ -1263,7 +1262,7 @@ matchObj.groups.as // undefined
 
 ES6中添加了数组的扩展操作符，让我们在操作数组时更加简便，美中不足的是并不支持对象扩展操作符，但是在ES9开始，这一功能也得到了支持，例如：
 
-``` js
+```js
 var obj1 = { foo: 'bar', x: 42 }
 var obj2 = { foo: 'baz', y: 13 }
 
@@ -1284,7 +1283,7 @@ finally()方法会返回一个Promise，当promise的状态变更，不管是变
 
 例子如下：
 
-``` js
+```js
 fetch(url)
   .then((res) => {
     console.log(res)
@@ -1294,7 +1293,7 @@ fetch(url)
   })
   .finally(() => {
     console.log('结束')
-})
+  })
 ```
 
 ## ES10(ES2019)
@@ -1307,7 +1306,7 @@ flatMap()与 map() 方法和深度为1的 flat() 几乎相同.，不过它会首
 
 例子如下：
 
-``` js
+```js
 var arr1 = [1, 2, 3, 4]
 
 arr1.map(x => [x * 2]) // [[2], [4], [6], [8]]
@@ -1336,7 +1335,7 @@ arr.reduce((acc, x) => acc.concat([x, x * 2]), []) // [1, 2, 2, 4, 3, 6, 4, 8]
 
 例子如下：
 
-``` js
+```js
 const Str = '   Hello world!  '
 
 console.log(Str) // '   Hello world!  '
@@ -1350,7 +1349,7 @@ console.log(Str.trimRight()) // '   Hello world!'
 
 在某些引擎里（例如Chrome），有以下的等式：
 
-``` js
+```js
 String.prototype.trimLeft.name === 'trimStart'
 
 String.prototype.trimRight.name === 'trimEnd'
@@ -1362,10 +1361,10 @@ Object.fromEntries() 方法把键值对列表转换为一个对象，它是Objec
 
 例子如下：
 
-``` js
+```js
 const entries = new Map([
   ['foo', 'bar'],
-  ['baz', 42]
+  ['baz', 42],
 ])
 
 const obj = Object.fromEntries(entries)
@@ -1377,18 +1376,18 @@ console.log(obj) // Object { foo: 'bar', baz: 42 }
 
 description 是一个只读属性，它会返回Symbol对象的可选描述的字符串。与 Symbol.prototype.toString() 不同的是它不会包含Symbol()的字符串。例子如下：
 
-``` js
-Symbol('desc').toString()   // 'Symbol(desc)'
-Symbol('desc').description  // 'desc'
-Symbol('').description      // ''
-Symbol().description        // undefined
+```js
+Symbol('desc').toString() // 'Symbol(desc)'
+Symbol('desc').description // 'desc'
+Symbol('').description // ''
+Symbol().description // undefined
 
 // 具名 symbols
-Symbol.iterator.toString()  // 'Symbol(Symbol.iterator)'
+Symbol.iterator.toString() // 'Symbol(Symbol.iterator)'
 Symbol.iterator.description // 'Symbol.iterator'
 
 //全局 symbols
-Symbol.for('foo').toString()  // 'Symbol(foo)'
+Symbol.for('foo').toString() // 'Symbol(foo)'
 Symbol.for('foo').description // 'foo'
 ```
 
@@ -1396,7 +1395,7 @@ Symbol.for('foo').description // 'foo'
 
 matchAll() 方法返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器。并且返回一个不可重启的迭代器。例子如下：
 
-``` js
+```js
 var regexp = /t(e)(st(\d?))/g
 var str = 'test1test2'
 
@@ -1409,7 +1408,7 @@ str.matchAll(regexp) // RegExpStringIterator {}
 
 在以往的版本中，Function.prototype.toString()得到的字符串是去掉空白符号的，但是从ES10开始会保留这些空格，如果是原生函数则返回你控制台看到的效果，例子如下：
 
-``` js
+```js
 function sum(a, b) {
   return a + b
 }
@@ -1426,12 +1425,12 @@ console.log(Math.abs.toString()) // 'function abs() { [native code] }'
 
 在以往的版本中，try-catch里catch后面必须带异常参数，例如：
 
-``` js
+```js
 // ES10之前
 try {
-// tryCode
+  // tryCode
 } catch (err) {
-// catchCode
+  // catchCode
 }
 ```
 
@@ -1455,14 +1454,14 @@ BigInt 是一种内置对象，它提供了一种方法来表示大于 253 - 1 �
 
 ```js
 // 大于2的53次方的整数，无法保持精度
-2 ** 53 === (2 ** 53 + 1)
+2 ** 53 === 2 ** 53 + 1
 // 超过2的1024次方的数值，无法表示
 2 ** 1024 // Infinity
 ```
 
 但是在ES10引入BigInt之后，这个问题便得到了解决。
 
-以下操作符可以和 BigInt 一起使用： +、*、-、**、% 。除 >>> （无符号右移）之外的位操作也可以支持。因为 BigInt 都是有符号的， >>> （无符号右移）不能用于 BigInt。BigInt 不支持单目 (+) 运算符。
+以下操作符可以和 BigInt 一起使用： +、\*、-、\*\*、% 。除 >>> （无符号右移）之外的位操作也可以支持。因为 BigInt 都是有符号的， >>> （无符号右移）不能用于 BigInt。BigInt 不支持单目 (+) 运算符。
 
 / 操作符对于整数的运算也没问题。可是因为这些变量是 BigInt 而不是 BigDecimal ，该操作符结果会向零取整，也就是说不会返回小数部分。
 
@@ -1470,19 +1469,19 @@ BigInt 和 Number不是严格相等的，但是宽松相等的。
 
 所以在BigInt出来以后，JS的原始类型便增加到了7个，如下：
 
-* Boolean
-* Null
-* Undefined
-* Number
-* String
-* Symbol (ES6)
-* BigInt (ES10)
+- Boolean
+- Null
+- Undefined
+- Number
+- String
+- Symbol (ES6)
+- BigInt (ES10)
 
 ### globalThis
 
 globalThis属性包含类似于全局对象 this值。所以在全局环境下，我们有：
 
-``` js
+```js
 globalThis === this // true
 ```
 
@@ -1494,17 +1493,17 @@ globalThis === this // true
 
 所以我们有以下例子：
 
-``` js
+```js
 const main = document.querySelector('main')
 for (const link of document.querySelectorAll('nav > a')) {
-  link.addEventListener('click', e => {
+  link.addEventListener('click', (e) => {
     e.preventDefault()
 
     import('/modules/my-module.js')
-      .then(module => {
+      .then((module) => {
         module.loadPageInto(main)
       })
-      .catch(err => {
+      .catch((err) => {
         main.textContent = err.message
       })
   })
@@ -1515,7 +1514,7 @@ for (const link of document.querySelectorAll('nav > a')) {
 
 在ES10之前，如果我们要实现一个简单的计数器组件，我们可能会这么写：
 
-``` js
+```js
 // web component 写法
 class Counter extends HTMLElement {
   get x() {
@@ -1550,7 +1549,7 @@ window.customElements.define('num-counter', Counter)
 
 但是在ES10之后我们可以使用私有变量进行组件封装，如下：
 
-``` js
+```js
 class Counter extends HTMLElement {
   #xValue = 0
 

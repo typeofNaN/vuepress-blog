@@ -3,7 +3,7 @@ title: Git 常用命令
 date: 2019-01-15
 category: 技术文章
 tag:
-    - Git
+  - Git
 ---
 
 本文统计一下 Git 常用命令。
@@ -12,7 +12,7 @@ tag:
 
 ## 初始化本地仓库
 
-``` sh
+```sh
 git init <directory>
 ```
 
@@ -20,31 +20,31 @@ directory 是可选的，如果不指定，将使用当前目录。
 
 ## 克隆一个远程仓库
 
-``` sh
+```sh
 git clone <url>
 ```
 
 ## 添加文件到暂存区
 
-``` sh
+```sh
 git add <file>
 ```
 
 要添加当前目录中的所有文件，请使用 . 代替,代码如下：
 
-``` sh
+```sh
 git add .
 ```
 
 ## 提交更改
 
-``` sh
+```sh
 git commit -m "<message>"
 ```
 
 如果要添加对跟踪文件所做的所有更改并提交。
 
-``` sh
+```sh
 git commit -a -m "<message>"
 ## or
 git commit -am "<message>"
@@ -52,25 +52,25 @@ git commit -am "<message>"
 
 ## 从暂存区删除一个文件
 
-``` sh
+```sh
 git reset <file>
 ```
 
 ## 移动或重命名文件
 
-``` sh
+```sh
 git mv <current path> <new path>
 ```
 
 ## 从存储库中删除文件
 
-``` sh
+```sh
 git rm <file>
 ```
 
 您也可以仅使用 --cached 标志将其从暂存区中删除
 
-``` sh
+```sh
 git rm --cached <file>
 ```
 
@@ -84,56 +84,56 @@ git rm --cached <file>
 
 ## 显示分支
 
-``` sh
+```sh
 git branch
 ```
 
 有用的标志：
 
-* -a：显示所有分支（本地和远程）
-* -r：显示远程分支
-* -v：显示最后一次提交的分支
+- -a：显示所有分支（本地和远程）
+- -r：显示远程分支
+- -v：显示最后一次提交的分支
 
 ## 创建一个分支
 
-``` sh
+```sh
 git branch <branch>
 ```
 
 你可以创建一个分支并使用 checkout 命令切换到它。
 
-``` sh
+```sh
 git checkout -b <branch>
 ```
 
 ## 切换到一个分支
 
-``` sh
+```sh
 git checkout <branch>
 ```
 
 ## 删除一个分支
 
-``` sh
+```sh
 git branch -d <branch>
 ```
 
 您还可以使用 -D 标志强制删除分支。
 
-``` sh
+```sh
 git branch -D <branch>
 ```
 
 ## 合并分支
 
-``` sh
+```sh
 git merge <branch to merge into HEAD>
 ```
 
 有用的标志：
 
-* --no-ff：即使合并解析为快进，也创建合并提交
-* --squash：将指定分支中的所有提交压缩为单个提交
+- --no-ff：即使合并解析为快进，也创建合并提交
+- --squash：将指定分支中的所有提交压缩为单个提交
 
 建议不要使用 --squash 标志，因为它会将所有提交压缩为单个提交，从而导致提交历史混乱。
 
@@ -141,61 +141,61 @@ git merge <branch to merge into HEAD>
 
 变基是将一系列提交移动或组合到新的基本提交的过程。
 
-``` sh
+```sh
 git rebase <branch to rebase from>
 ```
 
 ## 查看之前的提交
 
-``` sh
+```sh
 git checkout <commit id>
 ```
 
 ## 恢复提交
 
-``` sh
+```sh
 git revert <commit id>
 ```
 
 ## 重置提交
 
-``` sh
+```sh
 git reset <commit id>
 ```
 
 您还可以添加 --hard 标志来删除所有更改，但请谨慎使用。
 
-``` sh
+```sh
 git reset --hard <commit id>
 ```
 
 ## 查看存储库的状态
 
-``` sh
+```sh
 git status
 ```
 
 ## 显示提交历史
 
-``` sh
+```sh
 git log
 ```
 
 ## 显示对未暂存文件的更改
 
-``` sh
+```sh
 git diff
 ```
 
 您还可以使用 --staged 标志来显示对暂存文件的更改。
 
-``` sh
+```sh
 git diff --staged
 ```
 
 ## 显示两次提交之间的变化
 
-``` sh
+```sh
 git diff <commit id 01> <commit id 02>
 ```
 
@@ -203,19 +203,19 @@ git diff <commit id 01> <commit id 02>
 
 stash 允许您在不提交更改的情况下临时存储更改。
 
-``` sh
+```sh
 git stash
 ```
 
 您还可以将消息添加到存储中。
 
-``` sh
+```sh
 git stash save "<message>"
 ```
 
 ## 列出存储
 
-``` sh
+```sh
 git stash list
 ```
 
@@ -223,7 +223,7 @@ git stash list
 
 应用存储不会将其从存储列表中删除。
 
-``` sh
+```sh
 git stash apply <stash id>
 ```
 
@@ -231,90 +231,90 @@ git stash apply <stash id>
 
 您还可以使用格式 stash@{} 应用存储（适用于所有类似的存储命令）
 
-``` sh
+```sh
 git stash apply stash@{0}
 ```
 
 ## 删除一个藏匿处
 
-``` sh
+```sh
 git stash drop <stash id>
 ```
 
 ## 删除所有藏匿处
 
-``` sh
+```sh
 git stash clear
 ```
 
 ## 应用和删除存储
 
-``` sh
+```sh
 git stash pop <stash id>
 ```
 
 ## 显示存储中的更改
 
-``` sh
+```sh
 git stash show <stash id>
 ```
 
 ## 添加远程仓库
 
-``` sh
+```sh
 git remote add <remote name> <url>
 ```
 
 ## 显示远程仓库
 
-``` sh
+```sh
 git remote
 ```
 
 添加 -v 标志以显示远程存储库的 URL。
 
-``` sh
+```sh
 git remote -v
 ```
 
 ## 删除远程仓库
 
-``` sh
+```sh
 git remote remove <remote name>
 ```
 
 ## 重命名远程存储库
 
-``` sh
+```sh
 git remote rename <old name> <new name>
 ```
 
 ## 从远程存储库中获取更改
 
-``` sh
+```sh
 git fetch <remote name>
 ```
 
 ## 从特定分支获取更改
 
-``` sh
+```sh
 git fetch <remote name> <branch>
 ```
 
 ## 从远程存储库中拉取更改
 
-``` sh
+```sh
 git pull <remote name> <branch>
 ```
 
 ## 将更改推送到远程存储库
 
-``` sh
+```sh
 git push <remote name>
 ```
 
 ## 将更改推送到特定分支
 
-``` sh
+```sh
 git push <remote name> <branch>
 ```

@@ -3,8 +3,8 @@ title: 前端计时器为什么会存在误差
 date: 2024-06-16
 category: 技术文章
 tag:
-    - Timer
-    - 计时器误差
+  - Timer
+  - 计时器误差
 ---
 
 本文分析一下前端计时器为什么会存在误差。
@@ -17,7 +17,7 @@ tag:
 
 JavaScript是单线程语言，所有任务（包括定时器回调）都在同一个线程中排队执行。当主线程被耗时任务（如复杂计算、网络请求）阻塞时，定时器回调只能“望队兴叹”，导致实际执行时间远晚于预期时间。就像一家只有一个收银台的超市，即使定时器提醒“该收银了”，但前面排队的顾客（同步任务）太多，收银员（主线程）根本腾不出手。
 
-``` js
+```js
 // 模拟主线程阻塞
 let count = 0
 
@@ -45,7 +45,7 @@ setInterval(() => {
 
 核心思想：每次执行回调时，计算实际偏差（offset），动态调整下一次定时器的间隔时间。
 
-``` js
+```js
 function preciseCountdown(duration) {
   let startTime = Date.now()
   let expected = duration
@@ -56,7 +56,7 @@ function preciseCountdown(duration) {
     const remaining = duration - elapsed
 
     if (remaining <= 0) {
-      console.log("倒计时结束")
+      console.log('倒计时结束')
       return
     }
 
@@ -65,7 +65,7 @@ function preciseCountdown(duration) {
     expected += 1000
     const nextInterval = 1000 - drift
 
-    console.log(`剩余时间: ${Math.round(remaining/1000)}秒，偏差: ${drift}ms`)
+    console.log(`剩余时间: ${Math.round(remaining / 1000)}秒，偏差: ${drift}ms`)
     setTimeout(step, Math.max(0, nextInterval))
   }
 
@@ -87,7 +87,7 @@ function preciseCountdown(duration) {
 
 通过visibilitychange事件检测页面是否可见，不可见时暂停计时，可见时重新校准时间。
 
-``` js
+```js
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
     // 记录暂停时间点
@@ -104,7 +104,7 @@ document.addEventListener('visibilitychange', () => {
 
 将倒计时逻辑放在Web Worker线程中执行，避免主线程阻塞导致的误差。
 
-``` js
+```js
 let timer
 self.onmessage = (e) => {
   if (e.data.command === 'start') {
@@ -147,19 +147,23 @@ self.onmessage = (e) => {
 
 利用CSS动画的硬件加速特性渲染倒计时，JavaScript仅负责逻辑校准。
 
-``` css
+```css
 .countdown {
   animation: countdown 10s linear;
   animation-play-state: running;
 }
 
 @keyframes countdown {
-  from { --progress: 100%; }
-  to { --progress: 0%; }
+  from {
+    --progress: 100%;
+  }
+  to {
+    --progress: 0%;
+  }
 }
 ```
 
-``` js
+```js
 // 监听动画每一帧
 element.addEventListener('animationiteration', () => {
   updateDisplay()
@@ -170,13 +174,13 @@ element.addEventListener('animationiteration', () => {
 
 ### 3.1 复合型校准策略
 
-* `短时倒计时`：动态setTimeout修正 + performance.now()
-* `长时倒计时`：服务端时间校准 + 页面可见性监听
-* `超高精度场景`：Web Worker + CSS动画
+- `短时倒计时`：动态setTimeout修正 + performance.now()
+- `长时倒计时`：服务端时间校准 + 页面可见性监听
+- `超高精度场景`：Web Worker + CSS动画
 
 ### 3.2 误差监控与告警
 
-``` js
+```js
 // 记录每次偏差用于分析
 const driftHistory = []
 
@@ -190,10 +194,10 @@ function logDrift(drift) {
 
 ### 3.3 用户体验优化
 
-* `倒计时结束前预加载数据`：避免结束时集中请求导致服务端压力。
-* `显示毫秒数`：通过requestAnimationFrame实现流畅渲染：
+- `倒计时结束前预加载数据`：避免结束时集中请求导致服务端压力。
+- `显示毫秒数`：通过requestAnimationFrame实现流畅渲染：
 
-``` js
+```js
 function updateMilliseconds() {
   const ms = remaining % 1000
   element.textContent = ms.toString().padStart(3, '0')
@@ -204,21 +208,17 @@ function updateMilliseconds() {
 ## 4. 误差产生原因以及解决方案总结
 
 1. 定时器延迟
-
-   * `原因`：setTimeout 和 setInterval 受主线程阻塞的影响，导致执行时机可能会有延迟。
-   * `解决方案`：使用 requestAnimationFrame 替代 setInterval 或 setTimeout，尤其是需要精确渲染的场景。或者使用 Web Workers 来在后台执行任务，不受主线程阻塞。
+   - `原因`：setTimeout 和 setInterval 受主线程阻塞的影响，导致执行时机可能会有延迟。
+   - `解决方案`：使用 requestAnimationFrame 替代 setInterval 或 setTimeout，尤其是需要精确渲染的场景。或者使用 Web Workers 来在后台执行任务，不受主线程阻塞。
 
 2. JavaScript 单线程问题
-
-   * `原因`：JavaScript 在单线程中执行，多个任务排队可能导致定时器执行延迟。
-   * `解决方案`：尽量减少主线程的任务量，将耗时的操作（如计算密集型任务）转移到 Web Workers，或者优化现有的 JavaScript 代码，使任务处理更加高效。
+   - `原因`：JavaScript 在单线程中执行，多个任务排队可能导致定时器执行延迟。
+   - `解决方案`：尽量减少主线程的任务量，将耗时的操作（如计算密集型任务）转移到 Web Workers，或者优化现有的 JavaScript 代码，使任务处理更加高效。
 
 3. 设备与系统时钟差异
-
-   * `原因`：设备端的倒计时依赖操作系统时钟，操作系统时钟更新频率高于浏览器中的定时器，且直接读取系统时间，因此误差较小。
-   * `解决方案`：通过使用更精确的系统时钟来读取时间，或者使用 performance.now() 获取高精度时间。对于长时间运行的应用，定期同步时钟以减小误差。
+   - `原因`：设备端的倒计时依赖操作系统时钟，操作系统时钟更新频率高于浏览器中的定时器，且直接读取系统时间，因此误差较小。
+   - `解决方案`：通过使用更精确的系统时钟来读取时间，或者使用 performance.now() 获取高精度时间。对于长时间运行的应用，定期同步时钟以减小误差。
 
 4. 浏览器渲染与执行周期
-
-   * `原因`：浏览器在渲染页面时经过多个步骤，包括 DOM 构建、布局计算和渲染层绘制，导致倒计时更新与渲染周期不完全同步。
-   * `解决方案`：将定时器与浏览器的渲染周期结合，使用 requestAnimationFrame 来确保倒计时更新与页面渲染同步。此外，尽量避免阻塞渲染的操作，提高页面渲染的流畅性。
+   - `原因`：浏览器在渲染页面时经过多个步骤，包括 DOM 构建、布局计算和渲染层绘制，导致倒计时更新与渲染周期不完全同步。
+   - `解决方案`：将定时器与浏览器的渲染周期结合，使用 requestAnimationFrame 来确保倒计时更新与页面渲染同步。此外，尽量避免阻塞渲染的操作，提高页面渲染的流畅性。

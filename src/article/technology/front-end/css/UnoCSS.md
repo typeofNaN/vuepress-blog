@@ -3,8 +3,8 @@ title: UnoCSS常用类名
 date: 2024-03-15
 category: 技术文章
 tag:
-    - UnoCSS
-    - CSS 原子化
+  - UnoCSS
+  - CSS 原子化
 ---
 
 **UnoCSS** 是一个即时的原子化 CSS 引擎，旨在灵活和可扩展。核心是不拘一格的，所有的 CSS 工具类都是通过预设提供的。再也不用为了取一个 class name 类名而烦恼了。
@@ -13,8 +13,8 @@ tag:
 
 ## 开发者必备
 
-* [UnoCSS 在线查找工具](https://unocss.dev/interactive/)
-* VSCode 插件 **UnoCSS**
+- [UnoCSS 在线查找工具](https://unocss.dev/interactive/)
+- VSCode 插件 **UnoCSS**
 
 ## UnoCSS 特点
 
@@ -39,39 +39,39 @@ tag:
 
 @tab npm
 
-``` sh
+```sh
 npm install unocss -dev
 ```
 
 @tab:active pnpm
 
-``` sh
+```sh
 pnpm add -D unocss
 ```
 
 @tab yarn
-``` sh
+
+```sh
 yarn add -D unocss
 ```
+
 :::
 
 2. 在 `vite.config.js` 中配置
 
-``` ts
+```ts
 // vite.config.ts
 import UnoCSS from 'unocss/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  plugins: [
-    UnoCSS()
-  ]
+  plugins: [UnoCSS()],
 })
 ```
 
 3. 创建一个 `uno.config.ts` 配置文件：
 
-``` ts
+```ts
 // uno.config.ts
 import { defineConfig } from 'unocss'
 
@@ -82,7 +82,7 @@ export default defineConfig({
 
 4. 在 `main.ts` 中引入
 
-``` ts
+```ts
 // main.js
 
 import { createApp } from 'vue'
@@ -93,10 +93,7 @@ import 'unocss/themes/solid.css'
 
 // ...
 
-createApp(App)
-  .use(createPinia())
-  .use(router)
-  .mount('#app')
+createApp(App).use(createPinia()).use(router).mount('#app')
 ```
 
 ## 使用
@@ -105,15 +102,15 @@ createApp(App)
 
 常用值：
 
-* `w-0`: `width: 0;`
-* `w-1`: `width: 0.25rem;`
-* `h-100px`: `height: 100px;`
-* `h--10px`: `height: -10px;`
-* `h-full`: `height: 100%;`
-* `min-w-screen`: `min-width: 100vw;`
-* `w-[calc(100%-100px)]`: `width: calc(100% - 100px)`
+- `w-0`: `width: 0;`
+- `w-1`: `width: 0.25rem;`
+- `h-100px`: `height: 100px;`
+- `h--10px`: `height: -10px;`
+- `h-full`: `height: 100%;`
+- `min-w-screen`: `min-width: 100vw;`
+- `w-[calc(100%-100px)]`: `width: calc(100% - 100px)`
 
-``` html
+```html
 <div class="min-h-100px w-50vw"></div>
 <!--等价于-->
 <div style="min-height: 100px; width: 50vw;"></div>
@@ -121,7 +118,7 @@ createApp(App)
 
 ### 2、background
 
-``` html
+```html
 <div class="bg-#f00"></div>
 <!--等价于-->
 <div style="background-color: #f00"></div>
@@ -129,7 +126,7 @@ createApp(App)
 
 ### 3、font、text-align
 
-``` html
+```html
 <div class="text-center font-700 text-#f00 text-20px"></div>
 <!--等价于-->
 <div style="text-align: center; font-weight: 700; color: #f00; font-size: 20px;"></div>
@@ -139,22 +136,22 @@ createApp(App)
 
 常用值：
 
-* `rounded-none`: `border-radius: 0;`
-* `rounded-l`: `border-top-left-radius: 0.25rem; border-bottom-left-radius: 0.25rem;`
-* `rounded-full`: `border-radius: 9999px;`
-* `border-0`: `border-width: 0;`
-* `b-0`: `border-width: 0;`
-* `b-1`: `border-width: 1px;`
-* `b-b-1`: `border-bottom-width: 1px;`
-* `b-solid`: `border-style: solid;`
-* `b-#f00`: `border-color: #f00;`
-* `b-rd`: `border-radius: 0.25rem;`
-* `b-rounded`: `border-radius: 0.25rem;`
-* `b-rd-6px`: `border-radius: 6px;`
-* `b-rd-full`: `border-radius: 9999px;`
-* `b-rd-50%`: `border-radius: 50%;`
+- `rounded-none`: `border-radius: 0;`
+- `rounded-l`: `border-top-left-radius: 0.25rem; border-bottom-left-radius: 0.25rem;`
+- `rounded-full`: `border-radius: 9999px;`
+- `border-0`: `border-width: 0;`
+- `b-0`: `border-width: 0;`
+- `b-1`: `border-width: 1px;`
+- `b-b-1`: `border-bottom-width: 1px;`
+- `b-solid`: `border-style: solid;`
+- `b-#f00`: `border-color: #f00;`
+- `b-rd`: `border-radius: 0.25rem;`
+- `b-rounded`: `border-radius: 0.25rem;`
+- `b-rd-6px`: `border-radius: 6px;`
+- `b-rd-full`: `border-radius: 9999px;`
+- `b-rd-50%`: `border-radius: 50%;`
 
-``` html
+```html
 <div class="b-1 b-solid b-#f00 b-rd-6px"></div>
 <!--等价于-->
 <div style="border: 1px solid #f00; border-radius: 6px;"></div>
@@ -164,13 +161,13 @@ createApp(App)
 
 常用值：
 
-* `m-0`: `margin: 0;`
-* `mx-0`: `margin-left: 0; margin-right: 0;`
-* `py-10px`: `padding-top: 10px; padding-bottom: 10px;`
-* `p-10px`: `padding: 10px;`
-* `p--20px`: `padding: -20px;`
+- `m-0`: `margin: 0;`
+- `mx-0`: `margin-left: 0; margin-right: 0;`
+- `py-10px`: `padding-top: 10px; padding-bottom: 10px;`
+- `p-10px`: `padding: 10px;`
+- `p--20px`: `padding: -20px;`
 
-``` html
+```html
 <div class="m-10px p-10px"></div>
 <!--等价于-->
 <div style="margin: 10px; padding: 10px;"></div>
@@ -180,31 +177,33 @@ createApp(App)
 
 常用值：
 
-* `flex`: `display: flex;`
-* `flex-wrap`: `flex-wrap: wrap;`
-* `flex-row`: `flex-direction: row;`
-* `flex-col`: `flex-direction: column;`
-* `flex-justify-between`: `justify-content: space-between;`
-* `flex-justify-center`: `justify-content: center;`
-* `flex-items-center`: `align-items: center;`
-* `gap-24px`: `gap-24px`
+- `flex`: `display: flex;`
+- `flex-wrap`: `flex-wrap: wrap;`
+- `flex-row`: `flex-direction: row;`
+- `flex-col`: `flex-direction: column;`
+- `flex-justify-between`: `justify-content: space-between;`
+- `flex-justify-center`: `justify-content: center;`
+- `flex-items-center`: `align-items: center;`
+- `gap-24px`: `gap-24px`
 
-``` html
+```html
 <div class="flex flex-row justify-between items-center"></div>
 <!--等价于-->
-<div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;"></div>
+<div
+  style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;"
+></div>
 ```
 
 ### 7、overflow
 
 常用值：
 
-* `overflow-hidden`: `overflow: hidden;`
-* `overflow-auto`: `overflow: auto;`
-* `overflow-scroll`: `overflow: scroll;`
-* `overflow-x-auto`: `overflow-x: auto;`
+- `overflow-hidden`: `overflow: hidden;`
+- `overflow-auto`: `overflow: auto;`
+- `overflow-scroll`: `overflow: scroll;`
+- `overflow-x-auto`: `overflow-x: auto;`
 
-``` html
+```html
 <div class="min-h-100px max-h-60vh w-100% overflow-y-scroll"></div>
 <!--等价于-->
 <div style="min-height: 100px; max-height: 60vh; width: 100%; overflow-y: scroll;"></div>
@@ -214,17 +213,17 @@ createApp(App)
 
 常用值：
 
-* `absolute`: `position: absolute;`
-* `position-absolute`: `position: absolute;`
-* `position-fixed`: `position: fixed;`
-* `position-relative`: `position: relative;`
-* `left-0`: `left: 0;`
-* `top-5px`: `top: 5px;`
-* `z-0`: `z-index: 0;`
-* `z-100`: `z-index: 100;`
-* `fixed-center`
+- `absolute`: `position: absolute;`
+- `position-absolute`: `position: absolute;`
+- `position-fixed`: `position: fixed;`
+- `position-relative`: `position: relative;`
+- `left-0`: `left: 0;`
+- `top-5px`: `top: 5px;`
+- `z-0`: `z-index: 0;`
+- `z-100`: `z-index: 100;`
+- `fixed-center`
 
-``` html
+```html
 <div class="absolute left-0 top-5px z-100"></div>
 <!--等价于-->
 <div style="position: absolute; left: 0; top: 5px; z-index: 100;"></div>
@@ -234,10 +233,10 @@ createApp(App)
 
 常用值：
 
-* `hover-block`: `display: block;`
-* `hover-text-pink`: `color: pink;`
+- `hover-block`: `display: block;`
+- `hover-text-pink`: `color: pink;`
 
-``` html
+```html
 <div class="last-hover-text-pink"></div>
 <!--等价于-->
 <style>
@@ -252,12 +251,12 @@ createApp(App)
 
 常用值：
 
-* `block`: `display: block;`
-* `inline-block`: `display: inline-block;`
-* `flex`: `display: flex;`
-* `hidden`: `display: none;`
+- `block`: `display: block;`
+- `inline-block`: `display: inline-block;`
+- `flex`: `display: flex;`
+- `hidden`: `display: none;`
 
-``` html
+```html
 <div class="flex"></div>
 <!--等价于-->
 <div style="display: flex;"></div>
@@ -265,7 +264,7 @@ createApp(App)
 
 ### 11、important
 
-``` html
+```html
 <div class="!-text-20px"></div>
 <!--等价于-->
 <div style="font-size: 20px !important;"></div>
@@ -275,15 +274,15 @@ createApp(App)
 
 常用值：
 
-* `animate-spin`: `animation: spin 1s linear infinite`
-* `animate-delay-500`: `animation-delay: 500ms`
+- `animate-spin`: `animation: spin 1s linear infinite`
+- `animate-delay-500`: `animation-delay: 500ms`
 
 ## 总结
 
 **UnoCSS** 与 **TailwindCSS** 类似，但是它更加轻量级，使用体验更好，而且它的中文文档也很完善，可以说是 **TailwindCSS** 的一个很好的替代品。
 尤其是 **UnoCSS** 的自定义 class name 类名功能，不用 `[]` 包裹，更加直观，例如：
 
-``` html
+```html
 <!-- 使用 TailwindCSS -->
 <div class="w-[100px] h-[20vh]"></div>
 

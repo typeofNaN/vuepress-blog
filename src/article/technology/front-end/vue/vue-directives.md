@@ -3,8 +3,8 @@ title: Vue常用自定义指令
 date: 2021-01-26
 category: 技术文章
 tag:
-    - Vue
-    - Vue Directive
+  - Vue
+  - Vue Directive
 ---
 
 Vue 自定义指令有全局注册和局部注册两种方式。先来看看注册全局指令的方式，通过 Vue.directive( id, [definition] ) 方式注册全局指令。然后在入口文件中进行 Vue.use() 调用。
@@ -13,7 +13,7 @@ Vue 自定义指令有全局注册和局部注册两种方式。先来看看注�
 
 批量注册指令，新建 directives/index.js 文件
 
-``` js
+```js
 import copy from './copy'
 import longpress from './longpress'
 // 自定义指令
@@ -27,13 +27,13 @@ export default {
     Object.keys(directives).forEach((key) => {
       Vue.directive(key, directives[key])
     })
-  }
+  },
 }
 ```
 
 在 main.js 引入并调用
 
-``` js
+```js
 import Vue from 'vue'
 import Directives from './directives'
 
@@ -42,22 +42,22 @@ Vue.use(Directives)
 
 指令定义函数提供了几个钩子函数（可选）：
 
-* bind: 只调用一次，指令第一次绑定到元素时调用，可以定义一个在绑定时执行一次的初始化动作。
-* inserted: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document 中）。
-* update: 被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值。
-* componentUpdated: 被绑定元素所在模板完成一次更新周期时调用。
-* unbind: 只调用一次， 指令与元素解绑时调用。
+- bind: 只调用一次，指令第一次绑定到元素时调用，可以定义一个在绑定时执行一次的初始化动作。
+- inserted: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document 中）。
+- update: 被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值。
+- componentUpdated: 被绑定元素所在模板完成一次更新周期时调用。
+- unbind: 只调用一次， 指令与元素解绑时调用。
 
 下面分享几个实用的 Vue 自定义指令
 
-* 复制粘贴指令 **v-copy**
-* 长按指令 **v-longpress**
-* 输入框防抖指令 **v-debounce**
-* 禁止表情及特殊字符 **v-emoji**
-* 图片懒加载 **v-lazyload**
-* 权限校验指令 **v-permission**
-* 实现页面水印 **v-waterMarker**
-* 拖拽指令 **v-draggable**
+- 复制粘贴指令 **v-copy**
+- 长按指令 **v-longpress**
+- 输入框防抖指令 **v-debounce**
+- 禁止表情及特殊字符 **v-emoji**
+- 图片懒加载 **v-lazyload**
+- 权限校验指令 **v-permission**
+- 实现页面水印 **v-waterMarker**
+- 拖拽指令 **v-draggable**
 
 ## v-copy
 
@@ -77,7 +77,7 @@ Vue.use(Directives)
 
 在第一次调用时绑定事件，在解绑时移除事件
 
-``` js
+```js
 const copy = {
   bind(el, { value }) {
     el.$value = value
@@ -115,7 +115,7 @@ const copy = {
   // 指令与元素解绑的时候，移除事件绑定
   unbind(el) {
     el.removeEventListener('click', el.handler)
-  }
+  },
 }
 
 export default copy
@@ -125,7 +125,7 @@ export default copy
 
 给 Dom 加上 v-copy 及复制的文本即可
 
-``` vue
+```vue
 <template>
   <button v-copy="copyText">复制</button>
 </template>
@@ -134,9 +134,9 @@ export default copy
 export default {
   data() {
     return {
-      copyText: 'a copy directives'
+      copyText: 'a copy directives',
     }
-  }
+  },
 }
 </script>
 ```
@@ -159,7 +159,7 @@ export default {
 
 在移动端要考虑 touchstart，touchend 事件
 
-``` js
+```js
 const longpress = {
   bind(el, binding, vNode) {
     if (typeof binding.value !== 'function') {
@@ -205,7 +205,7 @@ const longpress = {
   // 指令与元素解绑的时候，移除事件绑定
   unbind(el) {
     el.removeEventListener('click', el.handler)
-  }
+  },
 }
 
 export default longpress
@@ -215,7 +215,7 @@ export default longpress
 
 给 Dom 加上 v-longpress 及回调函数即可
 
-``` vue
+```vue
 <template>
   <button v-longpress="longpress">长按</button>
 </template>
@@ -225,8 +225,8 @@ export default {
   methods: {
     longpress() {
       alert('长按指令生效')
-    }
-  }
+    },
+  },
 }
 </script>
 ```
@@ -247,7 +247,7 @@ export default {
 
 将时间绑定在 click 方法上。
 
-``` js
+```js
 const debounce = {
   inserted(el, binding) {
     let timer
@@ -259,7 +259,7 @@ const debounce = {
         binding.value()
       }, 1000)
     })
-  }
+  },
 }
 
 export default debounce
@@ -269,7 +269,7 @@ export default debounce
 
 给 Dom 加上 v-debounce 及回调函数即可
 
-``` vue
+```vue
 <template>
   <button v-debounce="debounceClick">防抖</button>
 </template>
@@ -279,8 +279,8 @@ export default {
   methods: {
     debounceClick() {
       console.log('只触发一次')
-    }
-  }
+    },
+  },
 }
 </script>
 ```
@@ -293,13 +293,9 @@ export default {
 
 我们常规方法是在每一个表单的 on-change 事件上做处理。
 
-``` vue
+```vue
 <template>
-  <input
-    v-model="note"
-    type="text"
-    @change="validateEmoji"
-  />
+  <input v-model="note" type="text" @change="validateEmoji" />
 </template>
 
 <script>
@@ -308,8 +304,8 @@ export default {
     validateEmoji() {
       const reg = /[^u4E00-u9FA5|d|a-zA-Z|rns,.?!，。？！…—&$=()-+/*{}[]]|s/g
       this.note = this.note.replace(reg, '')
-    }
-  }
+    },
+  },
 }
 </script>
 ```
@@ -320,7 +316,7 @@ export default {
 
 根据正则表达式，设计自定义处理表单输入规则的指令，下面以禁止输入表情和特殊字符为例。
 
-``` js
+```js
 let findEle = (parent, type) => {
   return parent.tagName.toLowerCase() === type ? parent : parent.querySelector(type)
 }
@@ -347,7 +343,7 @@ const emoji = {
   },
   unbind(el) {
     el.$inp.removeEventListener('keyup', el.$inp.handle)
-  }
+  },
 }
 
 export default emoji
@@ -357,13 +353,9 @@ export default emoji
 
 将需要校验的输入框加上 v-emoji 即可
 
-``` vue
+```vue
 <template>
-  <input
-    v-model="note"
-    v-emoji
-    type="text"
-  />
+  <input v-model="note" v-emoji type="text" />
 </template>
 ```
 
@@ -389,7 +381,7 @@ export default emoji
 
 下面封装一个懒加载指令兼容两种方法，判断浏览器是否支持 IntersectionObserver API，如果支持就使用 IntersectionObserver 实现懒加载，否则则使用 scroll 事件监听 + 节流的方法实现。
 
-``` js
+```js
 const lazyload = {
   // install方法
   install(Vue, options) {
@@ -469,7 +461,7 @@ const lazyload = {
         fn.apply(context, args)
       }, delay)
     }
-  }
+  },
 }
 
 export default lazyload
@@ -479,7 +471,7 @@ export default lazyload
 
 将组件内 标签的 src 换成 v-lazyload
 
-``` vue
+```vue
 <img v-lazyload="xxx.jpg" />
 ```
 
@@ -499,7 +491,7 @@ export default lazyload
 
 判断用户的权限是否在这个数组内，如果是则显示，否则则移除 Dom
 
-``` js
+```js
 function checkArray(key) {
   let arr = ['1', '2', '3', '4']
   let index = arr.indexOf(key)
@@ -522,7 +514,7 @@ const permission = {
         el.parentNode && el.parentNode.removeChild(el)
       }
     }
-  }
+  },
 }
 
 export default permission
@@ -532,7 +524,7 @@ export default permission
 
 给 v-permission 赋值判断即可
 
-``` vue
+```vue
 <div class="btn">
   <!-- 显示 -->
   <button v-permission="'1'">权限按钮1</button>
@@ -553,7 +545,7 @@ export default permission
 
 将其设置为背景图片，从而实现页面或组件水印效果
 
-``` js
+```js
 function addWaterMarker(str, parentNode, font, textColor) {
   // 水印文字，父元素，字体，文字颜色
   var can = document.createElement('canvas')
@@ -574,7 +566,7 @@ function addWaterMarker(str, parentNode, font, textColor) {
 const waterMarker = {
   bind: function (el, binding) {
     addWaterMarker(binding.value.text, el, binding.value.font, binding.value.textColor)
-  }
+  },
 }
 
 export default waterMarker
@@ -582,9 +574,9 @@ export default waterMarker
 
 使用，设置水印文案，颜色，字体大小即可
 
-``` vue
+```vue
 <template>
-  <div v-waterMarker="{text:'版权所有',textColor:'rgba(180, 180, 180, 0.4)'}"></div>
+  <div v-waterMarker="{ text: '版权所有', textColor: 'rgba(180, 180, 180, 0.4)' }"></div>
 </template>
 ```
 
@@ -604,7 +596,7 @@ export default waterMarker
 
 鼠标松开(onmouseup)时完成一次拖拽
 
-``` js
+```js
 const draggable = {
   inserted: function (el) {
     el.style.cursor = 'move'
@@ -635,7 +627,7 @@ const draggable = {
         document.onmousemove = document.onmouseup = null
       }
     }
-  }
+  },
 }
 export default draggable
 ```
@@ -644,11 +636,8 @@ export default draggable
 
 在 Dom 上加上 v-draggable 即可
 
-``` vue
+```vue
 <template>
-  <div
-    v-draggable
-    class="el-dialog"
-  ></div>
+  <div v-draggable class="el-dialog"></div>
 </template>
 ```

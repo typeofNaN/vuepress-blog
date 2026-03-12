@@ -3,9 +3,9 @@ title: node-sass 版本与 Node.js 版本对应关系
 date: 2023-03-07
 category: 技术文章
 tag:
-    - node-sass
-    - Node.js
-    - NPM
+  - node-sass
+  - Node.js
+  - NPM
 ---
 
 本文统计一下 node-sass 版本和 Node.js 版本的对应关系。

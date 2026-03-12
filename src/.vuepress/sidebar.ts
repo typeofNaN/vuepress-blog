@@ -12,9 +12,7 @@ export default sidebar({
           text: '设计模式',
           prefix: 'design-patterns/',
           collapsible: true,
-          children: [
-            'prototype-pattern'
-          ]
+          children: ['prototype-pattern'],
         },
         {
           text: '前端',
@@ -25,11 +23,7 @@ export default sidebar({
               text: 'CSS',
               prefix: 'css/',
               collapsible: true,
-              children: [
-                'UnoCSS',
-                'css-vertical-center',
-                'css-style-ruler'
-              ]
+              children: ['UnoCSS', 'css-vertical-center', 'css-style-ruler'],
             },
             {
               text: 'JavaScript',
@@ -45,27 +39,21 @@ export default sidebar({
                 'array-unique',
                 'es6',
                 'jquery-study-note',
-              ]
+              ],
             },
             {
               text: 'Vue',
               prefix: 'vue',
               collapsible: true,
-              children: [
-                'h-function',
-                'jsx-in-vue',
-                'vue-directives'
-              ]
+              children: ['h-function', 'jsx-in-vue', 'vue-directives'],
             },
             {
               text: '小程序',
               prefix: 'miniProgram',
               collapsible: true,
-              children: [
-                'connect-wifi'
-              ]
-            }
-          ]
+              children: ['connect-wifi'],
+            },
+          ],
         },
         {
           text: '后端',
@@ -76,43 +64,30 @@ export default sidebar({
               text: 'Node.js',
               prefix: 'nodejs/',
               collapsible: true,
-              children: [
-                'keymetrics'
-              ]
-            }
-          ]
+              children: ['keymetrics'],
+            },
+          ],
         },
         {
           text: 'Git',
           prefix: 'git/',
           collapsible: true,
-          children: [
-            'git-command',
-            'git-commit-ruler'
-          ]
+          children: ['git-command', 'git-commit-ruler'],
         },
         {
           text: '其他',
           prefix: 'other/',
           collapsible: true,
-          children: [
-            'github-emojis',
-            'build-hexo-blog'
-          ]
-        }
-      ]
+          children: ['github-emojis', 'build-hexo-blog'],
+        },
+      ],
     },
     {
       text: '生活感悟',
       icon: 'heart',
       prefix: 'article/life/',
       collapsible: true,
-      children: [
-        'algorithm-life',
-        'warm-and-free',
-        'their-18-year-old',
-        'say-goodbye'
-      ]
-    }
-  ]
+      children: ['algorithm-life', 'warm-and-free', 'their-18-year-old', 'say-goodbye'],
+    },
+  ],
 })

@@ -3,8 +3,8 @@ title: ES6
 date: 2018-12-15
 category: 技术文章
 tag:
-    - ES6
-    - JavaScript
+  - ES6
+  - JavaScript
 ---
 
 这篇文章的出发点是为了帮助前端开发者串联 ES6前后的 JavaScript 知识，并且可以快速了解 JavaScript 语言的最新进展。
@@ -69,7 +69,7 @@ Why does this happen? During the process that led to ES2015, the name was change
 
 ES2015 之前, var 是唯一可以用来声明变量的语句。
 
-``` js
+```js
 var a = 0
 ```
 
@@ -79,21 +79,22 @@ var a = 0
 
 当你声明一个变量却没有进行初始化，那么它的值直到你对它进行赋值操作之前都是 undefined 。
 
-``` js
+```js
 var a //typeof a === 'undefined'
 ```
 
 你可以对一个变量进行多次重新声明，并覆盖它：
 
-``` js
+```js
 var a = 1
 var a = 2
 ```
 
 你也可以在一条声明语句中一次声明多个变量：
 
-``` js
-var a = 1, b = 2
+```js
+var a = 1,
+  b = 2
 ```
 
 作用域是变量可访问的代码部分。
@@ -120,7 +121,7 @@ let 是ES2015中引入的新功能，它本质上是具有块级作用域的 var
 
 使用变量 var 或 let 声明的变量可以被重新赋值。 使用 const 声明的变量一经初始化，它的值就永远不能再改变，即不可重新被赋值。
 
-``` js
+```js
 const a = 'test'
 ```
 
@@ -140,7 +141,7 @@ const 并不意味着具有不可变性，只是保证用 const 声明的变量�
 
 箭头函数看起来会更加的简洁，因为它允许你使用更短的语法来书写函数：
 
-``` js
+```js
 const myFunction = function () {
   //...
 }
@@ -148,7 +149,7 @@ const myFunction = function () {
 
 到
 
-``` js
+```js
 const myFunction = () => {
   //...
 }
@@ -156,20 +157,20 @@ const myFunction = () => {
 
 如果函数体中只包含一条语句，你甚至可以省略大括号并直接书写这条语句：
 
-``` js
+```js
 const myFunction = () => doSomething()
 ```
 
 参数在括号中传递：
 
-``` js
+```js
 const myFunction = (param1, param2) => doSomething(param1, param2)
 ```
 
 如果该函数只有一个参数，那么可以省略掉括号：
 
-``` js
-const myFunction = param => doSomething(param)
+```js
+const myFunction = (param) => doSomething(param)
 ```
 
 由于这种简短的语法，使得我们可以更便捷的使用比较简短的函数
@@ -180,14 +181,14 @@ const myFunction = param => doSomething(param)
 
 隐式返回只在函数体内只包含一条语句的情况下生效：
 
-``` js
+```js
 const myFunction = () => 'test'
 myFunction() //'test'
 ```
 
 需要注意的一种情况，当返回一个对象时，记得将大括号括在括号中以避免产生歧义，误将其（大括号）解析为函数体的大括号。
 
-``` js
+```js
 const myFunction = () => ({ value: 'test' })
 myFunction() //{value: 'test'}
 ```
@@ -200,13 +201,13 @@ this 可能是一个很难掌握的概念，因为它会根据上下文而进行
 
 对象的方法为常规函数时，方法中的this指向这个对象，因此可以这样做：
 
-``` js
+```js
 const car = {
   model: 'Fiesta',
   manufacturer: 'Ford',
   fullName: function () {
     return `${this.manufacturer} ${this.model}`
-  }
+  },
 }
 ```
 
@@ -214,13 +215,13 @@ const car = {
 
 如果上述方法使用是是箭头函数，由于箭头中的 this 的作用域继承自执行上下文，箭头函数自身不绑定 this，因此 this 的值将在调用堆栈中查找，因此在此代码 car.fullName() 中不会返回常规函数那样的结果，实际会返回字符串 “undefined undefined”：
 
-``` js
+```js
 const car = {
   model: 'Fiesta',
   manufacturer: 'Ford',
   fullName: () => {
     return `${this.manufacturer} ${this.model}`
-  }
+  },
 }
 ```
 
@@ -232,7 +233,7 @@ const car = {
 
 当然，在事件监听器上使用箭头函数也会存在问题。因为 DOM 事件侦听器会自动将 this 与目标元素绑定，如果该事件处理程序的逻辑依赖 this，那么需要常规函数：
 
-``` js
+```js
 const link = document.querySelector('#link')
 link.addEventListener('click', () => {
   // this === window
@@ -256,7 +257,7 @@ JavaScript 实现继承的方式比较罕见：原型继承。原型继承虽然
 
 如下是一个 class 的例子：
 
-``` js
+```js
 class Person {
   constructor(name) {
     this.name = name
@@ -274,7 +275,7 @@ class 具有一个标识符，我们可以使用 new ClassIdentifier() 来创建
 
 类声明语句中也可以增加类需要的一些原型方法。在这种情况下 hello 是 Person 类的一个原型方法，可以在这个类的对象实例上调用：
 
-``` js
+```js
 const jack = new Person('jack')
 
 jack.hello()
@@ -286,7 +287,7 @@ jack.hello()
 
 如果子类中的方法与父类中的方法名重复，那么子类中的同名方法优先级更高：
 
-``` js
+```js
 class Programmer extends Person {
   hello() {
     return super.hello() + ' I am a programmer.'
@@ -310,7 +311,7 @@ jack.hello()
 
 而静态方法则是直接使用类名来调用，而不是通过对象实例调用：
 
-``` js
+```js
 class Person {
   static genericHello() {
     return 'Hello'
@@ -330,7 +331,7 @@ JavaScript 没有内置真正意义上的受保护的私有方法。
 
 你可以通过增加方法 前缀 get 或者 set 创建一个 getter 和 setter，getter 和 setter会在你去获取特定值或者修改特定值的时候执行 get 或者 set内的相关方法。
 
-``` js
+```js
 class Person {
   constructor(name) {
     this._name = name
@@ -348,7 +349,7 @@ class Person {
 
 如果你只有 getter，该属性无法被设置，并且设置此属性的操作都会被忽略：
 
-``` js
+```js
 class Person {
   constructor(name) {
     this._name = name
@@ -362,7 +363,7 @@ class Person {
 
 如果你只有一个 setter，则可以更改该值，但不能从外部访问它：
 
-``` js
+```js
 class Person {
   constructor(name) {
     this._name = name
@@ -378,42 +379,39 @@ class Person {
 
 函数 doSomething 接收一个 param1 参数。
 
-``` js
-const doSomething = (param1) => {
-}
+```js
+const doSomething = (param1) => {}
 ```
 
 我们可以给 param1 设定默认值，如果在调用函数时未传入参数，那么该参数自动设定未默认值。
 
-``` js
-const doSomething = (param1 = 'test') => {
-}
+```js
+const doSomething = (param1 = 'test') => {}
 ```
 
 当然，这种机制同样适用于多个参数：
 
-``` js
-const doSomething = (param1 = 'test', param2 = 'test2') => {
-}
+```js
+const doSomething = (param1 = 'test', param2 = 'test2') => {}
 ```
 
 假如你的函数是一个具有特定属性的对象该怎么处理？
 
 曾几何时，如果我们必须要取一个对象的特定属性值，为了做兼容处理（对象格式不正确），你必须在函数中添加一些代码：
 
-``` js
+```js
 const colorize = (options) => {
   if (!options) {
     options = {}
   }
-  const color = ('color' in options) ? options.color :'yellow'
+  const color = 'color' in options ? options.color : 'yellow'
   // ...
 }
 ```
 
 通过解构，你可以给特定属性提供默认值，如此可以大大简化代码：
 
-``` js
+```js
 const colorize = ({ color = 'yellow' }) => {
   // ...
 }
@@ -421,7 +419,7 @@ const colorize = ({ color = 'yellow' }) => {
 
 如果在调用 colorize 函数时没有传递任何对象，我们同样可以得到一个默认对象作为参数以供使用：
 
-``` js
+```js
 const spin = ({ color = 'yellow' } = {}) => {
   // ...
 }
@@ -433,7 +431,7 @@ const spin = ({ color = 'yellow' } = {}) => {
 
 这个语法看起来非常简便，只需要使用一个反引号替换掉单引号或双引号：
 
-``` js
+```js
 const a_string = `something`
 ```
 
@@ -449,20 +447,21 @@ const a_string = `something`
 
 在 ES6 标准之前，创建跨越两行的字符串只能在一行的结尾使用 ‘’ 字符：
 
-``` js
+```js
 const string =
   'first part
 second part'
 ```
+
 这样使得你创建的字符串虽然跨越了两汉，但是渲染时仍然表现成一行：
 
-``` js
+```js
 first part second part
 ```
 
 需要渲染为多行的话，需要在一行结尾添加 ‘ ’，比如这样：
 
-``` js
+```js
 const string =
   'first line
 
@@ -471,7 +470,7 @@ second line'
 
 或者
 
-``` js
+```js
 const string = 'first line
 '+ 'second line'
 ```
@@ -480,7 +479,7 @@ const string = 'first line
 
 一个模板字符串由一个反引号开始，你只需要按下回车键来创建新的一行，不需要插入特殊符号，最终的渲染效果如下所示：
 
-``` js
+```js
 const string = `Hey
 this
 string
@@ -489,21 +488,21 @@ is awesome!`
 
 需要特别留意空格在这里是有特殊意义的，如果这样做的话：
 
-``` js
+```js
 const string = `First
                 Second`
 ```
 
 那么它会创建出像下面的字符串：
 
-``` js
+```js
 First
-                Second
+Second
 ```
 
 有一个简单的方法可以修复这个问题，只需要将第一行置为空，然后添加了右边的翻译好后调用一个 trim() 方法，就可以消除第一个字符前的所有空格：
 
-``` js
+```js
 const string = `
 First
 Second`.trim()
@@ -515,26 +514,25 @@ Second`.trim()
 
 你只需要使用 ${…} 语法
 
-``` js
+```js
 const var = 'test'
 const string = `something ${var}` //something test
 ```
 
 在 ${} 里面你可以加入任何东西，甚至是表达式：
 
-``` js
+```js
 const string = `something ${1 + 2 + 3}`
 const string2 = `something ${foo() ? 'x' : 'y'}`
 ```
 
 ### Template tags
 
-
 标记模板可能是一个听起来不太有用的功能，但它实际上被许多流行的库使用，如 Styled Components 、Apollo 、GraphQL客户端/服务器库，因此了解它的工作原理至关重要。
 
 在 Styled Components 模板标签中用于定义CSS字符串
 
-``` js
+```js
 const Button = styled.button`
   font-size: 1.5em;
   background-color: black;
@@ -543,7 +541,7 @@ const Button = styled.button`
 
 在 Apollo 中，模板标签用于定义 GraphQL 查询模式：
 
-``` js
+```js
 const query = gql`
   query {
     // ...
@@ -553,7 +551,7 @@ const query = gql`
 
 上面两个例子中的styled.button和gql模板标签其实都是函数:
 
-``` js
+```js
 function gql(literals, ...expressions) {}
 ```
 
@@ -563,7 +561,7 @@ function gql(literals, ...expressions) {}
 
 举个例子：
 
-``` js
+```js
 const string = `something ${1 + 2 + 3}`
 ```
 
@@ -573,7 +571,7 @@ const string = `something ${1 + 2 + 3}`
 
 举一个更复杂的例子：
 
-``` js
+```js
 const string = `something
 another ${'x'}
 new line ${1 + 2 + 3}
@@ -582,21 +580,21 @@ test`
 
 这个例子里面的字面量的序列里面，第1个部分是：
 
-``` js
+```js
 ;`something
 another `
 ```
 
 第2部分是：
 
-``` js
+```js
 ;`
 new line `
 ```
 
 第3部分是：
 
-``` js
+```js
 ;`
 test`
 ```
@@ -607,13 +605,13 @@ test`
 
 比如最简单的处理就是字符串插值，把字面量和表达式拼接起来：
 
-``` js
+```js
 const interpolated = interpolate`I paid ${10}€`
 ```
 
 插值的过程就是：
 
-``` js
+```js
 function interpolate(literals, ...expressions) {
   let string = ``
   for (const [i, val] of expressions) {
@@ -628,7 +626,7 @@ function interpolate(literals, ...expressions) {
 
 给定一个object，你可以抽取其中的一些值并且赋值给命名的变量：
 
-``` js
+```js
 const person = {
   firstName: 'Tom',
   lastName: 'Cruise',
@@ -636,21 +634,21 @@ const person = {
   age: 54, //made up
 }
 
-const {firstName: name, age} = person
+const { firstName: name, age } = person
 ```
 
 name和age就包含了对应的值。
 
 这个语法同样可以用到数组当中：
 
-``` js
+```js
 const a = [1, 2, 3, 4, 5]
 const [first, second] = a
 ```
 
 下面这个语句创建了3个新的变量，分别取的是数组a的第0、1、4下标对应的值：
 
-``` js
+```js
 const [first, second, , , fifth] = a
 ```
 
@@ -661,19 +659,19 @@ ES2015赋予了对象字面量更大的威力。
 简化了包含变量的语法
 原来的写法：
 
-``` js
+```js
 const something = 'y'
 const x = {
-  something: something
+  something: something,
 }
 ```
 
 新的写法：
 
-``` js
+```js
 const something = 'y'
 const x = {
-  something
+  something,
 }
 ```
 
@@ -681,27 +679,27 @@ const x = {
 
 原型可以这样指定：
 
-``` js
-const anObject = { y:'y' }
+```js
+const anObject = { y: 'y' }
 const x = {
-  __proto__: anObject
+  __proto__: anObject,
 }
 super()
-const anObject = { y:'y', test:() => 'zoo' }
+const anObject = { y: 'y', test: () => 'zoo' }
 const x = {
   __proto__: anObject,
   test() {
     return super.test() + 'x'
-  }
+  },
 }
 x.test() //zoo
 ```
 
 ## 动态属性
 
-``` js
+```js
 const x = {
-  ['a' + '_' + 'b']: 'z'
+  ['a' + '_' + 'b']: 'z',
 }
 
 x.a_b // z
@@ -713,7 +711,7 @@ x.a_b // z
 
 ES2015引入了for-of 循环，就是在forEach的基础上加上了break的功能：
 
-``` js
+```js
 //iterate over the value
 for (const v of ['a', 'b', 'c']) {
   console.log(v)
@@ -729,8 +727,8 @@ for (const [i, v] of ['a', 'b', 'c'].entries()) {
 
 它跟for…in的区别在于：
 
-* for…of遍历属性值
-* for…in遍历属性名
+- for…of遍历属性值
+- for…in遍历属性名
 
 ## Promises
 
@@ -750,9 +748,9 @@ Promise是处理异步代码的一种方式，可以少写很多回调。
 
 除了你的代码和第三方库的代码之外，promise在用在现代的Web API中，比如：
 
-* 电池API
-* Fetch API
-* Service Workers
+- 电池API
+- Fetch API
+- Service Workers
 
 在现代的JavaScript中，不使用promise是不太可能的，所以我们来深入研究下promise吧。
 
@@ -760,7 +758,7 @@ Promise是处理异步代码的一种方式，可以少写很多回调。
 
 Promise API暴露了一个Promise构造函数，可以通过new Promise()来初始化：
 
-``` js
+```js
 let done = true
 
 const isItDoneYet = new Promise((resolve, reject) => {
@@ -782,15 +780,15 @@ promise会检查done这个全局变量，如果为true，就返回一个resolved
 
 上面讲了怎么创建一个promise，下面就讲怎么使用（consume）这个promise。
 
-``` js
+```js
 const isItDoneYet = new Promise()
 //...
 const checkIfItsDone = () => {
   isItDoneYet
-    .then(ok => {
+    .then((ok) => {
       console.log(ok)
     })
-    .catch(err => {
+    .catch((err) => {
       console.error(err)
     })
 }
@@ -808,23 +806,23 @@ Fetch API是一个基于promise的机制，调用fetch()相当于使用new Promi
 
 ### 链式promise的例子
 
-``` js
-const status = response => {
+```js
+const status = (response) => {
   if (response.status >= 200 && response.status < 300) {
     return Promise.resolve(response)
   }
 
   return Promise.reject(new Error(response.statusText))
 }
-const json = response => response.json()
+const json = (response) => response.json()
 
 fetch('/todo.json')
   .then(status)
   .then(json)
-  .then(data => {
+  .then((data) => {
     console.log('Request succeeded with JSON response', data)
   })
-  .catch(error => {
+  .catch((error) => {
     console.log('Request failed', error)
   })
 ```
@@ -845,7 +843,7 @@ response还有一个json()方法，它返回一个promise，返回内容转换�
 
 在这个例子里面，我们返回了JSON序列化的数据，所以第3个promise直接接收这个JSON：
 
-``` js
+```js
 .then((data) => {
   console.log('Request succeeded with JSON response', data)
 })
@@ -859,17 +857,17 @@ response还有一个json()方法，它返回一个promise，返回内容转换�
 
 当promise链中的任意一个出错或者reject的时候，就会直接跳到promise链后面最近的catch()语句。
 
-``` js
+```js
 new Promise((resolve, reject) => {
   throw new Error('Error')
-}).catch(err => {
+}).catch((err) => {
   console.error(err)
 })
 
 // or
 new Promise((resolve, reject) => {
   reject('Error')
-}).catch(err => {
+}).catch((err) => {
   console.error(err)
 })
 ```
@@ -878,21 +876,21 @@ new Promise((resolve, reject) => {
 
 如果在catch()里面抛出一个错误，你可以在后面接上第二个catch()来处理这个错误，以此类推。
 
-``` js
+```js
 new Promise((resolve, reject) => {
   throw new Error('Error')
 })
-  .catch(err => {
+  .catch((err) => {
     throw new Error('Error')
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err)
   })
 ```
 
 ### 组织多个promise
 
-``` js
+```js
 Promise.all()
 ```
 
@@ -900,22 +898,22 @@ Promise.all()
 
 例子：
 
-``` js
+```js
 const f1 = fetch('/something.json')
 const f2 = fetch('/something2.json')
 
 Promise.all([f1, f2])
-  .then(res => {
+  .then((res) => {
     console.log('Array of results', res)
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err)
   })
 ```
 
 结合ES2015的解构赋值语法，你可以这样写：
 
-``` js
+```js
 Promise.all([f1, f2]).then(([res1, res2]) => {
   console.log('Results', res1, res2)
 })
@@ -923,7 +921,7 @@ Promise.all([f1, f2]).then(([res1, res2]) => {
 
 当然这不限于使用fetch， 这适用于任何promise.
 
-``` js
+```js
 Promise.race()
 ```
 
@@ -931,7 +929,7 @@ Promise.race()运行所有传递进去的promise，但是只要有其中一个re
 
 例子：
 
-``` js
+```js
 const promiseOne = new Promise((resolve, reject) => {
   setTimeout(resolve, 500, 'one')
 })
@@ -940,7 +938,7 @@ const promiseTwo = new Promise((resolve, reject) => {
   setTimeout(resolve, 100, 'two')
 })
 
-Promise.race([promiseOne, promiseTwo]).then(result => {
+Promise.race([promiseOne, promiseTwo]).then((result) => {
   console.log(result) // 'two'
 })
 ```
@@ -959,21 +957,21 @@ ES Module是用于处理模块的ECMAScript标准。
 
 引入模块的语法:
 
-``` js
+```js
 import package from 'module-name'
 ```
 
 CommonJS 则是这样使用：
 
-``` js
+```js
 const package = require('module-name')
 ```
 
 一个模块是一个 JavaScript 文件，这个文件使用 export 关键字 导出 一个或多个值（对象、函数或者变量）。例如，下面这个模块提供了一个将字符串变成大写形式的函数：
 
-``` js
+```js
 uppercase.js
-export default str => str.toUpperCase()
+export default (str) => str.toUpperCase()
 ```
 
 在这个例子中，这个模块定义了唯一一个 default export，因此可以是一个匿名函数。否则，需要一个名称来和其它 导出 做区分。
@@ -982,7 +980,7 @@ export default str => str.toUpperCase()
 
 一个 HTML 页面可以通过使用了特殊的 type=module 属性的 script 标签添加一个模块。
 
-``` html
+```html
 <script type="module" src="index.js"></script>
 ```
 
@@ -992,32 +990,32 @@ export default str => str.toUpperCase()
 
 在这个例子中，uppercase.js 模块定义了一个 default export，因此当我们在导入它的时候，我们可以给他起一个任何我们喜欢的名字：
 
-``` js
+```js
 import toUpperCase from './uppercase.js'
 ```
 
 同时我们可以这样使用它:
 
-``` js
+```js
 toUpperCase('test') //'TEST'
 ```
 
 你也可以通过一个绝对路径来导入模块，下面是一个引用来自其它域底下定义的模块的例子：
 
-``` js
+```js
 import toUpperCase from 'https://flavio-es-modules-example.glitch.me/uppercase.js'
 ```
 
 下面同样是一些合法的 import语法：
 
-``` js
+```js
 import { toUpperCase } from '/uppercase.js'
 import { toUpperCase } from '../uppercase.js'
 ```
 
 下面是错误的使用:
 
-``` js
+```js
 import { toUpperCase } from 'uppercase.js'
 import { toUpperCase } from 'utils/uppercase.js'
 ```
@@ -1028,13 +1026,13 @@ import { toUpperCase } from 'utils/uppercase.js'
 
 我们了解了上面的例子：
 
-``` js
-export default str => str.toUpperCase()
+```js
+export default (str) => str.toUpperCase()
 ```
 
 这里生成了一个 default export。然而，你可以通过下面的语法在一个文件里面 导出 多个功能：
 
-``` js
+```js
 const a = 1
 const b = 2
 const c = 3
@@ -1044,26 +1042,26 @@ export { a, b, c }
 
 另外一个模块可以使用下面的方式 import 导入所有：
 
-``` js
+```js
 import * from 'module'
 ```
 
 你也可以通过解构赋值的方式仅仅 import 导出一部分：
 
-``` js
+```js
 import { a } from 'module'
 import { a, b } from 'module'
 ```
 
 为了方便，你还可以使用 as 重命名任何 import 的东西：
 
-``` js
+```js
 import { a, b as two } from 'module'
 ```
 
 你可以导入模块中的默认出口以及通过名称导入任何非默认的出口：
 
-``` js
+```js
 import React, { Component } from 'react'
 ```
 
@@ -1071,13 +1069,13 @@ import React, { Component } from 'react'
 
 ## CORS(跨域资源共享)
 
-进行远程获取模块的时候是遵循 CORS 机制的。这意味着当你引用远程模块的时候，必须使用合法的 CORS 请求头来允许跨域访问（例如：Access-Control-Allow-Origin: *）。
+进行远程获取模块的时候是遵循 CORS 机制的。这意味着当你引用远程模块的时候，必须使用合法的 CORS 请求头来允许跨域访问（例如：Access-Control-Allow-Origin: \*）。
 
 对于不支持模块的浏览器应该怎么做？
 
 结合 type=”module”、nomodule 一起使用：
 
-``` html
+```html
 <script type="module" src="module.js"></script>
 <script nomodule src="fallback.js"></script>
 ```
@@ -1094,14 +1092,14 @@ Webpack 可能仍然会被大量使用，即使 ES 模块可以在浏览器中�
 
 任何字符串有了一些实例方法：
 
-* repeat()
-* codePointAt()
+- repeat()
+- codePointAt()
 
 ### repeat()
 
 根据指定的次数重复字符串：
 
-``` js
+```js
 'Ho'.repeat(3) //'HoHoHo'
 ```
 
@@ -1115,27 +1113,27 @@ Webpack 可能仍然会被大量使用，即使 ES 模块可以在浏览器中�
 
 下面是一个例子，中文的 “𠮷” 是由两个 UTF-16 编码组合而成的：
 
-``` js
-"𠮷".charCodeAt(0).toString(16) //d842
-"𠮷".charCodeAt(1).toString(16) //dfb7
+```js
+'𠮷'.charCodeAt(0).toString(16) //d842
+'𠮷'.charCodeAt(1).toString(16) //dfb7
 ```
 
 如果你将两个 unicode 字符组合起来：
 
-``` js
-"𠮷" //"𠮷"
+```js
+'𠮷' //"𠮷"
 ```
 
 你也可以用 codePointAt() 得到同样的结果:
 
-``` js
-"𠮷".codePointAt(0) //20bb7
+```js
+'𠮷'.codePointAt(0) //20bb7
 ```
 
 如果你将得到的 unicode 编码组合起来：
 
-``` js
-"𠮷" //"𠮷"
+```js
+'𠮷' //"𠮷"
 ```
 
 更多关于 Unicode 的使用方法，参考我的Unicode guide。
@@ -1144,9 +1142,9 @@ Webpack 可能仍然会被大量使用，即使 ES 模块可以在浏览器中�
 
 ES2015 在 Object 类下引入了一些静态方法：
 
-* Object.is() 确定两个值是不是同一个
-* Object.assign() 用来浅拷贝一个对象
-* Object.setPrototypeOf 设置一个对象的原型
+- Object.is() 确定两个值是不是同一个
+- Object.assign() 用来浅拷贝一个对象
+- Object.setPrototypeOf 设置一个对象的原型
 
 ### Object.is()
 
@@ -1154,7 +1152,7 @@ ES2015 在 Object 类下引入了一些静态方法：
 
 使用方式:
 
-``` js
+```js
 Object.is(a, b)
 ```
 
@@ -1172,18 +1170,18 @@ a 和 b 都是 undefined, null, NaN, true 或者都是 false
 
 这个 API 的基本用法是创建一个对象的浅拷贝。
 
-``` js
+```js
 const copied = Object.assign({}, original)
 ```
 
 作为浅拷贝，值会被复制，对象则是拷贝其引用（不是对象本身），因此当你修改了源对象的一个属性值，这个修改也会在拷贝出的对象中生效，因为内部引用的对象是相同的。:
 
-``` js
+```js
 const original = {
   name: 'Fiesta',
   car: {
-    color: 'blue'
-  }
+    color: 'blue',
+  },
 }
 const copied = Object.assign({}, original)
 original.name = 'Focus'
@@ -1194,12 +1192,12 @@ copied.car.color //yellow
 
 我之前提到过，源对象可以是一个或者多个:
 
-``` js
+```js
 const wisePerson = {
-  isWise:true
+  isWise: true,
 }
 const foolishPerson = {
-  isFoolish:true
+  isFoolish: true,
 }
 const wiseAndFoolishPerson = Object.assign({}, wisePerson, foolishPerson)
 console.log(wiseAndFoolishPerson) //{ isWise: true, isFoolish: true }
@@ -1210,24 +1208,24 @@ Object.setPrototypeOf()
 
 使用方法:
 
-``` js
+```js
 Object.setPrototypeOf(object, prototype)
 ```
 
 例子:
 
-``` js
+```js
 const animal = {
-  isAnimal:true
+  isAnimal: true,
 }
 const mammal = {
-  isMammal:true
+  isMammal: true,
 }
 mammal.__proto__ = animal
 mammal.isAnimal //true
 const dog = Object.create(animal)
-dog.isAnimal  //true
-console.log(dog.isMammal)  //undefined
+dog.isAnimal //true
+console.log(dog.isMammal) //undefined
 Object.setPrototypeOf(dog, mammal)
 dog.isAnimal //true
 dog.isMammal //true
@@ -1239,38 +1237,38 @@ dog.isMammal //true
 
 让我们以数组来举例，给出：
 
-``` js
+```js
 const a = [1, 2, 3]
 ```
 
 你可以使用下面的方式创建出一个新的数组：
 
-``` js
+```js
 const b = [...a, 4, 5, 6]
 ```
 
 你也可以像下面这样创建一个数组的拷贝：
 
-``` js
+```js
 const c = [...a]
 ```
 
 这中方式对于对象仍然有效。使用下面的方式克隆一个对象：
 
-``` js
+```js
 const newObj = { ...oldObj }
 ```
 
 用在字符串上的时候，展开操作符会以字符串中的每一个字符创建一个数组：
 
-``` js
+```js
 const hey = 'hey'
 const array = [...hey] // ['h', 'e', 'y']
 ```
 
 这个操作符有一些非常有用的应用。其中最重要的一点就是以一种非常简单的方式使用数组作为函数参数的能力：
 
-``` js
+```js
 const f = (foo, bar) => {}
 const a = [1, 2]
 f(...a)
@@ -1280,14 +1278,14 @@ f(...a)
 
 剩余参数（rest element）在和数组解构（array destructuring）搭配使用的时候非常有用。
 
-``` js
+```js
 const numbers = [1, 2, 3, 4, 5]
 [first, second, ...others] = numbers
 ```
 
 下面是展开元素 （spread elements）:
 
-``` js
+```js
 const numbers = [1, 2, 3, 4, 5]
 const sum = (a, b, c, d, e) => a + b + c + d + e
 const sum = sum(...numbers)
@@ -1297,13 +1295,13 @@ ES2018 引入了 剩余属性 ，同样的操作符但是只能用在对象上�
 
 ## 剩余属性（Rest properties）:
 
-``` js
+```js
 const { first, second, ...others } = {
-  first:1,
-  second:2,
-  third:3,
-  fourth:4,
-  fifth:5
+  first: 1,
+  second: 2,
+  third: 3,
+  fourth: 4,
+  fifth: 5,
 }
 first // 1
 second // 2
@@ -1312,7 +1310,7 @@ others // { third: 3, fourth: 4, fifth: 5 }
 
 属性展开（Spread properties）允许我们结合跟在 … 操作符之后对象的属性：
 
-``` js
+```js
 const items = { first, second, ...others }
 items //{ first: 1, second: 2, third: 3, fourth: 4, fifth: 5 }
 ```
@@ -1327,7 +1325,7 @@ items //{ first: 1, second: 2, third: 3, fourth: 4, fifth: 5 }
 
 Set 可以通过下面的方式初始化：
 
-``` js
+```js
 const s = new Set()
 ```
 
@@ -1335,7 +1333,7 @@ const s = new Set()
 
 你可以使用 add 方法向 Set 中添加项：
 
-``` js
+```js
 s.add('one')
 s.add('two')
 ```
@@ -1348,7 +1346,7 @@ Set 仅会存贮唯一的元素，因此多次调用 s.add(‘one’) 不会重�
 
 我们可以通过下面的方式检查元素是否在 set 中：
 
-``` js
+```js
 s.has('one') //true
 s.has('three') //false
 ```
@@ -1357,7 +1355,7 @@ s.has('three') //false
 
 使用 delete() 方法：
 
-``` js
+```js
 s.delete('one')
 ```
 
@@ -1365,7 +1363,7 @@ s.delete('one')
 
 使用 size 属性：
 
-``` js
+```js
 s.size
 ```
 
@@ -1373,7 +1371,7 @@ s.size
 
 使用 clear() 方法：
 
-``` js
+```js
 s.clear()
 ```
 
@@ -1381,7 +1379,7 @@ s.clear()
 
 使用 keys() 或者 values() 方法 - 它们等价于下面的代码：
 
-``` js
+```js
 for (const k of s.keys()) {
   console.log(k)
 }
@@ -1393,7 +1391,7 @@ for (const k of s.values()) {
 
 entries() 方法返回一个迭代器，你可以这样使用它：
 
-``` js
+```js
 const i = s.entries()
 console.log(i.next())
 ```
@@ -1402,13 +1400,13 @@ console.log(i.next())
 
 你也可以调用 set 的 forEach() 方法：
 
-``` js
-s.forEach(v => console.log(v))
+```js
+s.forEach((v) => console.log(v))
 ```
 
 或者你就直接使用 for..of 循环吧：
 
-``` js
+```js
 for (const k of s) {
   console.log(k)
 }
@@ -1418,13 +1416,13 @@ for (const k of s) {
 
 你可以使用一些值初始化一个 set：
 
-``` js
+```js
 const s = new Set([1, 2, 3, 4])
 ```
 
 ### 将 set 转换为一个数组
 
-``` js
+```js
 const a = [...s.keys()]
 
 // or
@@ -1440,14 +1438,15 @@ const a = [...s.values()]
 下面是主要的不同点：
 
 #### WeakSet 不可迭代
+
 你不能清空 weakSet 中的所有元素
 不能够得到 weakSet 的大小
 
 一个 weakSet 通常是在框架级别的代码中使用，仅仅暴露了下面的方法：
 
-* add()
-* has()
-* delete()
+- add()
+- has()
+- delete()
 
 ## Map
 
@@ -1457,7 +1456,7 @@ const a = [...s.values()]
 
 在引入Map之前，开发者通常把对象(Object)当Map使用，把某个object或value值与指定的key进行关联:
 
-``` js
+```js
 const car = {}
 car['color'] = 'red'
 car.owner = 'jack'
@@ -1473,7 +1472,7 @@ ES6引入了Map数据结构，它为我们处理这种数据结构提供了一�
 
 #### Map的初始化:
 
-``` js
+```js
 const m = new Map()
 ```
 
@@ -1481,7 +1480,7 @@ const m = new Map()
 
 你可以通过set()方法把条目设定到map中：
 
-``` js
+```js
 m.set('color', 'red')
 m.set('age', 2)
 ```
@@ -1490,7 +1489,7 @@ m.set('age', 2)
 
 你可以通过get()方法从map中取出条目:
 
-``` js
+```js
 const color = m.get('color')
 const age = m.get('age')
 ```
@@ -1499,7 +1498,7 @@ const age = m.get('age')
 
 使用delete()方法：
 
-``` js
+```js
 m.delete('color')
 ```
 
@@ -1507,7 +1506,7 @@ m.delete('color')
 
 使用clear()方法：
 
-``` js
+```js
 m.clear()
 ```
 
@@ -1515,7 +1514,7 @@ m.clear()
 
 使用has()方法
 
-``` js
+```js
 const hasColor = m.has('color')
 ```
 
@@ -1523,7 +1522,7 @@ const hasColor = m.has('color')
 
 使用 size 属性:
 
-``` js
+```js
 const size = m.size
 ```
 
@@ -1531,8 +1530,12 @@ const size = m.size
 
 你可以用一组value来初始化一个map：
 
-``` js
-const m = new Map([['color', 'red'], ['owner', 'jack'], ['age', 2]])
+```js
+const m = new Map([
+  ['color', 'red'],
+  ['owner', 'jack'],
+  ['age', 2],
+])
 ```
 
 #### Map 的key值
@@ -1543,7 +1546,7 @@ const m = new Map([['color', 'red'], ['owner', 'jack'], ['age', 2]])
 
 在真实世界中你几乎不可能找到的诡异情况
 
-``` js
+```js
 const m = new Map()
 m.set(NaN, 'test')
 m.get(NaN) //test
@@ -1556,7 +1559,7 @@ m.get(-0) //test
 
 Map提供了keys()方法，通过该方法我们可以迭代出所有的key值:
 
-``` js
+```js
 for (const k of m.keys()) {
   console.log(k)
 }
@@ -1566,7 +1569,7 @@ for (const k of m.keys()) {
 
 Map提供了values()方法，通过该方法我们可以迭代出所有的value值:
 
-``` js
+```js
 for (const v of m.values()) {
   console.log(v)
 }
@@ -1576,7 +1579,7 @@ for (const v of m.values()) {
 
 Map提供了entries()方法，通过该方法我们可以迭代出所有的键值对:
 
-``` js
+```js
 for (const [k, v] of m.entries()) {
   console.log(k, v)
 }
@@ -1584,7 +1587,7 @@ for (const [k, v] of m.entries()) {
 
 使用方法还可以简化为：
 
-``` js
+```js
 for (const [k, v] of m) {
   console.log(k, v)
 }
@@ -1592,13 +1595,13 @@ for (const [k, v] of m) {
 
 将map的keys值转换为数组
 
-``` js
+```js
 const a = [...m.keys()]
 ```
 
 将map的values值转换为数组
 
-``` js
+```js
 const a = [...m.values()]
 ```
 
@@ -1610,16 +1613,16 @@ WeakMap是一种特殊的Map
 
 这是WeakMap的主要不同处：
 
-* 你不可以在WeakMap上迭代keys值和values值(或者key-value键值对)
-* 你不可以从WeakMap上清除所有条目
-* 你不可以获取WeakMap的大小
+- 你不可以在WeakMap上迭代keys值和values值(或者key-value键值对)
+- 你不可以从WeakMap上清除所有条目
+- 你不可以获取WeakMap的大小
 
 WeakMap提供了如下几种方法，这些方法的使用和在Map中一样：
 
-* get(k)
-* set(k, v)
-* has(k)
-* delete(k)
+- get(k)
+- set(k, v)
+- has(k)
+- delete(k)
 
 关于WeakMap的用例不如Map的用例那么明显，你可能永远也不会在哪里会用到它，但从实际出发，WeakMap可以构建不会干扰到垃圾回收机制的内存敏感性缓存，还可以满足封装的严谨性及信息的隐藏性需求。
 
@@ -1631,7 +1634,7 @@ Generators的代码决定它必须等待，因此它允许队列中的其它代�
 
 所有这一切都是通过一个简单的关键字“yield`”完成的。当生成器包含该关键字时，将停止执行。
 
-generator生成器可以包含许多yield关键字，从而使自己能多次停止运行，它是由*function关键字标识(不要将其与C、C++或Go等低级语言中使用的取消指针引用操作符混淆)。
+generator生成器可以包含许多yield关键字，从而使自己能多次停止运行，它是由\*function关键字标识(不要将其与C、C++或Go等低级语言中使用的取消指针引用操作符混淆)。
 
 Generators支持JavaScript中全新的编程范式，包括：
 
@@ -1640,33 +1643,33 @@ Generators支持JavaScript中全新的编程范式，包括：
 
 这里有一个解释generator如何工作的例子：
 
-``` js
-function *calculator(input) {
-  var doubleThat = 2 * (yield (input / 2))
-  var another = yield (doubleThat)
+```js
+function* calculator(input) {
+  var doubleThat = 2 * (yield input / 2)
+  var another = yield doubleThat
 
-  return (input * doubleThat * another)
+  return input * doubleThat * another
 }
 ```
 
 我们先初始化它：
 
-``` js
+```js
 const calc = calculator(10)
 ```
 
 然后我们在generator中开始进行iterator迭代：
 
-``` js
+```js
 calc.next()
 ```
 
 第一个迭代器开始了迭代，代码返回如下object对象：
 
-``` js
+```js
 {
-  done:false
-  value:5
+  done: false
+  value: 5
 }
 ```
 
@@ -1674,16 +1677,16 @@ calc.next()
 
 在第二个迭代处，我们输入7：
 
-``` js
+```js
 calc.next(7)
 ```
 
 然后我们得到了结果：
 
-``` js
+```js
 {
-  done:false
-  value:14
+  done: false
+  value: 14
 }
 ```
 
@@ -1693,13 +1696,13 @@ calc.next(7)
 
 在下一个，也是最后一个迭代器，我们输入100
 
-``` js
+```js
 calc.next(100)
 ```
 
 这样我们得到:
 
-``` js
+```js
 {
   done: true
   value: 14000
@@ -1716,7 +1719,7 @@ calc.next(100)
 
 对于ES6及更低版本，想要检查数组中是否包含指定元素，你不得不使用indexOf方法，它检查数组中的索引，如果元素不存在，它返回-1，由于-1被计算为true，你需对其进行取反操作，例子如下：
 
-``` js
+```js
 if (![1, 2].indexOf(3)) {
   console.log('Not found')
 }
@@ -1724,7 +1727,7 @@ if (![1, 2].indexOf(3)) {
 
 通过ES7引入的新特性，我们可以如此做：
 
-``` js
+```js
 if (![1, 2].includes(3)) {
   console.log('Not found')
 }
@@ -1732,13 +1735,13 @@ if (![1, 2].includes(3)) {
 
 ## 求幂运算符
 
-求幂运算符**相当于Math.pow()方法，但是它不是一个函数库，而是一种语言机制：
+求幂运算符\*\*相当于Math.pow()方法，但是它不是一个函数库，而是一种语言机制：
 
-``` js
+```js
 Math.pow(4, 2) == 4 ** 2
 ```
 
-对于需要进行密集数学运算的程序来说，这个特性是个很好的增强，在很多语言中，**运算符都是标准(包括Python、Ruby、MATLAB、Perl等其它多种语言)。
+对于需要进行密集数学运算的程序来说，这个特性是个很好的增强，在很多语言中，\*\*运算符都是标准(包括Python、Ruby、MATLAB、Perl等其它多种语言)。
 
 这些都是2016年引入的特性，现在让我们进入2017年。
 
@@ -1748,27 +1751,27 @@ Math.pow(4, 2) == 4 ** 2
 
 ES2017引入了两个String方法：padStart()和padEnd()。
 
-``` js
+```js
 padStart(targetLength [, padString])
 padEnd(targetLength [, padString])
 ```
 
 使用例子：
 
-``` js
+```js
 Object.values()
 ```
 
 该方法返回一个数组，数组包含了对象自己的所有属性，使用如下：
 
-``` js
-const person = { name:'Fred', age:87 }
+```js
+const person = { name: 'Fred', age: 87 }
 Object.values(person) // ['Fred', 87]
 ```
 
 Object.values()也可以作用于数组：
 
-``` js
+```js
 const people = ['Fred', 'Tony']
 Object.values(people) // ['Fred', 'Tony']
 Object.entries()
@@ -1776,14 +1779,14 @@ Object.entries()
 
 该方法返回一个数组，数组包含了对象自己的所有属性键值对，是一个[key, value]形式的数组，使用如下：
 
-``` js
-const person = { name:'Fred', age:87 }
+```js
+const person = { name: 'Fred', age: 87 }
 Object.entries(person) // [['name', 'Fred'], ['age', 87]]
 ```
 
 Object.entries()也可以作用于数组：
 
-``` js
+```js
 const people = ['Fred', 'Tony']
 Object.entries(people) // [['0', 'Fred'], ['1', 'Tony']]
 ```
@@ -1792,13 +1795,13 @@ Object.entries(people) // [['0', 'Fred'], ['1', 'Tony']]
 
 该方法返回自己(非继承)的所有属性描述符，JavaScript中的任何对象都有一组属性，每个属性都有一个描述符，描述符是属性的一组属性(attributes)，由以下部分组成：
 
-* value: 熟悉的value值
-* writable: 属性是否可以被更改
-* get: 属性的getter函数, 当属性读取时被调用
-* set: 属性的setter函数, 当属性设置值时被调用
-* configurable: 如果为false, 不能删除该属性，除了它的value值以为，也不能更改任何属性。
-* enumerable: 该属性是否能枚举
-* Object.getOwnPropertyDescriptors(obj)接受一个对象，并返回一个带有描述符集合的对象。
+- value: 熟悉的value值
+- writable: 属性是否可以被更改
+- get: 属性的getter函数, 当属性读取时被调用
+- set: 属性的setter函数, 当属性设置值时被调用
+- configurable: 如果为false, 不能删除该属性，除了它的value值以为，也不能更改任何属性。
+- enumerable: 该属性是否能枚举
+- Object.getOwnPropertyDescriptors(obj)接受一个对象，并返回一个带有描述符集合的对象。
 
 ## In what way is this useful?
 
@@ -1808,24 +1811,24 @@ ES6给我们提供了Object.assign()方法，它从一个一个或多个对象�
 
 如果对象只有一个setter，那么它就不会正确的复制到一个新对象上，使用Object.assign()进行如下操作：
 
-``` js
+```js
 const person1 = {
   set name(newName) {
     console.log(newName)
-  }
+  },
 }
 ```
 
 这将不会起作用：
 
-``` js
+```js
 const person2 = {}
 Object.assign(person2, person1)
 ```
 
 但这将会起作用：
 
-``` js
+```js
 const person3 = {}
 Object.defineProperties(person3)
 Object.getOwnPropertyDescriptors(person1))
@@ -1833,12 +1836,12 @@ Object.getOwnPropertyDescriptors(person1))
 
 通过一个简单的console控制台，你可以查看以下代码：
 
-``` js
+```js
 person1.name = 'x'
-"x"
+;('x')
 person2.name = 'x'
 person3.name = 'x'
-"x"
+;('x')
 ```
 
 person2没有setter，它没能复制进去，对象的浅复制限定也出现在Object.create()方法中。
@@ -1847,11 +1850,11 @@ person2没有setter，它没能复制进去，对象的浅复制限定也出现�
 
 该特性允许在函数定义时有尾逗号，在函数使用时可以有尾逗号：
 
-``` js
-const doSomething = (var1, var2,) => {
+```js
+const doSomething = (var1, var2) => {
   //...
 }
-doSomething('test2', 'test2',)
+doSomething('test2', 'test2')
 ```
 
 该改变将鼓励开发者停止“在一行开始时写逗号”的丑陋习惯
@@ -1876,9 +1879,9 @@ async函数使代码看起来像是同步函数一样，但其背后却是异步
 
 一个async函数会返回一个promise，如下例：
 
-``` js
+```js
 const doSomethingAsync = () => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(() => resolve('I did something'), 3000)
   })
 }
@@ -1886,7 +1889,7 @@ const doSomethingAsync = () => {
 
 当你想要调用该函数时，你在前面加上了一个wait，这样调用就会被停止，直到该promise进行resolve或reject，需注意的是：外层函数必须定义为async，这是例子：
 
-``` js
+```js
 const doSomething = async () => {
   console.log(await doSomethingAsync())
 }
@@ -1896,9 +1899,9 @@ const doSomething = async () => {
 
 这是一个使用async/await进行异步函数的简单示例：
 
-``` js
+```js
 const doSomethingAsync = () => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(() => resolve('I did something'), 3000)
   })
 }
@@ -1912,7 +1915,7 @@ console.log('After')
 
 上面的代码将会在浏览器的console中打印出如下结果：
 
-``` js
+```js
 Before
 After
 I did something //after 3s
@@ -1922,7 +1925,7 @@ I did something //after 3s
 
 将 async 关键字标记在任何函数上，意味着这个函数都将返回一个 Promise，即使这个函数没有显式的返回，它在内部也会返回一个 Promise，这就是下面这份代码有效的原因：
 
-``` js
+```js
 const aFunction = async () => {
   return 'test'
 }
@@ -1931,7 +1934,7 @@ aFunction().then(alert) // This will alert 'test'
 
 下面的例子也一样:
 
-``` js
+```js
 const aFunction = async () => {
   return Promise.resolve('test')
 }
@@ -1946,20 +1949,20 @@ aFunction().then(alert) // This will alert 'test'
 
 例如，使用 Promise 来获取 JSON 资源并解析它：
 
-``` js
+```js
 const getFirstUserData = () => {
   return fetch('/users.json') // get users list
-    .then(response => response.json()) // parse JSON
-    .then(users => users[0]) // pick first user
-    .then(user => fetch(`/users/${user.name}`)) // get user data
-    .then(userResponse => response.json()) // parse JSON
+    .then((response) => response.json()) // parse JSON
+    .then((users) => users[0]) // pick first user
+    .then((user) => fetch(`/users/${user.name}`)) // get user data
+    .then((userResponse) => response.json()) // parse JSON
 }
 getFirstUserData()
 ```
 
 这是使用 async/await 实现相同功能的例子：
 
-``` js
+```js
 const getFirstUserData = async () => {
   const response = await fetch('/users.json') // get users list
   const users = await response.json() // parse JSON
@@ -1975,9 +1978,9 @@ getFirstUserData()
 
 async 函数非常容易，并且它的语法比 Promise 更易读。
 
-``` js
+```js
 const promiseToDoSomething = () => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(() => resolve('I did something'), 10000)
   })
 }
@@ -1989,14 +1992,14 @@ const watchOverSomeoneWatchingSomeoneDoingSomething = async () => {
   const something = await watchOverSomeoneDoingSomething()
   return something + ' and I watched as well'
 }
-watchOverSomeoneWatchingSomeoneDoingSomething().then(res => {
+watchOverSomeoneWatchingSomeoneDoingSomething().then((res) => {
   console.log(res)
 })
 ```
 
 打印结果:
 
-``` js
+```js
 I did something and I watched and I watched as well
 ```
 
@@ -2020,14 +2023,14 @@ Rest/Spread Properties
 
 ES2015 引入了解构数组的方法，当你使用时：
 
-``` js
+```js
 const numbers = [1, 2, 3, 4, 5]
 [first, second, ...others] = numbers
 ```
 
 and 展开参数:
 
-``` js
+```js
 const numbers = [1, 2, 3, 4, 5]
 const sum = (a, b, c, d, e) => a + b + c + d + e
 const sum = sum(...numbers)
@@ -2037,7 +2040,7 @@ ES2018 为对象引入了同样的功能。
 
 解构:
 
-``` js
+```js
 const { first, second, ...others } = { first: 1, second: 2, third: 3, fourth: 4, fifth: 5 }
 first // 1
 second // 2
@@ -2046,7 +2049,7 @@ others // { third: 3, fourth: 4, fifth: 5 }
 
 展开属性 允许通过组合在展开运算符之后传递的对象属性而创建新对象：
 
-``` js
+```js
 const items = { first, second, ...others }
 items //{ first: 1, second: 2, third: 3, fourth: 4, fifth: 5 }
 ```
@@ -2055,7 +2058,7 @@ items //{ first: 1, second: 2, third: 3, fourth: 4, fifth: 5 }
 
 for-await-of 允许你使用异步可迭代对象做为循环迭代：
 
-``` js
+```js
 for await (const line of readLines(filePath)) {
   console.log(line)
 }
@@ -2063,7 +2066,7 @@ for await (const line of readLines(filePath)) {
 
 因为它使用的了 await，因此你只能在 async 函数中使用它。
 
-``` js
+```js
 Promise.prototype.finally()
 ```
 
@@ -2073,10 +2076,10 @@ Promise.prototype.finally()
 
 而 finally() 允许你运行一些代码，无论是成功还是失败：
 
-``` js
+```js
 fetch('file.json')
-  .then(data => data.json())
-  .catch(error => console.error(error))
+  .then((data) => data.json())
+  .catch((error) => console.error(error))
   .finally(() => console.log('finished'))
 ```
 
@@ -2090,7 +2093,7 @@ RegExp lookbehind assertions: 根据前面的内容匹配字符串
 
 这是一个 lookahead: 你可以使用 ?= 来匹配字符串，后面跟随一个特定的字符串：
 
-``` js
+```js
 /Roger(?=Waters)/
 /Roger(?=Waters)/.test('Roger is my dog') //false
 /Roger(?=Waters)/.test('Roger is my dog and Roger Waters is a famous musician') //true
@@ -2098,7 +2101,7 @@ RegExp lookbehind assertions: 根据前面的内容匹配字符串
 
 ?! 可以执行逆操作，如果匹配的字符串是no而不是在此后跟随特定的子字符串的话：
 
-``` js
+```js
 /Roger(?!Waters)/
 /Roger(?!Waters)/.test('Roger is my dog') //true
 /Roger(?!Waters)/.test('Roger Waters is a famous musician') //false
@@ -2108,7 +2111,7 @@ Lookaheads 使用 ?= Symbol，它们已经可以用了。
 
 Lookbehinds, 是一个新功能使用?<=.
 
-``` js
+```js
 /(?<=Roger) Waters/
 /(?<=Roger) Waters/.test('Pink Waters is my dog') //false
 /(?<=Roger) Waters/.test('Roger is my dog and Roger Waters is a famous musician') //true
@@ -2116,7 +2119,7 @@ Lookbehinds, 是一个新功能使用?<=.
 
 如果一个 lookbehind 是否定，那么使用 ?>!:
 
-``` js
+```js
 /(?<!Roger) Waters/
 /(?<!Roger) Waters/.test('Pink Waters is my dog') //true
 /(?<!Roger) Waters/.test('Roger is my dog and Roger Waters is a famous musician') //false
@@ -2132,7 +2135,7 @@ This new feature extends this concept to all Unicode characters introducing p{} 
 
 任何 unicode 字符都有一组属性，例如 script 确认语言，ASCII 是一个布尔值用于检查 ASCII 字符。你可以将此属性方在() 中，正则表达式将来检查是否为真。
 
-``` js
+```js
 /^p{ASCII}+$/u.test('abc')   //✅
 /^p{ASCII}+$/u.test('ABC@')  //✅
 /^p{ASCII}+$/u.test('ABC🙃') //❌
@@ -2140,14 +2143,14 @@ This new feature extends this concept to all Unicode characters introducing p{} 
 
 ASCII_Hex_Digit 是另一个布尔值，用于检查字符串是否包含有效的十六进制数字：
 
-``` js
+```js
 /^p{ASCII_Hex_Digit}+$/u.test('0123456789ABCDEF') //✅
 /^p{ASCII_Hex_Digit}+$/u.test('h')                //❌
 ```
 
 此外，还有很多其它的属性。你可以在()中添加它们的名字来检查它们，包括 Uppercase, Lowercase, White_Space, Alphabetic, Emoji等等：
 
-``` js
+```js
 /^p{Lowercase}$/u.test('h') //✅
 /^p{Uppercase}$/u.test('H') //✅
 /^p{Emoji}+$/u.test('H')   //❌
@@ -2156,7 +2159,7 @@ ASCII_Hex_Digit 是另一个布尔值，用于检查字符串是否包含有效�
 
 除了二进制属性外，你还可以检查任何 unicode 字符属性以匹配特定的值，在这个例子中，我检查字符串是用希腊语还是拉丁字母写的：
 
-``` js
+```js
 /^p{Script=Greek}+$/u.test('ελληνικά') //✅
 /^p{Script=Latin}+$/u.test('hey') //✅
 ```
@@ -2166,7 +2169,7 @@ ASCII_Hex_Digit 是另一个布尔值，用于检查字符串是否包含有效�
 Named capturing groups
 In ES2018 a capturing group can be assigned to a name, rather than just being assigned a slot in the result array:
 
-``` js
+```js
 const re = /(?<year>d{4})-(?<month>d{2})-(?<day>d{2})/
 const result = re.exec('2015-01-02')
 
@@ -2178,7 +2181,7 @@ const result = re.exec('2015-01-02')
 The s flag for regular expressions
 The s flag, short for single line, causes the . to match new line characters as well. Without it, the dot matches regular characters but not the new line:
 
-``` js
+```js
 /hi.welcome/.test('hi
 welcome') // false
 /hi.welcome/s.test('hi
@@ -2205,7 +2208,7 @@ ECMAScript 标准的提案是分阶段组织的，第一到第三阶段属于功
 
 第三阶段还有一些其它功能，可能会在接下来的几个月内升级到第四阶段，你可以在这个 Github 仓库中查看它们：https://github.com/tc39/proposals。
 
-``` js
+```js
 Array.prototype.{flat,flatMap}
 ```
 
@@ -2213,19 +2216,24 @@ flat() 是一个新的数组实例方法，它可以将多维数组转化成一�
 
 例子:
 
-``` js
-['Dog', ['Sheep', 'Wolf']].flat()
+```js
+;['Dog', ['Sheep', 'Wolf']].flat()
 // ['Dog', 'Sheep', 'Wolf']
 ```
 
 默认情况下它只能将二维的数组转化成一维的数组，但你可以添加一个参数来确定要展开的级别，如果你将这个参数设置为 Infinity 那么它将展开无限的级别到一维数组：
 
-``` js
-['Dog', ['Sheep', ['Wolf']]].flat()
-// ['Dog', 'Sheep', ['Wolf']]
-['Dog', ['Sheep', ['Wolf']]].flat(2)
-// ['Dog', 'Sheep', 'Wolf']
-['Dog', ['Sheep', ['Wolf']]].flat(Infinity)
+```js
+;['Dog', ['Sheep', ['Wolf']]]
+  .flat()
+  [
+    // ['Dog', 'Sheep', ['Wolf']]
+    ('Dog', ['Sheep', ['Wolf']])
+  ].flat(2)
+  [
+    // ['Dog', 'Sheep', 'Wolf']
+    ('Dog', ['Sheep', ['Wolf']])
+  ].flat(Infinity)
 // ['Dog', 'Sheep', 'Wolf']
 ```
 
@@ -2233,10 +2241,13 @@ flat() 是一个新的数组实例方法，它可以将多维数组转化成一�
 
 flatMap() 是一个新的数组实例方法，它将 flat() 和 map 结合了起来，当你期望在map函数中做一些处理时这非常有用，同时又希望结果如同 flat ：
 
-``` js
-['My dog', 'is awesome'].map(words => words.split(' '))
-// [['My', 'dog'], ['is', 'awesome']]
-['My dog', 'is awesome'].flatMap(words => words.split(' '))
+```js
+;['My dog', 'is awesome']
+  .map((words) => words.split(' '))
+  [
+    // [['My', 'dog'], ['is', 'awesome']]
+    ('My dog', 'is awesome')
+  ].flatMap((words) => words.split(' '))
 // ['My', 'dog', 'is', 'awesome']
 ```
 
@@ -2246,7 +2257,7 @@ flatMap() 是一个新的数组实例方法，它将 flat() 和 map 结合了起
 
 在以前我们不得不这样做：
 
-``` js
+```js
 try {
   // ...
 } catch (e) {
@@ -2256,7 +2267,7 @@ try {
 
 即使我们从来没有通过 e 来分析错误，但现在我们可以简单的省略它：
 
-``` js
+```js
 try {
   // ...
 } catch {
@@ -2270,14 +2281,14 @@ Objects have an entries() method, since ES2017.
 
 它将返回一个包含所有对象自身属性的数组的数组，如[key, value]：
 
-``` js
-const person = { name:'Fred', age:87 }
-Object.entries(person)  // [['name', 'Fred'], ['age', 87]]
+```js
+const person = { name: 'Fred', age: 87 }
+Object.entries(person) // [['name', 'Fred'], ['age', 87]]
 ```
 
 ES2019 引入了一个新的 Object.fromEntries() 方法，它可以从上述的属性数组中创建一个新的对象：
 
-``` js
+```js
 const person = { name:'Fred', age:87 }
 const entries = Object.entries(person)
 const newPerson = Object.fromEntries(entries)
@@ -2292,29 +2303,29 @@ trimStart()
 
 删除字符串首部的空格并返回一个新的字符串：
 
-``` js
-'Testing'.trimStart()  // 'Testing'
-' Testing'.trimStart()  // 'Testing'
-' Testing '.trimStart()  // 'Testing '
-'Testing'.trimStart()  // 'Testing'
+```js
+'Testing'.trimStart() // 'Testing'
+' Testing'.trimStart() // 'Testing'
+' Testing '.trimStart() // 'Testing '
+'Testing'.trimStart() // 'Testing'
 trimEnd()
 ```
 
 删除字符串尾部的空格并返回一个新的字符串：
 
-``` js
-'Testing'.trimEnd()  // 'Testing'
-' Testing'.trimEnd()  // ' Testing'
-' Testing '.trimEnd()  // ' Testing'
-'Testing '.trimEnd()  // 'Testing'
+```js
+'Testing'.trimEnd() // 'Testing'
+' Testing'.trimEnd() // ' Testing'
+' Testing '.trimEnd() // ' Testing'
+'Testing '.trimEnd() // 'Testing'
 Symbol.prototype.description
 ```
 
 现在你可以使用 description 来获取 Symbol 的值，而不必使用 toString() 方法：
 
-``` js
+```js
 const testSymbol = Symbol('Test')
-testSymbol.description  // 'Test'
+testSymbol.description // 'Test'
 ```
 
 ## JSON improvements
@@ -2341,18 +2352,18 @@ If previously we had
 
 以前也许我们这样过：
 
-``` js
-function /* this is bar */ bar () {}
+```js
+function /* this is bar */ bar() {}
 ```
 
 当时的行为：
 
-``` js
+```js
 bar.toString() //'function bar() {}
 ```
 
 现在的行为：
 
-``` js
-bar.toString(); // 'function /* this is bar */ bar () {}'
+```js
+bar.toString() // 'function /* this is bar */ bar () {}'
 ```

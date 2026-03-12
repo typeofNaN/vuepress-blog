@@ -3,8 +3,8 @@ title: 在Vue中使用JSX
 date: 2022-10-23
 category: 技术文章
 tag:
-    - Vue
-    - jsx
+  - Vue
+  - jsx
 ---
 
 在使用 Vue 开发项目时绝大多数情况下都是使用模板来写 HTML，但是有些时候页面复杂又存在各种条件判断来显示/隐藏和拼凑页面内容，或者页面中很多部分存在部分DOM结构一样的时候就略显捉襟见肘，会写大量重复的代码，会出现单个 .vue 文件过长的情况，这个时候我们就需要更多的代码控制，这时候可以使用渲染函数。
@@ -19,11 +19,11 @@ tag:
 
 ## 基本用法
 
-首先需要约定一下，使用 JSX 组件命名采用首字母大写的驼峰命名方式，样式可以少的可以直接基于 vue-styled-components 写在同一个文件中，复杂的建议放在单独的 _Styles.js 文件中，当然也可以不采用 CSS-IN-JS 的方式，使用 Less/Sass 来写，然后在文件中 import 进来。
+首先需要约定一下，使用 JSX 组件命名采用首字母大写的驼峰命名方式，样式可以少的可以直接基于 vue-styled-components 写在同一个文件中，复杂的建议放在单独的 \_Styles.js 文件中，当然也可以不采用 CSS-IN-JS 的方式，使用 Less/Sass 来写，然后在文件中 import 进来。
 
 下面是一个通用的骨架：
 
-``` jsx
+```jsx
 import styled from 'vue-styled-components'
 
 const Container = styled.div`
@@ -34,10 +34,8 @@ const Dashboard = {
   name: 'Dashboard',
 
   render() {
-    return (
-      <Container>内容</Container>
-    )
-  }
+    return <Container>内容</Container>
+  },
 }
 
 export default Dashboard
@@ -47,7 +45,7 @@ export default Dashboard
 
 在JSX中使用单个括号来绑定文本插值：
 
-``` jsx
+```jsx
 <span>Message: {this.message}</span>
 // 类似于v-html
 <div domPropsInnerHTML={this.dangerHtml}/>
@@ -61,7 +59,7 @@ export default Dashboard
 
 在 JSX 中可以直接使用 class="xx" 来指定样式类，内联样式可以直接写成 style="xxx"：
 
-``` jsx
+```jsx
 <div class="btn btn-default" style="font-size: 12px;">Button</div>
 
 // 动态指定
@@ -74,23 +72,27 @@ export default Dashboard
 
 在 JSX 中没有 v-for 和 v-if 等指令的存在，这些全部需要采用 js 的方式来实现：
 
-``` jsx
-{ /* 类似于v-if */ }
+```jsx
+{
+  /* 类似于v-if */
+}
 {
   this.withTitle && <Title />
 }
 
-{ /* 类似于v-if 加 v-else */ }
+{
+  /* 类似于v-if 加 v-else */
+}
 {
   this.isSubTitle ? <SubTitle /> : <Title />
 }
 
-{ /* 类似于v-for */ }
 {
-  this.options.map(option => {
-    return (
-      <div>{option.title}</div>
-    )
+  /* 类似于v-for */
+}
+{
+  this.options.map((option) => {
+    return <div>{option.title}</div>
   })
 }
 ```
@@ -99,7 +101,7 @@ export default Dashboard
 
 事件绑定需要在事件名称前端加上 on 前缀，原生事件添加 nativeOn ：
 
-``` jsx
+```jsx
 // 对应@click
 <el-button onClick={this.handleClick}>Click me</el-button>
 // 对应@click.native
@@ -114,7 +116,7 @@ export default Dashboard
 
 在 Vue 中基于 jsx 也可以把组件拆分成一个个小的函数式组件，但是有一个限制是必需有一个外层的包裹元素，不能直接写类似：
 
-``` jsx
+```jsx
 const Demo = () => (
   <li>One</li>
   <li>Two</li>
@@ -123,7 +125,7 @@ const Demo = () => (
 
 必需写成：
 
-``` jsx
+```jsx
 const Demo = () => (
   <div>
     <li>One</li>
@@ -134,7 +136,7 @@ const Demo = () => (
 
 而在React中可以使用空标签 `<></>` 和 `<react.Fragment></react.Fragment>` 来实现包裹元素，这里的空标签其实只是 react.Fragment 的一个语法糖。同时在 React 16 中直接支持返回数组的形式：
 
-``` jsx
+```jsx
 const Demo = () => [
   <li>One</li>
   <li>Two</li>
@@ -143,16 +145,16 @@ const Demo = () => [
 
 那么在 Vue 中就只能通过遍历来实现类似的功能，大体思路就是把数据先定义好数据然后直接一个 map 生成，当然如果说元素的标签是不同类型的那就需要额外添加标识来判断了。
 
-``` jsx
+```jsx
 export default {
   data() {
     return {
-      options: ['one', 'two']
+      options: ['one', 'two'],
     }
   },
 
   render() {
-    const LiItem = () => this.options.map(option => <li>{option}</li>)
+    const LiItem = () => this.options.map((option) => <li>{option}</li>)
 
     return (
       <div>
@@ -161,7 +163,7 @@ export default {
         </ul>
       </div>
     )
-  }
+  },
 }
 ```
 
@@ -180,13 +182,16 @@ export default {
 
 使用方式如下：
 
-``` jsx
-<el-button {...{
- '!click': this.doThisInCapturingMode,
- '!keyup': this.doThisOnce,
- '~!mouseover': this.doThisOnceInCapturingMode
-}}>Click Me!</el-button>
-
+```jsx
+<el-button
+  {...{
+    '!click': this.doThisInCapturingMode,
+    '!keyup': this.doThisOnce,
+    '~!mouseover': this.doThisOnceInCapturingMode,
+  }}
+>
+  Click Me!
+</el-button>
 ```
 
 下面给出的事件修饰符是需要在事件处理函数中写出对应的等价操作：
@@ -201,7 +206,7 @@ export default {
 
 下面是在事件处理函数中使用修饰符的例子：
 
-``` jsx
+```jsx
 export default {
   methods: {
     keyup(e) {
@@ -218,8 +223,8 @@ export default {
       e.preventDefault()
 
       // ...
-    }
-  }
+    },
+  },
 }
 ```
 
@@ -236,18 +241,24 @@ export default {
 
 假如在jsx中想要引用遍历元素或组件的时候，例如：
 
-``` jsx
-const LiArray = () => this.options.map(option => (
-  <li ref="li" key={option}>{option}</li>
-))
+```jsx
+const LiArray = () =>
+  this.options.map((option) => (
+    <li ref="li" key={option}>
+      {option}
+    </li>
+  ))
 ```
 
 会发现从 this.$refs.li 中获取的并不是期望的数组值，这个时候就需要使用 refInFor 属性，并置为 true 来达到在模板中 v-for 中使用 ref 的效果：
 
-``` jsx
-const LiArray = () => this.options.map(option => (
-  <li ref="li" refInFor={true} key={option}>{option}</li>
-))
+```jsx
+const LiArray = () =>
+  this.options.map((option) => (
+    <li ref="li" refInFor={true} key={option}>
+      {option}
+    </li>
+  ))
 ```
 
 ### 插槽（v-slot）
@@ -256,15 +267,13 @@ const LiArray = () => this.options.map(option => (
 
 注意：在 Vue 2.6.x 版本后废弃了 slot 和 slot-scope，在模板中统一使用新的统一语法 v-slot 指令。v-slot 只能用于 Vue 组件和 template 标签。
 
-``` jsx
-<div class="page-header__title">
-  {this.$slots.title ? this.$slots.title : this.title}
-</div>
+```jsx
+<div class="page-header__title">{this.$slots.title ? this.$slots.title : this.title}</div>
 ```
 
 等价于模板的
 
-``` vue
+```vue
 <div class="page-header__title">
   <slot name="title">{{ title }}</slot>
 </div>
@@ -272,7 +281,7 @@ const LiArray = () => this.options.map(option => (
 
 在 Vue 官方文档中提到：父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。因此像下面的示例是无法正常工作的
 
-``` vue
+```vue
 <current-user>
   {{ user.firstName }}
 </current-user>
@@ -280,7 +289,7 @@ const LiArray = () => this.options.map(option => (
 
 在 `<current-user>` 组件中可以访问到 user 属性，但是提供的内容却是在父组件渲染的。如果想要达到期望的效果，这个时候就需要使用作用域插槽了。下面是改写后的代码，更多知识点可以直接查看官方文档的作用域插槽。
 
-``` vue
+```vue
 <!-- current-user组件定义部分 -->
 <span>
   <slot v-bind:user="user">
@@ -298,7 +307,7 @@ const LiArray = () => this.options.map(option => (
 
 上面的示例其实就是官方的示例，这里需要说明的是，其实在Vue中所谓的作用域插槽功能类似于 React 中的 Render Props 的概念，只不过在 React 中我们更多时候不仅提供了属性，还提供了操作方法。但是在 Vue 中更多的是提供数据供父作用域渲染展示，当然我们也可以把方法提供出去，例如：
 
-``` vue
+```vue
 <template>
   <div>
     <slot v-bind:injectedProps="slotProps">
@@ -313,8 +322,8 @@ export default {
     return {
       user: {
         firstName: 'snow',
-        lastName: 'wolf'
-      }
+        lastName: 'wolf',
+      },
     }
   },
 
@@ -322,23 +331,23 @@ export default {
     slotProps() {
       return {
         user: this.user,
-        logFullName: this.logFullName
+        logFullName: this.logFullName,
       }
-    }
+    },
   },
 
   methods: {
     logFullName() {
       console.log(`${this.firstName} ${this.lastName}`)
-    }
-  }
+    },
+  },
 }
 </script>
 ```
 
 在父组件中使用：
 
-``` vue
+```vue
 <current-user>
   <template v-slot:default="{ injectedProps }">
     <div>{{ injectedProps.user.firstName }}</div>
@@ -349,7 +358,7 @@ export default {
 
 在上面的代码中我们实际上使用解构的方式来取得 injectedProps，基于解构的特性还可以重命名属性名，在 prop 为 undefined 的时候指定初始值。
 
-``` vue
+```vue
 <current-user v-slot="{ user = { firstName: 'Guest' } }">
   {{ user.firstName }}
 </current-user>
@@ -359,15 +368,15 @@ export default {
 
 上面介绍了很多插槽相关的知识点足已说明其在开发过程中的重要性。说了很多在模板中如何定义和使用作用域插槽，现在进入正题如何在 jsx 中同样使用呢？
 
-``` jsx
+```jsx
 export default {
   // current-user components
   data() {
     return {
       user: {
         firstName: 'snow',
-        lastName: 'wolf'
-      }
+        lastName: 'wolf',
+      },
     }
   },
 
@@ -375,44 +384,44 @@ export default {
     slotProps() {
       return {
         user: this.user,
-        logFullName: this.logFullName
+        logFullName: this.logFullName,
       }
-    }
+    },
   },
 
   methods: {
     logFullName() {
       console.log(`${this.firstName} ${this.lastName}`)
-    }
+    },
   },
 
   render() {
     return (
       <div>
-        {
-          this.$scopedSlots.subTitle({
-            injectedProps: this.slotProps
-          })
-        }
+        {this.$scopedSlots.subTitle({
+          injectedProps: this.slotProps,
+        })}
       </div>
     )
-  }
+  },
 }
 ```
 
 然后在父组件中以 jsx 使用：
 
-``` jsx
-<current-user {...{
-  scopedSlots: {
-    subTitle: ({ injectedProps }) => (
-      <div>
-        <h3>injectedProps.user</h3>
-        <el-button onClick={injectedProps.logFullName}>Log Full Name</el-button>
-      </div>
-    )
-  }
-}}></current-user>
+```jsx
+<current-user
+  {...{
+    scopedSlots: {
+      subTitle: ({ injectedProps }) => (
+        <div>
+          <h3>injectedProps.user</h3>
+          <el-button onClick={injectedProps.logFullName}>Log Full Name</el-button>
+        </div>
+      ),
+    },
+  }}
+></current-user>
 ```
 
 ### 指令
@@ -423,13 +432,13 @@ export default {
 
 1. 直接使用对象传递所有指令属性
 
-``` vue
+```vue
 <input type="text" v-focus={{ value: true }} />
 ```
 
 2. 使用原始的vNode指令数据格式
 
-``` jsx
+```jsx
 export default {
   directives：{
     focus: {
@@ -459,7 +468,7 @@ export default {
 
 在模板中的用法如下：
 
-``` vue
+```vue
 <!-- 在双花括号中 -->
 {{ message | capitalize }}
 
@@ -469,7 +478,7 @@ export default {
 
 在jsx中使用方法为：
 
-``` jsx
+```jsx
 <div>{this.$options.filters('formatDate')('2019-07-01')}</div>
 ```
 
@@ -485,19 +494,19 @@ export default {
 
 然后在 Vue 的模板语法中是不区分 DOM 属性和 HTML 属性的，例如：
 
-``` vue
+```vue
 <template>
- <div>
-  <div>输入的值：{{ title }}</div>
-  <input type="text" value="我是DOM属性值" v-model="title" @input="logTitle" />
- </div>
+  <div>
+    <div>输入的值：{{ title }}</div>
+    <input type="text" value="我是DOM属性值" v-model="title" @input="logTitle" />
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      title: ''
+      title: '',
     }
   },
 
@@ -507,15 +516,15 @@ export default {
       console.log(e.target.value)
       // 输出HTML属性
       console.log(e.target.getAttribute('value'))
-    }
-  }
+    },
+  },
 }
 </script>
 ```
 
 运行示例可以看到 input 的初始值被设置为了“我是 DOM 属性值"，当我们在输入框中添加或者删除文字时，HTML 属性始终没有变化，而绑定的 DOM 值一值在变动。然后再看一下在 jsx 中的实现：
 
-``` jsx
+```jsx
 <div>输入值：{ this.title }</div>
 <input type="text" value="我是DOM属性" v-model={this.title} onInput={this.logTitle} />
 ```
@@ -524,7 +533,7 @@ export default {
 
 此外在模板语法中是无法区分 HTML 属性和 DOM 属性命名一样的场景，但是在 jsx 中可以很好的区分：
 
-``` jsx
+```jsx
 <Demo title="我是组件属性" domPropsTitle="我是DOM属性" />
 ```
 
@@ -532,7 +541,7 @@ export default {
 
 在 React 中 CSS 的样式写义在 jsx 中的语法是以 className="xx" 的形式，而在 Vue 的 jsx 中可以直接写成 class="xx"。实际上由于 class 是 js 的保留字，因此在 DOM 中其属性名为 className 而在 HTML 属性中为 class，我们可以在 Vue 中这样写，经过 Babel 转译后得到正确的样式类名：
 
-``` jsx
+```jsx
 <div domPropsClassName="mt__xs"></div>
 ```
 
@@ -540,7 +549,7 @@ export default {
 
 有使用过 Bootstrap 经验的可能会注意到它里面包含了很多 ARIA 属性，这些属性并不属于 DOM，在 jsx 中可以通过 attrsXX 或者直接 aria-xx 的方式来添加：
 
-``` jsx
+```jsx
 <label aria-label="title"></label>
 <label attrsAria-label="title"></label>
 ```
@@ -561,17 +570,19 @@ export default {
 
 1. 使用展开
 
-``` jsx
-<el-upload {...{
-  props: {
-    onPreview: this.handlePreview
-  }
-}} />
+```jsx
+<el-upload
+  {...{
+    props: {
+      onPreview: this.handlePreview,
+    },
+  }}
+/>
 ```
 
 2. 使用propsXx
 
-``` jsx
+```jsx
 <el-upload propsOnPreview={this.handlePreview} />
 ```
 
@@ -581,30 +592,22 @@ export default {
 
 在模板语法中可以使用 v-if、v-else-if 和 v-else 来做条件判断。在 jsx 中可以通过 ?: 三元运算符(Ternary operator)运算符来做 if-else 判断：
 
-``` jsx
-const Demo = () => isTrue ? <p>True!</p> : null
+```jsx
+const Demo = () => (isTrue ? <p>True!</p> : null)
 ```
 
 然后可以利用 && 运算符的特性简写为：
 
-``` jsx
+```jsx
 const Demo = () => isTrue && <p>True!</p>
 ```
 
 对于复杂的条件判断，例如：
 
-``` jsx
+```jsx
 const Demo = () => (
   <div>
-    {
-      flag && flag2 && !flag3
-        ? flag4
-          ? <p>aa</p>
-          : flag5
-            ? <p>Meh</p>
-            : <p>hErp</p>
-        : <p>bb</p>
-    }
+    {flag && flag2 && !flag3 ? flag4 ? <p>aa</p> : flag5 ? <p>Meh</p> : <p>hErp</p> : <p>bb</p>}
   </div>
 )
 ```
@@ -617,57 +620,53 @@ const Demo = () => (
 
 下面是使用 IIFE 通过内部使用 if-else 返回值来优化上述问题：
 
-``` jsx
+```jsx
 const Demo = () => (
   <div>
-    {
-      (() => {
-        if (flag && flag2 &&!flag3) {
-          if (flag4) {
-            return <p>Blah</p>
-          } else if (flag5) {
-            return <p>Meh</p>
-          } else {
-            return <p>Herp</p>
-          }
+    {(() => {
+      if (flag && flag2 && !flag3) {
+        if (flag4) {
+          return <p>Blah</p>
+        } else if (flag5) {
+          return <p>Meh</p>
         } else {
-          return <p>A</p>
+          return <p>Herp</p>
         }
-      })()
-    }
+      } else {
+        return <p>A</p>
+      }
+    })()}
   </div>
 )
 ```
 
 还可以使用 do 表达式，但是需要插件 @babel/plugin-proposal-do-expressions 的转译来支持
 
-``` jsx
+```jsx
 const Demo = () => (
   <div>
-    {
-      do {
-        if (flag1 && flag2 && !flag3) {
-          if (flag4) {
-            <p>Blah</p>
-          } else if (flag5) {
-            <p>Meh</p>
-          } else {
-            <p>Herp</p>
-          }
+    {do {
+      if (flag1 && flag2 && !flag3) {
+        if (flag4) {
+          ;<p>Blah</p>
+        } else if (flag5) {
+          ;<p>Meh</p>
         } else {
-          <p>A</p>
+          ;<p>Herp</p>
         }
+      } else {
+        ;<p>A</p>
       }
-    }
+    }}
   </div>
 )
 ```
 
 再就是一种比较简单的可选办法，如下：
 
-``` jsx
+```jsx
 const Demo = () => {
-  const basicCondition = flag && flag1 && !flag3;
+  const basicCondition = flag && flag1 && !flag3
   if (!basicCondition) return <p>A</p>
   if (flag4) return <p>Blah</p>
   if (flag5) return <p>Meh</p>
@@ -677,9 +676,9 @@ const Demo = () => {
 
 ### 组件的传值
 
-在单个 jsx 文件中可以写很多函数式组件来切分更小的粒度，例如之前的文章 Vue 后台管理系统开发日常总结__组件PageHeader，组件的形态有两种，一种是普通标题，另一种是带有选项卡的标题，那么在写的时候就可以这样写：
+在单个 jsx 文件中可以写很多函数式组件来切分更小的粒度，例如之前的文章 Vue 后台管理系统开发日常总结\_\_组件PageHeader，组件的形态有两种，一种是普通标题，另一种是带有选项卡的标题，那么在写的时候就可以这样写：
 
-``` jsx
+```jsx
 render() {
   // partial html
   const TabHeader = (
@@ -718,7 +717,7 @@ slots          # 函数，插槽
 
 虽然可以在函数式组件中传参数、事件、slot 但是个人觉得不建议这样做，反而搞复杂了。
 
-``` jsx
+```jsx
 render() {
   const Demo = props => {
     return (

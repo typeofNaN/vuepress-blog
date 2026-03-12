@@ -3,8 +3,8 @@ title: jQuery 学习笔记
 date: 2018-04-19
 category: 技术文章
 tag:
-    - jQuery
-    - JavaScript
+  - jQuery
+  - JavaScript
 ---
 
 本文为前端学习笔记之 jQuery 篇。
@@ -13,7 +13,7 @@ tag:
 
 jQuery大部分功能需要根据文档的DOM模型来工作，首先需要正确地解析到整个文档的DOM模型结构。使用jQuery需要在整个文档被浏览器完全加载后才开始进行。
 
-``` js
+```js
 $(document).ready(function () {
   alert('Hello World!')
   $('p').click(function (event) {
@@ -24,7 +24,7 @@ $(document).ready(function () {
 
 '$'是在jQuery中使用的变量名，可以使用 jQuery.noConflict()避免冲突，它的返回值就是jQuery对象。
 
-``` js
+```js
 jQuery.noConflict()
 $j = jQuery.noConflict()
 ```
@@ -33,13 +33,13 @@ $j = jQuery.noConflict()
 
 使用 $()得到的是一个jQuery对象。它封装了很多 DOM 对象的操作，但是它和 DOM 对象之间是不同的。只有当 obj是一个DOM对象时才能使用 obj.innerHTML；相应地，如果是jQuery对象应该使用 obj.html() 。
 
-* 从 DOM 对象转到 jQuery 对象： $(obj)
+- 从 DOM 对象转到 jQuery 对象： $(obj)
 
-* 从 jQuery 对象转到 DOM 对象： obj[0]
+- 从 jQuery 对象转到 DOM 对象： obj[0]
 
 比较正规地从 jQuery 对象到 DOM 的转换，是使用 jQuery 对象的 get() 方法：
 
-``` js
+```js
 $(function () {
   $('li').get()
   $('li').get(0)
@@ -51,62 +51,62 @@ $(function () {
 
 ### 常规选择器
 
-* $('*') 选择所有节点
-* $('#id') ID选择器，注意其中的一些特殊字符，如 .
-* $('.class') 类选择器
-* $('tag') 标签选择器
-* $('子元素')
-* $('直接子元素')
-* :focus 获取焦点元素
-* :first-child/:last-child 选择第一个/最后一个元素
-* :first/:last 截取第一个/最后一个符合条件的元素
-* ('pre+next') 直接兄弟元素
-* ('pre~siblings') 兄弟元素
-* :nth-child() 索引选择，索引从1开始
-* :nth-child(odd)
-* :nth-child(even)
-* :nth-child(4n)
+- $('\*') 选择所有节点
+- $('#id') ID选择器，注意其中的一些特殊字符，如 .
+- $('.class') 类选择器
+- $('tag') 标签选择器
+- $('子元素')
+- $('直接子元素')
+- :focus 获取焦点元素
+- :first-child/:last-child 选择第一个/最后一个元素
+- :first/:last 截取第一个/最后一个符合条件的元素
+- ('pre+next') 直接兄弟元素
+- ('pre~siblings') 兄弟元素
+- :nth-child() 索引选择，索引从1开始
+- :nth-child(odd)
+- :nth-child(even)
+- :nth-child(4n)
 
 ### 属性选择器
 
-* [name~="value"] 属性中包括某单词
-* [name="value"] 属性完全等于指定值
-* [name!="value"] 属性不等于指定值
-* [name] 包括有指定属性的元素
+- [name~="value"] 属性中包括某单词
+- [name="value"] 属性完全等于指定值
+- [name!="value"] 属性不等于指定值
+- [name] 包括有指定属性的元素
 
 ### 控件选择器
 
-* :checked 选择所有被选中的元素
-* :selected 被选择的元素
-* :disabled/:enabled 选择被禁用/未禁用的元素
-* :hidden 隐藏元素，不仅是 [type="hidden"]，还有 display:none
-* :visible 可见控件， visibility:hidden和 opacity:0同样被认为是可见
-* :input:button:checkbox:file:image:password:radio:reset:submit:text 具体控件，图像控件是 [type="image"]
+- :checked 选择所有被选中的元素
+- :selected 被选择的元素
+- :disabled/:enabled 选择被禁用/未禁用的元素
+- :hidden 隐藏元素，不仅是 [type="hidden"]，还有 display:none
+- :visible 可见控件， visibility:hidden和 opacity:0同样被认为是可见
+- :input:button:checkbox:file:image:password:radio:reset:submit:text 具体控件，图像控件是 [type="image"]
 
 ### 其他选择器
 
-* [name="value"][name2="value2"] 多个AND条件
-* ("selector1, selector2, selectorN") 多个OR条件
-* :not() 否定选择
-* (':contains("text")') 包含有指定内容的元素
-* :eq():lt():gt():even:odd 列表索引选择（不支持负数）
-* (':has(selector)') 符合条件的再次过滤
-* :header 选择 h1,h2,h3...标题元素
-* :only-child 仅有一个子元素的元素
-* :empty 空元素，即无内容也无元素
-* :parent 非空元素
+- [name="value"][name2="value2"] 多个AND条件
+- ("selector1, selector2, selectorN") 多个OR条件
+- :not() 否定选择
+- (':contains("text")') 包含有指定内容的元素
+- :eq():lt():gt():even:odd 列表索引选择（不支持负数）
+- (':has(selector)') 符合条件的再次过滤
+- :header 选择 h1,h2,h3...标题元素
+- :only-child 仅有一个子元素的元素
+- :empty 空元素，即无内容也无元素
+- :parent 非空元素
 
 ## 节点漫游
 
 ### 调用链处理
 
-* .add() 向已有的节点序列中添加新的对象
-* .andSelf() 在调用链中，随时加入原始序列
-* .eq() 指定索引选取节点，支持负数
-* .filter().is().not().find().first().last().has() 序列选择
-* .end() 节点回溯
+- .add() 向已有的节点序列中添加新的对象
+- .andSelf() 在调用链中，随时加入原始序列
+- .eq() 指定索引选取节点，支持负数
+- .filter().is().not().find().first().last().has() 序列选择
+- .end() 节点回溯
 
-``` js
+```js
 $(function () {
   $('ul.first')
     .find('.foo')
@@ -114,20 +114,20 @@ $(function () {
     .end()
     .find('.bar')
     .css('background-color', 'green')
-});
+})
 ```
 
 ### 子节点
 
-* .children() 所有的子节点，可加入过滤条件， .children(selector)
+- .children() 所有的子节点，可加入过滤条件， .children(selector)
 
 ### 兄弟节点
 
-* .siblings().next().nextAll().nextUntil().prevAll().prevUntil().closet() 选择兄弟节点
+- .siblings().next().nextAll().nextUntil().prevAll().prevUntil().closet() 选择兄弟节点
 
 ### 父节点
 
-* .parent().parents().parentUntil() 父节点选择
+- .parent().parents().parentUntil() 父节点选择
 
 ## 元素控制
 
@@ -135,21 +135,21 @@ $(function () {
 
 attributes 是XML结构中的属性节点
 
-``` html
+```html
 <div onload="prettyPrint()"></div>
 ```
 
 properties 是DOM对象，对象属性
 
-``` js
+```js
 $('body').get(0).tagName
 ```
 
 ### 类与属性控制
 
-* .addCLass().hasClass().removeClass() 添加一个类，判断是否有指定类，删除类
+- .addCLass().hasClass().removeClass() 添加一个类，判断是否有指定类，删除类
 
-``` js
+```js
 $('body').addClass('test')
 
 $('body').addClass(function (index, current) {
@@ -163,9 +163,9 @@ $('body').removeClass(function (index, current) {
 })
 ```
 
-* .toggleClass() 类的开关式转换
+- .toggleClass() 类的开关式转换
 
-``` js
+```js
 $('img').toggleClass() //对所有类的开关
 
 $('img').toggleClass('test') //对指定类的开关
@@ -185,14 +185,14 @@ $('img').toggleClass(function (index, className, isTrue) {
 }, isTrue)
 ```
 
-* .attr() 获取或设置一个属性值
+- .attr() 获取或设置一个属性值
 
-``` js
+```js
 // $('#greatPhoto').attr('alt') //获取属性`
 $('#greatPhoto').attr('alt', 'Brush Seller') //设置属性`
 
 // 同时设置多个属性
-$('#greatPhoto').attr({alt: 'Brush Seller',title: 'photo by Kelly Clark'})
+$('#greatPhoto').attr({ alt: 'Brush Seller', title: 'photo by Kelly Clark' })
 
 //设置属性为函数返回值，函数的上下文为当前元素
 $('#greatPhoto').attr('title', function (i, val) {
@@ -200,18 +200,18 @@ $('#greatPhoto').attr('title', function (i, val) {
 })
 ```
 
-* .prop() 用法同 .attr()，只是对象变成了 properties
-* .removeAttr().removeProp() 删除属性
-* .val() 设置或获取元素的表单值，通常用于表单元素
+- .prop() 用法同 .attr()，只是对象变成了 properties
+- .removeAttr().removeProp() 删除属性
+- .val() 设置或获取元素的表单值，通常用于表单元素
 
-``` js
+```js
 $('input').val()
 $('input').val('other')
 ```
 
-* .html() 设置或获取元素的节点 html
+- .html() 设置或获取元素的节点 html
 
-``` js
+```js
 $('div').html()
 $('div').html('<div>测试</div>')
 $('div').html(function (index, old) {
@@ -221,29 +221,29 @@ $('div').html(function (index, old) {
 
 ### 样式控制
 
-* .css() 获取或设置指定的CSS样式
+- .css() 获取或设置指定的CSS样式
 
-``` js
+```js
 $('body').css('background-color', 'red')
 $('body').css('background-color', function (index, value) {
   return value + '1'
 })
-$('body').css({color: 'green', 'background-color': 'red'})
+$('body').css({ color: 'green', 'background-color': 'red' })
 ```
 
-* .width().height() 获取或设置元素的宽和高
+- .width().height() 获取或设置元素的宽和高
 
-``` js
+```js
 $('body').width()
 $('body').width(50)
 $('body').width(function (index, value) {
-  return value += 10
+  return (value += 10)
 })
 ```
 
-* .innerWidth().innerHeight().outerHeight().outerWidth() 元素的其他尺寸值
-* .scrollLeft().scrollTop() 获取或设置滚动条的位置
-* .offset().position() 获取元素的坐标。 offset是相对于 document， position是相对于父级元素
+- .innerWidth().innerHeight().outerHeight().outerWidth() 元素的其他尺寸值
+- .scrollLeft().scrollTop() 获取或设置滚动条的位置
+- .offset().position() 获取元素的坐标。 offset是相对于 document， position是相对于父级元素
 
 ### 结构控制
 
@@ -255,13 +255,13 @@ $('body').width(function (index, value) {
 
 .append().prepend()
 
-``` js
+```js
 $('.inner').append('<p>Test</p>')
 ```
 
 参数可以有多种形式：
 
-``` js
+```js
 var $newDiv1 = $('<div id="object1"/>'),
   newDiv2 = document.createElement('div'),
   existingDiv1 = document.getElementById('foo')
@@ -272,7 +272,7 @@ $('body').append($newDiv1, [newDiv2, existingDiv1])
 
 .after().before()
 
-``` js
+```js
 $('.inner').after('<p>Test</p>')
 ```
 
@@ -280,7 +280,7 @@ $('.inner').after('<p>Test</p>')
 
 .wrap().wrap().wrapInner()
 
-``` js
+```js
 $('.inner').wrap('<div class="new"></div>')
 $('.inner').wrapAll('<div class="new"></div>')
 $('.inner').wrapInner('<div class="new"></div>')
@@ -288,30 +288,36 @@ $('.inner').wrapInner('<div class="new"></div>')
 
 #### 复制/删除/替换节点
 
-* .clone() 复制节点，可选参数表示是否处理已绑定的事件与数据
-* .clone(true) 处理当前节点的事件与数据
-* .clone(true,true) 处理当前节点及所有子节点的事件与数据
-* .detach() 暂时移除节点，之后可以再次恢复指定位置
-* .remove() 永久移除节点
-* .empty() 清除一个节点的所有内部内容
-* .unwrap() 移除节点的父节点
+- .clone() 复制节点，可选参数表示是否处理已绑定的事件与数据
+- .clone(true) 处理当前节点的事件与数据
+- .clone(true,true) 处理当前节点及所有子节点的事件与数据
+- .detach() 暂时移除节点，之后可以再次恢复指定位置
+- .remove() 永久移除节点
+- .empty() 清除一个节点的所有内部内容
+- .unwrap() 移除节点的父节点
 
 ### 工具函数
 
-* .map() 遍历所有成员
+- .map() 遍历所有成员
 
-``` js
-$(':checkbox').map(function () {
-  return this.id
-}).get().join(',')
-$(':checkbox').map(function (index, node) {
-  return node.id
-}).get().join(',')
+```js
+$(':checkbox')
+  .map(function () {
+    return this.id
+  })
+  .get()
+  .join(',')
+$(':checkbox')
+  .map(function (index, node) {
+    return node.id
+  })
+  .get()
+  .join(',')
 ```
 
-* .slice() 序列切片，支持一个或两个参数，支持负数
+- .slice() 序列切片，支持一个或两个参数，支持负数
 
-``` js
+```js
 $('li').slice(2).css('background-color', 'red')
 $('li').slice(2, 4).css('background-color', 'green')
 $('li').slice(-2, -1).css('background-color', 'blue')
@@ -319,11 +325,11 @@ $('li').slice(-2, -1).css('background-color', 'blue')
 
 ### 通用工具
 
-* $.each()$.map() 遍历列表， $.map()可以用于对象
+- $.each()$.map() 遍历列表， $.map()可以用于对象
 
-``` js
+```js
 $.each([52, 97], function (index, value) {
-  console.log((index + ' : ' + value))
+  console.log(index + ' : ' + value)
 })
 $.map([0, 1, 2], function (index, n) {
   return n + 4
@@ -338,7 +344,7 @@ $.map([0, 1, 2], function (n) {
 var dimensions = {
   width: 10,
   height: 15,
-  length: 20
+  length: 20,
 }
 $.map(dimensions, function (value, key) {
   return value * 2
@@ -347,7 +353,7 @@ $.map(dimensions, function (value, key) {
 var dimensions = {
   width: 10,
   height: 15,
-  length: 20
+  length: 20,
 }
 
 $.map(dimensions, function (value, key) {
@@ -355,71 +361,75 @@ $.map(dimensions, function (value, key) {
 })
 ```
 
-* $.extend() 合并对象，第一个参数表示是否进行递归深入
+- $.extend() 合并对象，第一个参数表示是否进行递归深入
 
-``` js
+```js
 var object = $.extend({}, object1, object2)
 var object = $.extend(true, {}, object1, object2)
 ```
 
-* $.merge() 合并列表
+- $.merge() 合并列表
 
-``` js
+```js
 $.merge([0, 1, 22, 3, 4])
 ```
 
-* .grep() 过滤列表，第三个参数表示是否为取反
+- .grep() 过滤列表，第三个参数表示是否为取反
 
-``` js
-$.grep([0, 1, ], function (array, index) {
+```js
+$.grep([0, 1], function (array, index) {
   return n > 0
 }) // [1, 2]
-$.grep([0, 1, 2], function (array, index) {
-  return n > 0
-}, true) // [0]
+$.grep(
+  [0, 1, 2],
+  function (array, index) {
+    return n > 0
+  },
+  true
+) // [0]
 ```
 
-* $.inArray() 存在判断
-* $.inArray(value, array [, fromIndex])
-* $.isArray()$.isEmptyObject()$.isFunction ()$.iSNumeric()$.isPainObject()$.isWindow $.isXMLDoc() 类型判断
-* $.noop() 空函数
-* $.now() 当前时间戳，值为 (newDate).getTime()
-* $.parseJson()$.parseXML() 把字符串解析为对象
+- $.inArray() 存在判断
+- $.inArray(value, array [, fromIndex])
+- $.isArray()$.isEmptyObject()$.isFunction ()$.iSNumeric()$.isPainObject()$.isWindow $.isXMLDoc() 类型判断
+- $.noop() 空函数
+- $.now() 当前时间戳，值为 (newDate).getTime()
+- $.parseJson()$.parseXML() 把字符串解析为对象
 
-``` js
+```js
 var xml = "<rss version='2.0'><channel><title>RSS Title</title></channel></rss>",
   xmlDoc = $.parseXML(xml),
   $xml = $(xmlDoc),
   $title = $xml.find('title')
 ```
 
-* $.trim() 去头去尾 $.trim(str)
-* $.type() 判断参数的类型
-* $.unique() 遍历后去重。 $.unique(array)
+- $.trim() 去头去尾 $.trim(str)
+- $.type() 判断参数的类型
+- $.unique() 遍历后去重。 $.unique(array)
 
 ## 上下文绑定
 
-* $.proxy() 为函数绑定上下文
-* $.proxy(function,context)
-* $.proxy(context,name)
+- $.proxy() 为函数绑定上下文
+- $.proxy(function,context)
+- $.proxy(context,name)
 
-``` js
+```js
 var o = {
   x: '123',
   f: function () {
     console.log(this.x)
-  }
+  },
 }
 
 var go = function (f) {
   f()
 }
 
-o.f()// 123
+o.f() // 123
 
-go(o.f)// undefined
+go(o.f) // undefined
 
-go($.proxy(o.f, o))//123
+go($.proxy(o.f, o)) //123
 
 $.proxy(o, 'f')() //123
 ```
@@ -430,14 +440,14 @@ $.proxy(o, 'f')() //123
 
 jQuery提供了一种机制，可以把节点作为数据存储的容器。
 
-* $.data() 往节点中获取/设置数据
-* $.removeData() 删除数据
+- $.data() 往节点中获取/设置数据
+- $.removeData() 删除数据
 
 在内部实现上，jQuery会在指定节点添加一个内部标识，以此为 key，把数据存在内部闭包的一个结构中。
 
 事实上，jQuery的事件绑定机制也使用了这套数据接口。
 
-``` js
+```js
 $.data($('#data').get(0), 'test', '123')
 $('#data').data('test', '456')
 ```
@@ -448,11 +458,11 @@ $('#data').data('test', '456')
 
 在 jQuery1.7之后，推荐统一使用 on()来进行事件绑定。
 
-* .on() 绑定事件 on()的基本使用方式是： .on(event,handler)
-* .off() 移除事件
-* .one() 绑定单次事件
+- .on() 绑定事件 on()的基本使用方式是： .on(event,handler)
+- .off() 移除事件
+- .one() 绑定单次事件
 
-``` js
+```js
 $('#btn').on('click', function (eventObj) {
   console.log('Hello')
 })
@@ -460,7 +470,7 @@ $('#btn').on('click', function (eventObj) {
 
 对于 handler，它默认的上下文是触发事件的节点：
 
-``` js
+```js
 $('#btn').on('click', function (eventObj) {
   console.log(this)
 })
@@ -468,24 +478,29 @@ $('#btn').on('click', function (eventObj) {
 
 使用 $.proxy()可以随意控制上下文：
 
-``` js
-$('#btn').on('click', $.proxy(function (eventObj) {
-  console.log(this.a)
-  }, {
-    a: 123
-  }
-)) // 123
+```js
+$('#btn').on(
+  'click',
+  $.proxy(
+    function (eventObj) {
+      console.log(this.a)
+    },
+    {
+      a: 123,
+    }
+  )
+) // 123
 ```
 
 event参数还支持通过：
 
-* 以 .分割的子名字
-* 以空格分割的多个事件
+- 以 .分割的子名字
+- 以空格分割的多个事件
 
-``` js
-$('#btn').on('click.my', (function (eventObj) {
+```js
+$('#btn').on('click.my', function (eventObj) {
   console.log('123')
-}))
+})
 
 var f = function () {
   $('#btn').off('click.my')
@@ -494,10 +509,10 @@ var f = function () {
 
 多个事件：
 
-``` js
-$('#btn').on('click.my click.other', (function (eventObj) {
+```js
+$('#btn').on('click.my click.other', function (eventObj) {
   console.log('123')
-}))
+})
 
 var f = function () {
   $('#btn').off('click.my')
@@ -506,22 +521,20 @@ var f = function () {
 
 on()的另一种调用形式：
 
-``` js
-$('#btn').on(
-  {
-    'click': function (eventObj) {
-      console.log('click')
-    },
-    'mousemove': function (eventObj) {
-      console.log('move')
-    }
-  }
-)
+```js
+$('#btn').on({
+  click: function (eventObj) {
+    console.log('click')
+  },
+  mousemove: function (eventObj) {
+    console.log('move')
+  },
+})
 ```
 
 off()的使用方式与 on()完全类似：
 
-``` js
+```js
 var f = function (eventObj) {
   console.log('Hello')
 }
@@ -533,7 +546,7 @@ $('#btn').off('click')
 
 事件的触发有两种方式，一是使用预定的“事件函数”（ .click()， .focus()），二是使用 trigger()或 triggerHandler()。
 
-``` js
+```js
 $('#btn').on('click', function (eventObj) {
   console.log('hello')
 })
@@ -543,7 +556,7 @@ $('#btn').trigger('click')
 
 trigger()与 triggerHandler()不同之处在于前面是触发事件，而后者是执行绑定函数。
 
-``` js
+```js
 $('#btn').on('focus', function (event) {
   console.log('Hello')
 })
@@ -552,7 +565,7 @@ $('#btn').triggerHandler('focus')
 
 trigger()和 triggerHandler()也用于触发自定义事件。
 
-``` js
+```js
 $('#btn').on('my', function (event) {
   console.log('Hello')
 })
@@ -561,65 +574,65 @@ $('#btn').triggerHandler('my')
 
 trigger()和 triggerHandler()触发事件时，可以带上参数：
 
-``` js
+```js
 $('#btn').on('my', function (event) {
   console.log(obj)
 })
-$('#btn').trigger('my', {a: 123})
+$('#btn').trigger('my', { a: 123 })
 ```
 
 ### 事件类型
 
 行为事件：
 
-* .click() 单击
-* .dbclick() 双击
-* .blur() 失去焦点时
-* .change() 值变化时
-* .focus() 获取焦点时
-* .focusin() jQuery扩展的获取焦点
-* .focusout() jQuery扩展的失去焦点
-* .resize() 调整大小
-* .scroll() 滚动
-* .select() 被选择
-* .submit() 表单被提交
+- .click() 单击
+- .dbclick() 双击
+- .blur() 失去焦点时
+- .change() 值变化时
+- .focus() 获取焦点时
+- .focusin() jQuery扩展的获取焦点
+- .focusout() jQuery扩展的失去焦点
+- .resize() 调整大小
+- .scroll() 滚动
+- .select() 被选择
+- .submit() 表单被提交
 
 键盘事件：
 
-* .keydown() 按下键
-* .keyup() 放开键
+- .keydown() 按下键
+- .keyup() 放开键
 
 鼠标事件：
 
-* .mousedown() 点下鼠标
-* .mouseup() 松开鼠标
-* .mouseover() 光标移入
-* .mouseout() 光标移出
-* .mousemove() 光标在其上移动
-* .mouseleave().mouseenter() 光标移出/移入
+- .mousedown() 点下鼠标
+- .mouseup() 松开鼠标
+- .mouseover() 光标移入
+- .mouseout() 光标移出
+- .mousemove() 光标在其上移动
+- .mouseleave().mouseenter() 光标移出/移入
 
 页面事件：
 
-* .ready() 准备就绪
-* .unload() 离开当前页时，针对 window对象
-* .error() 发生错误时
-* .load() 正在载入
+- .ready() 准备就绪
+- .unload() 离开当前页时，针对 window对象
+- .error() 发生错误时
+- .load() 正在载入
 
 ## **事件对象**
 
-* event.currentTarget,event,target 事件绑定节点/事件的触发节点（冒泡行为）
-* event.delegateTarget 绑定事件的对象，通常就是 event.currentTarget
-* event.relatedTarget 相关的节点，主要用于一些转换式的事件。比如鼠标移入，表示它从哪个节点来的
-* event.which 标明哪个按钮触发了事件，鼠标和键盘的键标识统一在这个属性中
-* event.preventDefault()event.isDefaultPrevented() 禁止默认行为
-* event.stopImmediatePropagation()event.isImmediatePropagationStopped() 不仅禁止冒泡。还终止绑定函数链的继续进行
-* event.stopPropagation()，event.isPropagationStopped() 禁止冒泡
-* event.pageX，event.pageY 事件触发时相对于 document的鼠标位置
-* event.namespace 事件触发时的名字空间，比如 trigger('click.namespace')
-* event.data 额外传入的数据
-* event.result 上一个绑定函数的返回值
-* event.timeStamp 事件触发时的时间，其值为 (newDate).getTime()
-* event.type 事件类型
+- event.currentTarget,event,target 事件绑定节点/事件的触发节点（冒泡行为）
+- event.delegateTarget 绑定事件的对象，通常就是 event.currentTarget
+- event.relatedTarget 相关的节点，主要用于一些转换式的事件。比如鼠标移入，表示它从哪个节点来的
+- event.which 标明哪个按钮触发了事件，鼠标和键盘的键标识统一在这个属性中
+- event.preventDefault()event.isDefaultPrevented() 禁止默认行为
+- event.stopImmediatePropagation()event.isImmediatePropagationStopped() 不仅禁止冒泡。还终止绑定函数链的继续进行
+- event.stopPropagation()，event.isPropagationStopped() 禁止冒泡
+- event.pageX，event.pageY 事件触发时相对于 document的鼠标位置
+- event.namespace 事件触发时的名字空间，比如 trigger('click.namespace')
+- event.data 额外传入的数据
+- event.result 上一个绑定函数的返回值
+- event.timeStamp 事件触发时的时间，其值为 (newDate).getTime()
+- event.type 事件类型
 
 如果一个绑定函数最后返回了 false，则默认是 event.preventDefault()和 event.stopPropagation()行为。
 
@@ -633,28 +646,28 @@ jQuey.ajax() 的基本使用形式是：
 
 jQuey.ajax(settings) settings是一个对象，里面包含了所有的配置项。
 
-* url 请求的地址。
-* type 请求的方法类型， GET， POST。默认是 GET。
-* data 要发送的数据
-* dataType 服务器返回的数据类型，支持 xml， html， script， json， jsonp， text
-* success 请求成功时调用的处理函数 success(data,textStatus,jqXHR)
-* context 回调函数执行时的上下文
-* cache 默认为 true，是否为请求单独添加一个随机参数以防止浏览器缓存
-* error 请求错误时的调用函数。
-* error(jqXHR,textStatus,errorThrown)
-* 第二个参数是表示请求状态的字符串： timeout， error， abort， parsererror
-* 第三个参数是当HTTP错误发生时，具体的错误描述： NotFound， InternalServerError等
-* complete 请求结束（无论成功或失败）时的一个回调函数。
-* complete(jqXHR,textStatus)
-* 第二个参数时表示请求状态的字符串： success， notmodified， error， timeout， abort， parsererror。
-* jsonp 一个参数名，默认是 callback，一般用于指明回调函数名。设置成 false可以让请求没有 callback参数。
-* jsonpCallback callback参数值。默认是自动生成的一个随机值。
+- url 请求的地址。
+- type 请求的方法类型， GET， POST。默认是 GET。
+- data 要发送的数据
+- dataType 服务器返回的数据类型，支持 xml， html， script， json， jsonp， text
+- success 请求成功时调用的处理函数 success(data,textStatus,jqXHR)
+- context 回调函数执行时的上下文
+- cache 默认为 true，是否为请求单独添加一个随机参数以防止浏览器缓存
+- error 请求错误时的调用函数。
+- error(jqXHR,textStatus,errorThrown)
+- 第二个参数是表示请求状态的字符串： timeout， error， abort， parsererror
+- 第三个参数是当HTTP错误发生时，具体的错误描述： NotFound， InternalServerError等
+- complete 请求结束（无论成功或失败）时的一个回调函数。
+- complete(jqXHR,textStatus)
+- 第二个参数时表示请求状态的字符串： success， notmodified， error， timeout， abort， parsererror。
+- jsonp 一个参数名，默认是 callback，一般用于指明回调函数名。设置成 false可以让请求没有 callback参数。
+- jsonpCallback callback参数值。默认是自动生成的一个随机值。
 
 ### 请求的状态
 
 对于全局的所有AJAX请求而言，可以在任意节点上绑定到全局任意AJAX请求的每一个事件：
 
-``` js
+```js
 $('#loading').ajaxStart(function () {
   $(this).show()
 })
@@ -662,27 +675,27 @@ $('#loading').ajaxStart(function () {
 
 说明：
 
-* .ajaxStart() 请求将要发出时
-* .ajaxSend() 请求将要发出时（在 .ajaxStart()后）
-* .ajaxSuccess() 请求成功
-* .ajaxError() 请求错误
-* .ajaxComplete() 请求完成
-* .ajaxStop() 请求结束（在 .ajaxComplete()后）
+- .ajaxStart() 请求将要发出时
+- .ajaxSend() 请求将要发出时（在 .ajaxStart()后）
+- .ajaxSuccess() 请求成功
+- .ajaxError() 请求错误
+- .ajaxComplete() 请求完成
+- .ajaxStop() 请求结束（在 .ajaxComplete()后）
 
 ### 工具函数
 
-* .serialize() 解析表单参数项，返回字符串
+- .serialize() 解析表单参数项，返回字符串
 
-``` js
+```js
 $('form').submit(function () {
   alert($(this).serialize())
   return false
 })
 ```
 
-* .serializeArray() 解析表单参数项，返回一个列表对象。
+- .serializeArray() 解析表单参数项，返回一个列表对象。
 
-``` js
+```js
 $('form').submit(function () {
   alert($(this).serializeArray())
   return false
@@ -695,7 +708,7 @@ $('form').submit(function () {
 
 Deferred对象是在jQuery1.5中引入的回调管理对象。其作用是把一堆函数按顺序放入一个调用链，然后根据状态来依次调用这些函数。AJAX的所有操作都是使用它来进行封装的。
 
-``` js
+```js
 var obj = $.Deferred(function (a) {})
 
 obj.done(function () {
@@ -710,28 +723,28 @@ obj.resolve()
 
 总的来说：jQuery的 Deferred对象有三个状态： done， fail， process。
 
-* process 只能先于其他两个状态先被激发。
-* done和 fail互斥，只能激发一个。
-* process可以被重复激发，而 done和 fail只能激发一次。
+- process 只能先于其他两个状态先被激发。
+- done和 fail互斥，只能激发一个。
+- process可以被重复激发，而 done和 fail只能激发一次。
 
 然后，jQuery提供了一些函数用于添加回调，激发状态等。
 
-* deferred.done() 添加一个或多个成功回调
-* deferred.fail() 添加一个或多个失败回调
-* deferred.always() 添加一个函数，同时应用于成功和失败
-* deferred.progress() 添加一个函数用于准备回调
-* deferred.then() 依次接受三个函数，分别用于成功，失败，准备状态
-* deferred.reject() 激发失败状态
-* deferred.resolve() 激发成功状态
-* deferred.notify() 激发准备状态
+- deferred.done() 添加一个或多个成功回调
+- deferred.fail() 添加一个或多个失败回调
+- deferred.always() 添加一个函数，同时应用于成功和失败
+- deferred.progress() 添加一个函数用于准备回调
+- deferred.then() 依次接受三个函数，分别用于成功，失败，准备状态
+- deferred.reject() 激发失败状态
+- deferred.resolve() 激发成功状态
+- deferred.notify() 激发准备状态
 
 如果一个 Deferred已经被激发，则新添加的对应的函数会被立即执行。
 jQuery还提供了一个 jQuery.when()的回调管理函数，可以用于方便地管理多个事件并发的情况。
 
-``` js
+```js
 var defer = $.ajax({
   url: 'test.html',
-  dataType: 'json'
+  dataType: 'json',
 })
 
 defer.done(function (data) {
@@ -743,14 +756,14 @@ done()做的事和使用 success()定义是一样的。
 
 当我们需要完成，像“请求A和请求B都完成时，执行函数”之类的需求时，使用 $.when()就可以了。
 
-``` js
+```js
 var defer_1 = $.ajax({
   url: 'json.html',
-  dataType: 'json'
+  dataType: 'json',
 })
 var defer_2 = $.ajax({
   url: 'jsonp.html',
-  dataType: 'jsonp'
+  dataType: 'jsonp',
 })
 
 var new_defer = $.when(defer_1, defer_2)
@@ -767,18 +780,20 @@ Deferred的回调函数的执行顺序与它们的添加顺序一致。
 
 then返回新的 defer这种形式，可以用于方便地实现异步函数的链式调用。
 
-``` js
-defer.done(function () {
-  return $.ajax({
-    url: '/json',
-    dataType: 'json',
-    success: function () {
-      console.log('inner');
-    }
+```js
+defer
+  .done(function () {
+    return $.ajax({
+      url: '/json',
+      dataType: 'json',
+      success: function () {
+        console.log('inner')
+      },
+    })
   })
-}).done(function () {
-  console.log('hello');
-})
+  .done(function () {
+    console.log('hello')
+  })
 ```
 
 等同于是调用了两次 defer.done, defer.done ，注册的两次回调函数依次被执行后，看到的输出是： hello， inner。
@@ -791,20 +806,23 @@ defer.done(function () {
 
 更一般地来说 then 的行为，就是前面的注册函数的返回值，会作为后面注册函数的参数值：
 
-``` js
+```js
 var defer = $.ajax({
   url: '/json',
-  dataType: 'json'
+  dataType: 'json',
 })
-defer.then(function (res) {
-  console.log(res)
-  return 1
-}).then(function (res) {
-  console.log(res)
-  return 2
-}).then(function (res) {
-  console.log(res)
-})
+defer
+  .then(function (res) {
+    console.log(res)
+    return 1
+  })
+  .then(function (res) {
+    console.log(res)
+    return 2
+  })
+  .then(function (res) {
+    console.log(res)
+  })
 ```
 
 上面代码的输入结果是：`ajax response`，`1`，`2`。
@@ -813,7 +831,7 @@ defer.then(function (res) {
 
 事实上，`Deferred`机制，只是在`Callbacks`机制的上层进行了一层简单封装。`Callbacks`对象才是真正的jQuery中定义的原始的回调管理机制。
 
-``` js
+```js
 var obj = $.Callbacks()
 obj.add(function () {
   console.log('1')
@@ -828,19 +846,19 @@ obj.fire()
 
 jQuey.Callbacks(flags) 初始化一个回调管理对象。 flags是空格分割的多个字符串，以定义此回调对象的行为：
 
-* once 回调链只能被激发一次
-* memory 回调链被激发后，新添加的函数被立即执行
-* unique 相同的回调函数只能被添加一次
-* stopOnFalse 当有回调函数返回 false时终止调用链的执行
+- once 回调链只能被激发一次
+- memory 回调链被激发后，新添加的函数被立即执行
+- unique 相同的回调函数只能被添加一次
+- stopOnFalse 当有回调函数返回 false时终止调用链的执行
 
 CallbackS的控制方法：
 
-* callbacks.add() 添加一个或一串回调函数
-* callbacks.fire() 激发回调
-* callbacks.remove() 从调用链中移除指定的函数
-* callbacks.empty() 清空调用链
-* callbacks.disable() 关闭调用链的继续执行，新添加的函数也不会被执行
-* callbacks.lock() 锁定调用链，但是如果打开了 memory的 flag，新添加的函数仍然会执行
-* callbacks.has() 检查一个函数是否处于回调链之中
-* callbacks.fired() 检查回调链是否被激发
-* callbacks.locked() 检查回调链是否被锁定
+- callbacks.add() 添加一个或一串回调函数
+- callbacks.fire() 激发回调
+- callbacks.remove() 从调用链中移除指定的函数
+- callbacks.empty() 清空调用链
+- callbacks.disable() 关闭调用链的继续执行，新添加的函数也不会被执行
+- callbacks.lock() 锁定调用链，但是如果打开了 memory的 flag，新添加的函数仍然会执行
+- callbacks.has() 检查一个函数是否处于回调链之中
+- callbacks.fired() 检查回调链是否被激发
+- callbacks.locked() 检查回调链是否被锁定

@@ -3,11 +3,11 @@ title: ASP.NET中的设计模式——原型模式
 date: 2018-04-24
 category: 技术文章
 tag:
-    - ASP.NET
-    - C#
-    - 设计模式
-    - 原型模式
-    - 原型链
+  - ASP.NET
+  - C#
+  - 设计模式
+  - 原型模式
+  - 原型链
 ---
 
 最近在工作室课上在讲 .NET 程序开发应该掌握的各种设计模式，恰巧看到设计模式中的原型模式与 JavaScript 中的继承机制——原型链有异曲同工之妙，便深入研究了一下。
@@ -22,7 +22,7 @@ tag:
 
 当运行以下代码时，会产生什么样的结果呢？
 
-``` cs
+```cs
 int a = 10;
 int b = a;
 b = 20;
@@ -37,7 +37,7 @@ Console.WriteLine(a);
 
 再运行以下代码时，又会产生什么样的结果呢？
 
-``` cs
+```cs
 Person a = new Person("Jack",20);
 Person b = a;
 b.SetInfo("John",21);
@@ -58,9 +58,9 @@ John 21
 
 C# 的数据项类型一共分为以下几种：
 
-* 值类型（Value types）
-* 引用类型（Reference types）
-* 指针类型（Pointer types）(此处不做讨论)
+- 值类型（Value types）
+- 引用类型（Reference types）
+- 指针类型（Pointer types）(此处不做讨论)
 
 而 string 类型是一种具有值类型特性的特殊引用类型,并不是基本数据类型（底下有关于 string 的详细介绍）。值类型和引用类型的区别看下表：
 
@@ -102,7 +102,7 @@ Person b = a 后，即将 a 的值赋值给了 b ，此时 a 和 b 都同时指�
 
 申明抽象原型类和具体原型类：
 
-``` cs
+```cs
 // 抽象原型类:声明克隆自身的接口
 public interface Prototype
 {
@@ -131,7 +131,7 @@ public class ConcretePrototype2 : Prototype
 
 主程序调用：
 
-``` cs
+```cs
 // 客户类:让一个原型克隆自身，从而获得一个新的对象
 public class Client
 {
@@ -157,7 +157,7 @@ ConcretePrototype2 Cloned!
 
 简历类：
 
-``` cs
+```cs
 // 简历
 class Resume : ICloneable
 {
@@ -202,7 +202,7 @@ class Resume : ICloneable
 
 客户端调用代码：
 
-``` cs
+```cs
 static void Main(string[] args)
 {
     Resume a = new Resume("大鸟")；
@@ -244,15 +244,15 @@ static void Main(string[] args)
 
 注：string 是一种拥有值类型特点的特殊引用类型！（例：上面简历的原型实现代码）
 
-* string 不是基本数据类型，而是一个类（class）
-* class string 继承自对象 （object），而不是 System.ValueType ( Int32 这样的则是继承于 System.ValueType)
-* string 本质上是个 char[]，而 Array 是引用类型，并且初始化时也是在托管堆分配内存的，但是这个特殊的类却表现出值类型的特点，微软设计这个类的时候为了方便操作，所以重写了 == 和 != 操作符以及 Equals 方法，它判断相等性时，是按照内容来判断的，而不是地址
-* string 在栈上保持引用，在堆上保持数据
+- string 不是基本数据类型，而是一个类（class）
+- class string 继承自对象 （object），而不是 System.ValueType ( Int32 这样的则是继承于 System.ValueType)
+- string 本质上是个 char[]，而 Array 是引用类型，并且初始化时也是在托管堆分配内存的，但是这个特殊的类却表现出值类型的特点，微软设计这个类的时候为了方便操作，所以重写了 == 和 != 操作符以及 Equals 方法，它判断相等性时，是按照内容来判断的，而不是地址
+- string 在栈上保持引用，在堆上保持数据
 
 ### 浅拷贝（Shallow Copy）
 
-* 只复制对象的值类型字段，引用类型只复制引用不复制引用的对象（即复制地址）
-* MemberwiseClone() 方法是浅拷贝（[微软关于 MemberwiseClone() 的介绍](https://docs.microsoft.com/zh-cn/dotnet/api/system.object.memberwiseclone?view=netframework-4.7.1#System_Object_MemberwiseClone)）
+- 只复制对象的值类型字段，引用类型只复制引用不复制引用的对象（即复制地址）
+- MemberwiseClone() 方法是浅拷贝（[微软关于 MemberwiseClone() 的介绍](https://docs.microsoft.com/zh-cn/dotnet/api/system.object.memberwiseclone?view=netframework-4.7.1#System_Object_MemberwiseClone)）
 
 ![浅拷贝](./prototype-pattern_assets/images/p7.png)
 
@@ -260,7 +260,7 @@ static void Main(string[] args)
 
 工作经历类
 
-``` cs
+```cs
 class WorkExperience
 {
     private string workDate;
@@ -283,7 +283,7 @@ class WorkExperience
 
 简历类
 
-``` cs
+```cs
 // 简历
 class Resume : ICloneable
 {
@@ -329,7 +329,7 @@ class Resume : ICloneable
 
 客户端调用代码
 
-``` cs
+```cs
 static void Main(string[] args)
 {
     Resume a = new Resume("大鸟");
@@ -366,8 +366,8 @@ static void Main(string[] args)
 
 ### 深拷贝（Deep Copy）
 
-* 不仅复制值类型字段，而且复制引用的对象
-* 把引用对象的变量指向复制过的新对象，而不是原有的被引用对象
+- 不仅复制值类型字段，而且复制引用的对象
+- 把引用对象的变量指向复制过的新对象，而不是原有的被引用对象
 
 ![深拷贝](./prototype-pattern_assets/images/p8.png)
 
@@ -377,7 +377,7 @@ static void Main(string[] args)
 
 简历和工作经历类：
 
-``` cs
+```cs
 // 简历
 public class Resume : ICloneable
 {
@@ -425,7 +425,7 @@ public class WorkExperience : ICloneable    // 让“工作经历”实现 IClon
 
 主程序调用：
 
-``` cs
+```cs
 public class Program
 {
     static void Main(string[] args)
@@ -465,38 +465,38 @@ JavaScript 的创始人 `Brendan Eich` 在开发 JavaScript 这个使得浏览�
 
 举例来说，现在有一个叫做 Dog 的构造函数，表示狗对象的原型。
 
-``` js
+```js
 function Dog(name) {
-    this.name = name;
+  this.name = name
 }
 ```
 
 对这个构造函数使用 new，就会生成一个 Dog 对象的实例。
 
-``` js
-var dogA = new Dog('大毛');
-alert(dogA.name);   // 大毛
+```js
+var dogA = new Dog('大毛')
+alert(dogA.name) // 大毛
 ```
 
 注意构造函数中的 this 关键字，它就代表了新创建的实例对象。
 
 但是用构造函数生成实例对象，有一个缺点，那就是无法共享属性和方法。比如，在 Dog 对象的构造函数中，设置一个实例对象的共有属性 species。然后，生成两个实例对象：
 
-``` js
+```js
 function Dog(name) {
-    this.name = name;
-    this.species = '犬科';
+  this.name = name
+  this.species = '犬科'
 }
 
-var dogA = new Dog('大毛');
-var dogB = new Dog('二毛');
+var dogA = new Dog('大毛')
+var dogB = new Dog('二毛')
 ```
 
 这两个对象的 species 属性是独立的，修改其中一个，不会影响到另一个。
 
-``` js
-dogA.species = '猫科';
-alert(dogB.species);   // 显示"犬科"，不受dogA的影响
+```js
+dogA.species = '猫科'
+alert(dogB.species) // 显示"犬科"，不受dogA的影响
 ```
 
 考虑到这一点，`Brendan Eich` 决定为构造函数设置一个 prototype 属性。
@@ -507,27 +507,27 @@ alert(dogB.species);   // 显示"犬科"，不受dogA的影响
 
 还是以 Dog 构造函数为例，现在用 prototype 属性进行改写：
 
-``` js
+```js
 function Dog(name) {
-    this.name = name;
+  this.name = name
 }
 
-Dog.prototype = { species : '犬科' };
+Dog.prototype = { species: '犬科' }
 
-var dogA = new Dog('大毛');
-var dogB = new Dog('二毛');
+var dogA = new Dog('大毛')
+var dogB = new Dog('二毛')
 
-alert(dogA.species);   // 犬科
-alert(dogB.species);   // 犬科
+alert(dogA.species) // 犬科
+alert(dogB.species) // 犬科
 ```
 
 现在，species 属性放在 prototype 对象里，是两个实例对象共享的。只要修改了 prototype 对象，就会同时影响到两个实例对象。
 
-``` js
-Dog.prototype.species = '猫科';
+```js
+Dog.prototype.species = '猫科'
 
-alert(dogA.species);   // 猫科
-alert(dogB.species);   // 猫科
+alert(dogA.species) // 猫科
+alert(dogB.species) // 猫科
 ```
 
 ### 数据模型缓存
@@ -540,7 +540,7 @@ alert(dogB.species);   // 猫科
 
 CloneableModel类定义及扩展：
 
-``` cs
+```cs
 using System;
 
 // 可克隆模型
@@ -571,7 +571,7 @@ public class Product : CloneableModel
 
 ModelICache类定义：
 
-``` cs
+```cs
 using System;
 using System.Collections;
 
@@ -612,7 +612,7 @@ public class ModelCache
 
 主程序调用：
 
-``` cs
+```cs
 class Program
 {
     static void Main(string[] args)
@@ -643,15 +643,15 @@ ID: #2001 Name: Illustrated C# 2012 Price: ￥89.00
 
 ### 优点
 
-* 隐藏了对象的创建细节，对有些初始化需要占用很多资源的类来说，对性能也有很大提高。
-* 在需要新对象时，可以使用Clone来快速创建创建一个，而不用使用new来构建。
+- 隐藏了对象的创建细节，对有些初始化需要占用很多资源的类来说，对性能也有很大提高。
+- 在需要新对象时，可以使用Clone来快速创建创建一个，而不用使用new来构建。
 
 ### 缺点
 
-* 每一个类都需要一个Clone方法，而且必须通盘考虑。对于深拷贝来说，每个关联到的类型都不许实现ICloneable接口，并且每增加或修改一个字段是都需要更新Clone方法。
+- 每一个类都需要一个Clone方法，而且必须通盘考虑。对于深拷贝来说，每个关联到的类型都不许实现ICloneable接口，并且每增加或修改一个字段是都需要更新Clone方法。
 
 ### 适用场景
 
-* 资源优化场景：类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。
-* 性能和安全要求的场景：通过new产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。
-* 一个对象多个修改者的场景：一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。
+- 资源优化场景：类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。
+- 性能和安全要求的场景：通过new产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。
+- 一个对象多个修改者的场景：一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。

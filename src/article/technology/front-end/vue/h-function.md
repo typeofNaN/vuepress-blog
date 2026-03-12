@@ -3,9 +3,9 @@ title: Vue使用h函数创建子组件
 date: 2023-01-25
 category: 技术文章
 tag:
-    - Vue
-    - render
-    - h
+  - Vue
+  - render
+  - h
 ---
 
 本文总结一下 Vue 使用`h函数`创建子组件。
@@ -22,22 +22,22 @@ h 函数 接收三个参数：type，props 和 children：
 
 ### type
 
-* 类型：String | Object | Function
-* 详细：HTML 标签名、组件、异步组件或函数式组件 （注意：Vue3 不支持组件名用字符串表示了，必须直接使用组件名）
+- 类型：String | Object | Function
+- 详细：HTML 标签名、组件、异步组件或函数式组件 （注意：Vue3 不支持组件名用字符串表示了，必须直接使用组件名）
 
-``` js
+```js
 import MySon from './son.vue'
 
-h('div', { }, [
-  h(MySon, { props: { name: 'hhh' } }) // MySon 不可写成 'MySon'
+h('div', {}, [
+  h(MySon, { props: { name: 'hhh' } }), // MySon 不可写成 'MySon'
 ])
 ```
 
 ### props
 
-* 类型：Object
+- 类型：Object
 
-``` js
+```js
 {
   // 和`v-bind:class`一样的 API
   'class': {
@@ -100,37 +100,37 @@ h('div', { }, [
 
 ### children
 
-* 类型：String | Object | Array
+- 类型：String | Object | Array
 
 #### String
 
-``` js
-h('div', { }, 'Some text comes first.')
+```js
+h('div', {}, 'Some text comes first.')
 ```
 
 生成的虚拟节点：
 
-``` html
+```html
 <div>Some text comes first.</div>
 ```
 
 #### Array
 
-``` js
-h('div', { }, [
+```js
+h('div', {}, [
   'Some text comes first.',
   h('h1', 'A headline'),
   h(MyComponent, {
     props: {
-    	name: 'hhh'
-    }
-  })
+      name: 'hhh',
+    },
+  }),
 ])
 ```
 
 生成的虚拟节点：
 
-``` html
+```html
 <div>
   Some text comes first.
   <h1>A headline</h1>
@@ -142,7 +142,7 @@ h('div', { }, [
 
 子组件：
 
-``` vue
+```vue
 <template>
   <div>
     你好，我是子组件，下面是两个具名插槽
@@ -154,14 +154,14 @@ h('div', { }, [
 
 父组件：
 
-``` js
+```js
 const props = {
   name: 'aaa',
-  age: 18
+  age: 18,
 }
-const slots = { }
-
-['content', 'contentTips'].forEach(name => slots[name] = h('div', {key: name}, name))
+const slots = {}[('content', 'contentTips')].forEach(
+  (name) => (slots[name] = h('div', { key: name }, name))
+)
 
 h(MySon, { ...props }, slots)
 ```
@@ -172,7 +172,7 @@ h(MySon, { ...props }, slots)
 
 子组件：
 
-``` vue
+```vue
 <template>
   <div>
     <button @click.stop="$emit('start', 'hello!!!')" />
@@ -182,14 +182,14 @@ h(MySon, { ...props }, slots)
 
 父组件的 h 函数：
 
-``` js
+```js
 import MySon from './son.vue'
 
 h(MySon, {
   // 子组件 $emit 传递函数
   start(data) {
     console.log(data)
-  }
+  },
 })
 ```
 
@@ -197,7 +197,7 @@ h(MySon, {
 
 子组件：
 
-``` vue
+```vue
 <template>
   <div>
     <button @click.stop="$emit('start', 'hello!')" />
@@ -207,13 +207,13 @@ h(MySon, {
 
 父组件的 h 函数：
 
-``` js
+```js
 import MySon from './son.vue'
 
 h(TableActionButtons, {
   // 子组件 $emit 传递函数！！！！
   onStart(data) {
     console.log(data)
-  }
+  },
 })
 ```

@@ -3,8 +3,8 @@ title: 如何利用hexo搭建一个属于自己的博客网站
 date: 2018-04-10
 category: 技术文章
 tag:
-    - hexo
-    - blog
+  - hexo
+  - blog
 ---
 
 想搭建一个属于自己的博客网站，用来发布一些文章以及交流学习。发现利用hexo来搭建个人博客挺方便的，于是便自己试着搭建了一个。特写下此文，一防忘记，二供大家参考。
@@ -30,8 +30,8 @@ tag:
 
 ### 安装Git
 
-* Git:[下载地址](https://gitforwindows.org/)
-* 参考文章:[《W3C school上Git教程之Git安装配置》](https://www.w3cschool.cn/git/git-install-setup.html)
+- Git:[下载地址](https://gitforwindows.org/)
+- 参考文章:[《W3C school上Git教程之Git安装配置》](https://www.w3cschool.cn/git/git-install-setup.html)
 
 ### 安装NodeJs
 
@@ -39,8 +39,8 @@ Hexo是基于Node.js环境的静态博客，里面的npm工具很有用啊，所
 
 安装步骤：反正下载好msi文件后，双击打开安装，也是一路next，不过在Custom Setup这一步记得选 Add to PATH ,这样你就不用自己去配置电脑上环境变量了，装完在按 win + r 快捷键调出运行，然后输入cmd确定，在cmd中输入path可以看到你的node是否配置在里面（环境变量），没有的话你就自由发挥吧！
 
-* NodeJs[下载地址](https://nodejs.org/en/)(说明：LTS为长期支持版，Current为当前最新版)
-* 参考文章:[《W3C school上Node.js教程之Node.js安装配置》](https://www.w3cschool.cn/nodejs/nodejs-install-setup.html)
+- NodeJs[下载地址](https://nodejs.org/en/)(说明：LTS为长期支持版，Current为当前最新版)
+- 参考文章:[《W3C school上Node.js教程之Node.js安装配置》](https://www.w3cschool.cn/nodejs/nodejs-install-setup.html)
 
 ### 安装hexo
 
@@ -48,13 +48,13 @@ Hexo是基于Node.js环境的静态博客，里面的npm工具很有用啊，所
 
 安装hexo命令：（在新建的文件夹里右键Git Bash Here）
 
-``` sh
+```sh
 $ npm i -g hexo
 ```
 
 接着初始化命令：
 
-``` sh
+```sh
 $ hexo init
 ```
 
@@ -64,14 +64,14 @@ $ hexo init
 
 解释一下：
 
-* node_modules：是依赖包
-* public：存放的是生成的页面
-* scaffolds：命令生成文章等的模板
-* source：用命令创建的各种文章
-* themes：主题
-* _config.yml：整个博客的配置
-* db.json：source解析所得到的
-* package.json：项目所需模块项目的配置信息
+- node_modules：是依赖包
+- public：存放的是生成的页面
+- scaffolds：命令生成文章等的模板
+- source：用命令创建的各种文章
+- themes：主题
+- \_config.yml：整个博客的配置
+- db.json：source解析所得到的
+- package.json：项目所需模块项目的配置信息
 
 做好这些前置工作之后接下来的就是各种配置了。
 
@@ -89,17 +89,17 @@ $ hexo init
 
 回到git bash中，配置github账户信息（YourName和YourEmail都替换成你自己的）：
 
-``` sh
+```sh
 $ git config global user.name "YourName"
 ```
 
-``` sh
+```sh
 $ git config global user.email "YourEmail"
 ```
 
 配置ssh，Git bash中输入命令：
 
-``` sh
+```sh
 $ ssh-keygen -t rsa -C "youremail@example.com"
 ```
 
@@ -115,7 +115,7 @@ $ ssh-keygen -t rsa -C "youremail@example.com"
 
 在Git bash中验证是否添加成功：
 
-``` sh
+```sh
 $ ssh -T git@github.com
 ```
 
@@ -123,9 +123,9 @@ $ ssh -T git@github.com
 
 ### 部署项目
 
-用编辑器打开你的blog项目，修改_config.yml文件的一些配置：
+用编辑器打开你的blog项目，修改\_config.yml文件的一些配置：
 
-``` sh
+```sh
 deploy:
     type: git
     repo: https://github.com/yourgithubname/yourgithubname.github.io.git
@@ -134,21 +134,21 @@ deploy:
 
 在Git bash中，依次输入以下命令：
 
-``` sh
+```sh
 $ hexo clean
 ```
 
-``` sh
+```sh
 $ hexo g
 ```
 
-``` sh
+```sh
 $ hexo s
 ```
 
 注：hexo 3.0把服务器独立成个别模块，需要单独安装：
 
-``` sh
+```sh
 $ npm i hexo-server
 ```
 
@@ -160,21 +160,21 @@ $ npm i hexo-server
 
 先安装一波，这样才能将你写好的文章部署到github服务器上并让别人浏览到,输入命令：
 
-``` sh
+```sh
 $ npm install hexo-deployer-git --save
 ```
 
 再依次执行以下命令：
 
-``` sh
+```sh
 $ hexo clean
 ```
 
-``` sh
+```sh
 $ hexo g
 ```
 
-``` sh
+```sh
 $ hexo d
 ```
 
@@ -210,13 +210,13 @@ hexo初始化之后默认的主题是landscape , 然后你可以去[这个地址
 
 先安装rss相关插件，Git bash命令：
 
-``` sh
+```sh
 $ npm i hexo-generator-feed
 ```
 
-在你的项目的_config.yml配置文件下找到Extensions添加如下内容：
+在你的项目的\_config.yml配置文件下找到Extensions添加如下内容：
 
-``` sh
+```sh
 ## Extensions  #插件和主题
 ### Plugins: https://hexo.io/plugins/
 ### Themes: https://hexo.io/themes/
@@ -240,11 +240,11 @@ feed:
 
 新建文章，输入命令：
 
-``` sh
+```sh
 $ hexo new '文章名'
 ```
 
-然后你就可以在source/_posts路径下看到你创建的文章，编辑完成之后按照前面说的方式部署，在浏览器刷新就能看到你的文章了。
+然后你就可以在source/\_posts路径下看到你创建的文章，编辑完成之后按照前面说的方式部署，在浏览器刷新就能看到你的文章了。
 
 博客文章采用markdown格式编写，至于markdown，骚年，学习吧！！！-->[前往教室](https://www.appinn.com/markdown/index.html)
 
@@ -262,21 +262,21 @@ $ hexo new '文章名'
 
 先将远程仓库关联到本地。进入站点文件夹，输入命令：
 
-``` sh
+```sh
 $ git init
 ```
 
-``` sh
+```sh
 $ git remote add origin git@github.com:username/username.github.io.git #使用站点仓库地址关联
 ```
 
-``` sh
+```sh
 $ git pull
 ```
 
 #### 创建hexo分支
 
-``` sh
+```sh
 $ git checkout -b hexo  #创建并切换到hexo分支
 
 ```
@@ -291,15 +291,15 @@ $ git checkout -b hexo  #创建并切换到hexo分支
 
 在hexo分支（使用git branch命令查看当前所在分支）下，输入命令：
 
-``` sh
+```sh
 $ git add .
 ```
 
-``` sh
+```sh
 $ git commit -m "提交记录"
 ```
 
-``` sh
+```sh
 $ git push -u origin hexo  #初次push要加-u，此后可省
 ```
 
@@ -307,17 +307,17 @@ $ git push -u origin hexo  #初次push要加-u，此后可省
 
 1. 使用git clone命令克隆站点仓库（默认分支为hexo）：
 
-``` sh
+```sh
 $ git clone git@github.com:username/username.github.io.git
 ```
 
 2. 在本地新拷贝的username.github.io文件夹下依次执行命令：
 
-``` sh
+```sh
 $ npm install hexo-cli
 ```
 
-``` sh
+```sh
 $ npm install
 ```
 

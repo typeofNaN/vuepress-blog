@@ -3,8 +3,8 @@ title: 微信小程序连接WIFI
 date: 2022-09-10
 category: 技术文章
 tag:
-    - MiniProgram
-    - 微信小程序
+  - MiniProgram
+  - 微信小程序
 ---
 
 微信小程序提供了支持 Wi-Fi 功能的多个 Api 接口。
@@ -39,14 +39,14 @@ tag:
 
 ## 实现代码
 
-``` js
+```js
 Page({
   data: {
     wifiInfo: {
       SSID: '',
       BSSID: '',
-      password: ''
-    }
+      password: '',
+    },
   },
 
   connect() {
@@ -60,22 +60,25 @@ Page({
           systemVersion = parseInt(system.substr(4))
         }
 
-        if ((platform === 'ios' && systemVersion < 11.2) || (platform === 'android' && systemVersion < 6)) {
+        if (
+          (platform === 'ios' && systemVersion < 11.2) ||
+          (platform === 'android' && systemVersion < 6)
+        ) {
           wx.showToast({
             title: '手机版本不支持！',
-            icon: 'none'
+            icon: 'none',
           })
           return
         }
         this.startWifi()
-      }
+      },
     })
   },
 
   startWifi() {
     wx.showToast({
       title: 'WIFI连接中...',
-      icon: 'none'
+      icon: 'none',
     })
     wx.startWifi({
       success: () => {
@@ -84,9 +87,9 @@ Page({
       fail: () => {
         wx.showToast({
           title: '接口调用失败！',
-          icon: 'none'
+          icon: 'none',
         })
-      }
+      },
     })
   },
 
@@ -96,7 +99,7 @@ Page({
       success: () => {
         wx.showToast({
           title: 'WIFI连接成功！',
-          icon: 'none'
+          icon: 'none',
         })
       },
       fail: ({ errCode }) => {
@@ -150,10 +153,10 @@ Page({
         }
         wx.showToast({
           title: errMsg,
-          icon: 'none'
+          icon: 'none',
         })
-      }
+      },
     })
-  }
+  },
 })
 ```
