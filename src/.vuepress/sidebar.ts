@@ -64,7 +64,7 @@ export default sidebar({
               text: 'Node.js',
               prefix: 'nodejs/',
               collapsible: true,
-              children: ['keymetrics'],
+              children: ['keymetrics', '2fa'],
             },
           ],
         },
